@@ -1,4 +1,6 @@
 /* salon_subcul_cream_soda__grok46 / kissa_menu_grid — CREAM SODA CUT */
+@import url("https://fonts.googleapis.com/css2?family=DotGothic16&display=swap");
+
 :root {
   --color-primary: #b5453e;
   --color-primary-light: #e0958f;
@@ -12,7 +14,7 @@
   --color-hero-text: #f6efdc;
   --color-overlay-header-bg: rgba(53, 84, 78, 0.75);
 
-  --font-heading: "DotGothic16", "MS Gothic", "Yu Gothic", sans-serif;
+  --font-heading: "DotGothic16", "Yu Gothic", "Hiragino Kaku Gothic ProN", sans-serif;
   --font-body: "Noto Sans JP", "Hiragino Kaku Gothic ProN", "Meiryo", sans-serif;
 
   --font-size-h1: 2rem;
