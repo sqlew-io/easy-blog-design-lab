@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>前髪を「斜めギザギザ」に切るという選択 — CONCRETE FLOWER</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="site-title">CONCRETE FLOWER<small>KOENJI</small></a>
+      <nav class="site-nav" id="navDrawer">
+        <button class="nav-close" id="navClose" aria-label="閉じる">✕</button>
+        <a href="index.html">LOG</a>
+        <a href="page.html">MENU</a>
+        <a href="page.html">MAP</a>
+      </nav>
+      <button class="menu-btn" aria-label="Menu">☰</button>
+    </div>
+  </header>
+
+  <main>
+    <article class="article">
+      <header class="article-head container">
+        <p class="article-meta"><span class="log-cat">CUT</span> 2026.07.18</p>
+        <h1>前髪を「斜めギザギザ」に切るという選択</h1>
+      </header>
+
+      <figure class="article-cover" style="background-image:url('https://picsum.photos/seed/jagged-bangs/1400/800')">
+        <figcaption>斜めに走るギザギザ前髪。光で影が出るのがポイント</figcaption>
+      </figure>
+
+      <div class="article-body container">
+        <p>今シーズン、店で一番多いオーダーが「斜めギザギザ前髪」。普通のぱっつんでも斜めバングでもない、ノコギリ状にカットする前髪です。奇抜に見えますが、実は顔型を選ばない優秀なデザイン。</p>
+
+        <h2>なぜ「斜め」なのか</h2>
+        <p>ギザギザを水平に切ると、視線が顔の横幅に割れて面長に見えます。これを眉尻に向かって斜めに流すと、視線が頬に向かって小顔効果。刃の入れ方は「レザーで5mmピッチ」が基本です。</p>
+
+        <figure class="body-figure" style="background-image:url('https://picsum.photos/seed/razor-cut/1000/600')">
+          <figcaption>レザーで角度をつけて入れる。ハサミだと硬い線になる</figcaption>
+        </figure>
+
+        <h2>注意点：伸びると一気に崩れる</h2>
+        <p>この前髪の寿命は3週間。伸びるとギザギザのピッチがずれて「切り残し」に見えます。当店では前髪だけのリタッチカット（¥1,500）を用意しているので、伸びたら早めにどうぞ。</p>
+
+        <h2>セットは「濡らしてドライ」だけ</h2>
+        <p>スタイリング剤は不要。朝、前髪だけ濡らしてドライヤーで斜めに流せばOK。ワックスをつけると束感が消えるので注意です。</p>
+      </div>
+
+      <div class="container article-foot">
+        <a class="btn" href="index.html">← BACK TO LOG</a>
+      </div>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p class="foot-brand">CONCRETE FLOWER</p>
+      <p class="foot-note">KOENJI / 12:00-22:00 / 水曜定休</p>
+    </div>
+  </footer>
+
+  <script>
+    const btn = document.querySelector('.menu-btn');
+    const drawer = document.getElementById('navDrawer');
+    const closeBtn = document.getElementById('navClose');
+    btn.addEventListener('click', () => drawer.classList.add('open'));
+    closeBtn.addEventListener('click', () => drawer.classList.remove('open'));
+  </script>
+</body>
+</html>

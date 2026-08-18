@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>そよかぜ通信 — たまプラーザのナチュラルヘアサロン</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="site-title">そよかぜ<small>soyokaze hair</small></a>
+      <nav class="site-nav" id="navDrawer">
+        <button class="nav-close" id="navClose" aria-label="閉じる">✕</button>
+        <a href="index.html">通信</a>
+        <a href="page.html">メニュー</a>
+        <a href="page.html">店舗案内</a>
+      </nav>
+      <button class="menu-btn" aria-label="Menu">☰</button>
+    </div>
+  </header>
+
+  <main>
+    <!-- journal_2col: タイトルバンド + 雑誌風2カラム（メイン + アーカイブ欄） -->
+    <section class="masthead container">
+      <p class="masthead-kicker">たまプラーザの小さなサロンが月に一度お届けする読み物</p>
+      <h1 class="masthead-title">そよかぜ通信</h1>
+      <p class="masthead-issue">Vol. 42 — 2026年7月号</p>
+    </section>
+
+    <div class="journal container">
+      <section class="journal-main">
+        <article class="journal-lead">
+          <a href="article.html">
+            <div class="journal-lead-image" style="background-image:url('https://picsum.photos/seed/breeze-hair/1200/700')" aria-label="風になびく髪"></div>
+            <p class="journal-meta"><span class="journal-cat">今月の話題</span><time>2026.07.01</time></p>
+            <h2>湿気の季節、くせ毛と仲良くする3つの習慣</h2>
+            <p class="journal-excerpt">「まとまらない」と悩むくせ毛こそ、実は個性。乾かし方・梳かし方・切り方を変えるだけで、うねりは味方になります。今月号の巻頭では、くせ毛のお客さま3人のビフォーアフターとともに詳しく。</p>
+            <p class="journal-more">この記事を読む →</p>
+          </a>
+        </article>
+
+        <div class="journal-cols">
+          <article class="journal-item">
+            <a href="article.html">
+              <p class="journal-meta"><time>2026.06.24</time></p>
+              <h3>梅雨の朝、ドライヤー時間を半分にする裏技</h3>
+              <p class="journal-excerpt">タオルドライの「押さえるだけ」で乾燥時間が変わります。</p>
+            </a>
+          </article>
+          <article class="journal-item">
+            <a href="article.html">
+              <p class="journal-meta"><time>2026.06.17</time></p>
+              <h3>紫外線から髪を守る、麦わら帽子の選び方</h3>
+              <p class="journal-excerpt">髪も日焼けします。つばの広さと素材がポイント。</p>
+            </a>
+          </article>
+          <article class="journal-item">
+            <a href="article.html">
+              <p class="journal-meta"><time>2026.06.10</time></p>
+              <h3>頭皮の汗、放置するとどうなる？</h3>
+              <p class="journal-excerpt">夕方の「頭皮クンクン問題」、原因と対策を整理しました。</p>
+            </a>
+          </article>
+          <article class="journal-item">
+            <a href="article.html">
+              <p class="journal-meta"><time>2026.06.03</time></p>
+              <h3>ショートカットの梅雨対策は「襟足を短く」</h3>
+              <p class="journal-excerpt">首に髪がつかないだけで、体感温度が違います。</p>
+            </a>
+          </article>
+        </div>
+      </section>
+
+      <aside class="journal-side">
+        <div class="side-block">
+          <h3 class="side-title">バックナンバー</h3>
+          <ul class="side-list">
+            <li><a href="index.html">Vol.41 6月号 — 紫陽花色に染める</a></li>
+            <li><a href="index.html">Vol.40 5月号 — 新緑とヘッドスパ</a></li>
+            <li><a href="index.html">Vol.39 4月号 — 新生活のヘアケア</a></li>
+            <li><a href="index.html">Vol.38 3月号 — 卒業式アレンジ</a></li>
+            <li><a href="index.html">Vol.37 2月号 — 乾燥との闘い方</a></li>
+          </ul>
+        </div>
+        <div class="side-block">
+          <h3 class="side-title">今月の予約状況</h3>
+          <p class="side-text">7月は土曜が埋まりやすくなっています。平日午前がねらい目です。</p>
+          <a class="btn" href="page.html">予約・メニュー</a>
+        </div>
+        <div class="side-block side-photo" style="background-image:url('https://picsum.photos/seed/salon-window/600/700')" role="img" aria-label="店の窓辺">
+          <p class="side-photo-cap">今月の窓辺。ミントが育っています</p>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p class="foot-brand">そよかぜ</p>
+      <p class="foot-note">たまプラーザ / 月曜定休</p>
+    </div>
+  </footer>
+
+  <script>
+    const btn = document.querySelector('.menu-btn');
+    const drawer = document.getElementById('navDrawer');
+    const closeBtn = document.getElementById('navClose');
+    btn.addEventListener('click', () => drawer.classList.add('open'));
+    closeBtn.addEventListener('click', () => drawer.classList.remove('open'));
+  </script>
+</body>
+</html>

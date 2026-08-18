@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FORGE — メンズ専門バーバー</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="site-title">FORGE</a>
+      <nav class="site-nav" id="navDrawer">
+        <button class="nav-close" id="navClose" aria-label="閉じる">✕</button>
+        <a href="index.html">Works</a>
+        <a href="page.html">Menu</a>
+        <a href="page.html">Access</a>
+      </nav>
+      <button class="menu-btn" aria-label="Menu">☰</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="band">
+      <div class="container band-inner">
+        <h1>FORGE</h1>
+        <p class="band-sub">高円寺のメンズ専門バーバー — Fade / Perm / Shave。平日22時まで。</p>
+      </div>
+    </section>
+
+    <section class="section container">
+      <div class="section-head">
+        <h2 class="section-title">Works &amp; Notes</h2>
+        <a class="section-link" href="page.html">Menu &amp; Access →</a>
+      </div>
+
+      <div class="work-grid">
+        <article class="work-card work-tall">
+          <a href="article.html">
+            <div class="work-photo" style="background-image:url('https://picsum.photos/seed/forge-fade/600/800')" aria-label="スキンフェード"></div>
+            <div class="work-body">
+              <p class="work-meta"><span class="cat">Style</span><time>07.08</time></p>
+              <h3>スキンフェード、0.5mmの世界</h3>
+              <p class="work-excerpt">バリカンの刃の厚みで、印象はここまで変わる。</p>
+            </div>
+          </a>
+        </article>
+
+        <article class="work-card">
+          <a href="article.html">
+            <div class="work-photo" style="background-image:url('https://picsum.photos/seed/forge-twist/600/450')" aria-label="ツイストパーマ"></div>
+            <div class="work-body">
+              <p class="work-meta"><span class="cat">Perm</span><time>06.30</time></p>
+              <h3>ツイストパーマ、伸ばしかけの楽しみ方</h3>
+            </div>
+          </a>
+        </article>
+
+        <article class="work-card">
+          <a href="article.html">
+            <div class="work-photo" style="background-image:url('https://picsum.photos/seed/forge-shave/600/450')" aria-label="シェービング"></div>
+            <div class="work-body">
+              <p class="work-meta"><span class="cat">Shave</span><time>06.21</time></p>
+              <h3>直刃のカミソリは、怖くない</h3>
+            </div>
+          </a>
+        </article>
+
+        <article class="work-card work-tall">
+          <a href="article.html">
+            <div class="work-photo" style="background-image:url('https://picsum.photos/seed/forge-tools/600/800')" aria-label="バーバーの道具"></div>
+            <div class="work-body">
+              <p class="work-meta"><span class="cat">Tool</span><time>06.12</time></p>
+              <h3>うちのバリカンと、ブラシの話</h3>
+              <p class="work-excerpt">毎日研ぐ。道具は、手の延長です。</p>
+            </div>
+          </a>
+        </article>
+
+        <article class="work-card">
+          <a href="article.html">
+            <div class="work-photo" style="background-image:url('https://picsum.photos/seed/forge-crop/600/450')" aria-label="クロップスタイル"></div>
+            <div class="work-body">
+              <p class="work-meta"><span class="cat">Style</span><time>06.05</time></p>
+              <h3>朝三分で決まる、クロップの作り方</h3>
+            </div>
+          </a>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p class="footer-brand">FORGE</p>
+      <p>東京都杉並区高円寺南 2-20-5 &nbsp;/&nbsp; 平日 12:00–22:00 &nbsp;/&nbsp; 土日祝 10:00–19:00（火曜休）</p>
+      <p class="footer-copy">&copy; 2026 FORGE</p>
+    </div>
+  </footer>
+
+  <script>
+    (function(){
+      var btn=document.querySelector('.menu-btn'), close=document.getElementById('navClose'), nav=document.getElementById('navDrawer');
+      function open(){ nav.classList.add('is-open'); document.body.style.overflow='hidden'; }
+      function closeFn(){ nav.classList.remove('is-open'); document.body.style.overflow=''; }
+      if(btn) btn.addEventListener('click', open);
+      if(close) close.addEventListener('click', closeFn);
+      nav.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', closeFn); });
+    })();
+  </script>
+</body>
+</html>

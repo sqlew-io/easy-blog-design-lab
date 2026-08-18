@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MENU / MAP — CONCRETE FLOWER</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="site-title">CONCRETE FLOWER<small>KOENJI</small></a>
+      <nav class="site-nav" id="navDrawer">
+        <button class="nav-close" id="navClose" aria-label="閉じる">✕</button>
+        <a href="index.html">LOG</a>
+        <a href="page.html">MENU</a>
+        <a href="page.html">MAP</a>
+      </nav>
+      <button class="menu-btn" aria-label="Menu">☰</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-hero container">
+      <h1 class="page-tape">MENU &amp; MAP</h1>
+    </section>
+
+    <section class="section container">
+      <h2 class="section-title">MENU</h2>
+      <ul class="menu-list">
+        <li class="menu-item">
+          <div class="menu-head"><span class="menu-name">前髪改造カット</span><span class="menu-price">¥4,000</span></div>
+          <p class="menu-note">ギザギザ・斜め・極短など。前髪のみのリタッチ ¥1,500</p>
+        </li>
+        <li class="menu-item">
+          <div class="menu-head"><span class="menu-name">デザインカット</span><span class="menu-price">¥6,500</span></div>
+          <p class="menu-note">カウンセリング込み60分。写真持ち込み歓迎</p>
+        </li>
+        <li class="menu-item">
+          <div class="menu-head"><span class="menu-name">ブリーチ + カラー</span><span class="menu-price">¥14,000〜</span></div>
+          <p class="menu-note">透けブラック〜ハイトーンまで。ケアブリーチ +¥2,000</p>
+        </li>
+        <li class="menu-item">
+          <div class="menu-head"><span class="menu-name">ブリーチ毛パーマ</span><span class="menu-price">¥12,000</span></div>
+          <p class="menu-note">状態診断必須。かけられない場合は正直に言います</p>
+        </li>
+      </ul>
+    </section>
+
+    <section class="section container">
+      <h2 class="section-title">MAP</h2>
+      <div class="map-grid">
+        <div class="map-photo" style="background-image:url('https://picsum.photos/seed/koenji-street/800/600')" role="img" aria-label="高円寺の商店街"></div>
+        <dl class="map-info">
+          <div class="info-row"><dt>住所</dt><dd>東京都杉並区高円寺南3-45-11 2F（高円寺駅南口より徒歩4分、中通り商店街）</dd></div>
+          <div class="info-row"><dt>営業</dt><dd>12:00〜22:00（カラー最終受付20:00）</dd></div>
+          <div class="info-row"><dt>定休</dt><dd>水曜</dd></div>
+          <div class="info-row"><dt>予約</dt><dd>LINEが一番速い。電話は施術中出られません</dd></div>
+        </dl>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p class="foot-brand">CONCRETE FLOWER</p>
+      <p class="foot-note">KOENJI / 12:00-22:00 / 水曜定休</p>
+    </div>
+  </footer>
+
+  <script>
+    const btn = document.querySelector('.menu-btn');
+    const drawer = document.getElementById('navDrawer');
+    const closeBtn = document.getElementById('navClose');
+    btn.addEventListener('click', () => drawer.classList.add('open'));
+    closeBtn.addEventListener('click', () => drawer.classList.remove('open'));
+  </script>
+</body>
+</html>

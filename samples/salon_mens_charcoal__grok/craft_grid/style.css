@@ -1,0 +1,577 @@
+/* salon_mens_charcoal__grok / craft_grid */
+:root {
+  --color-primary: #3e4750;
+  --color-primary-light: #6b7681;
+  --color-bg: #f4f2ee;
+  --color-surface: #ffffff;
+  --color-text: #23272b;
+  --color-text-muted: #61666c;
+  --color-border: #dcd8d0;
+  --color-accent: #a8804f;
+  --color-hero-bg: #1d2126;
+  --color-hero-text: #f0ede6;
+  --color-overlay-header-bg: rgba(29, 33, 38, 0.78);
+  --craft-paper: #eae4d8;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+}
+
+body {
+  font-family: "Noto Sans JP", sans-serif;
+  background: var(--color-bg);
+  color: var(--color-text);
+  line-height: 1.85;
+  letter-spacing: 0.02em;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Header */
+.site-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 28px;
+  background: var(--color-bg);
+  border-bottom: 1px solid var(--color-text);
+}
+
+.brand {
+  font-family: "Zen Kaku Gothic New", sans-serif;
+  font-weight: 900;
+  font-size: 1.08rem;
+  letter-spacing: 0.14em;
+}
+
+.brand small {
+  display: block;
+  font-size: 0.56rem;
+  letter-spacing: 0.3em;
+  color: var(--color-accent);
+  font-weight: 700;
+}
+
+.site-nav {
+  display: flex;
+  gap: 24px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+}
+
+.site-nav a {
+  padding: 6px 2px;
+  border-bottom: 2px solid transparent;
+}
+
+.site-nav a:hover,
+.site-nav a:focus-visible {
+  border-bottom-color: var(--color-accent);
+  outline: none;
+}
+
+/* Craft paper intro band */
+.intro {
+  background:
+    repeating-linear-gradient(45deg, rgba(168, 128, 79, 0.05) 0 2px, transparent 2px 6px),
+    var(--craft-paper);
+  border-bottom: 1px solid var(--color-border);
+  padding: 72px 28px 48px;
+}
+
+.intro .inner {
+  max-width: 1080px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: center;
+}
+
+.intro .stamp {
+  display: inline-block;
+  border: 2px solid var(--color-text);
+  padding: 6px 14px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.28em;
+  margin-bottom: 24px;
+}
+
+.intro h1 {
+  font-family: "Zen Kaku Gothic New", sans-serif;
+  font-weight: 900;
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  letter-spacing: 0.08em;
+  line-height: 1.45;
+}
+
+.intro .copy p {
+  margin-top: 20px;
+  color: var(--color-text-muted);
+  max-width: 30em;
+}
+
+.intro .photo-strip {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+.intro .photo-strip .ph {
+  aspect-ratio: 3 / 4;
+  background: var(--color-primary-light);
+  border: 1px solid var(--color-text);
+  overflow: hidden;
+}
+
+.intro .photo-strip .ph:nth-child(2) {
+  transform: translateY(16px);
+}
+
+.intro .photo-strip .ph:nth-child(3) {
+  transform: translateY(8px);
+}
+
+.intro .photo-strip img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* MENU / ACCESS cards inside craft paper band */
+.intro .guide-inner {
+  max-width: 1080px;
+  margin: 56px auto 0;
+  padding-top: 32px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  border-top: 1px solid var(--color-border);
+}
+
+.guide-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-text);
+  border-radius: 4px;
+  padding: 36px 28px;
+  text-align: center;
+  box-shadow: 4px 4px 0 rgba(35, 39, 43, 0.16);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.guide-card:hover,
+.guide-card:focus-visible {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0 rgba(35, 39, 43, 0.2);
+  outline: none;
+}
+
+.guide-card h3 {
+  font-family: "Zen Kaku Gothic New", sans-serif;
+  font-weight: 900;
+  letter-spacing: 0.24em;
+  font-size: 1.1rem;
+}
+
+.guide-card h3::after {
+  content: "";
+  display: block;
+  width: 40px;
+  height: 2px;
+  background: var(--color-accent);
+  margin: 14px auto 0;
+}
+
+.guide-card p {
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+  margin-top: 14px;
+}
+
+/* Article grid */
+.section {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 72px 28px;
+}
+
+.section-head {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin-bottom: 44px;
+}
+
+.section-head .chip {
+  background: var(--color-text);
+  color: var(--color-bg);
+  font-family: "Zen Kaku Gothic New", sans-serif;
+  font-weight: 900;
+  font-size: 0.95rem;
+  letter-spacing: 0.2em;
+  padding: 8px 18px;
+}
+
+.section-head .line {
+  flex: 1;
+  height: 1px;
+  background: var(--color-text);
+}
+
+.work-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 44px 36px;
+}
+
+.work-card {
+  border-top: 3px solid var(--color-accent);
+  padding-top: 18px;
+}
+
+.work-card .photo {
+  aspect-ratio: 16 / 10;
+  background: var(--color-primary-light);
+  border: 1px solid var(--color-border);
+  overflow: hidden;
+  margin-bottom: 18px;
+}
+
+.work-card .photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s;
+}
+
+.work-card:hover .photo img {
+  transform: scale(1.03);
+}
+
+.work-card .meta {
+  display: flex;
+  gap: 16px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  color: var(--color-text-muted);
+  margin-bottom: 8px;
+}
+
+.work-card .meta .cat {
+  color: var(--color-accent);
+}
+
+.work-card h3 {
+  font-family: "Zen Kaku Gothic New", sans-serif;
+  font-weight: 700;
+  font-size: 1.12rem;
+  letter-spacing: 0.04em;
+  line-height: 1.6;
+}
+
+.work-card h3 a:hover {
+  color: var(--color-primary-light);
+}
+
+.work-card p {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  margin-top: 8px;
+}
+
+/* Article page */
+.article-main {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 64px 28px 96px;
+}
+
+.article-main .meta {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  color: var(--color-accent);
+}
+
+.article-main h1 {
+  font-family: "Zen Kaku Gothic New", sans-serif;
+  font-weight: 900;
+  font-size: clamp(1.55rem, 3.6vw, 2.2rem);
+  letter-spacing: 0.05em;
+  line-height: 1.5;
+  margin: 16px 0 32px;
+  padding-bottom: 24px;
+  border-bottom: 3px solid var(--color-text);
+}
+
+.article-main .cover {
+  border: 1px solid var(--color-text);
+  margin: 0 0 44px;
+}
+
+.article-main .cover img {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  background: var(--color-border);
+}
+
+.article-main h2 {
+  font-family: "Zen Kaku Gothic New", sans-serif;
+  font-weight: 900;
+  font-size: 1.28rem;
+  margin: 48px 0 18px;
+}
+
+.article-main h2::before {
+  content: "— ";
+  color: var(--color-accent);
+}
+
+.article-main p {
+  margin-bottom: 1.5em;
+}
+
+.article-main figure {
+  margin: 36px 0;
+}
+
+.article-main figure img {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  background: var(--color-border);
+  border: 1px solid var(--color-border);
+}
+
+.article-main figcaption {
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+  margin-top: 8px;
+}
+
+.article-main ul {
+  margin: 0 0 1.5em 1.4em;
+}
+
+.back-link {
+  display: inline-block;
+  margin-top: 40px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  background: var(--color-text);
+  color: var(--color-bg);
+  border-radius: 4px;
+  padding: 12px 32px;
+  box-shadow: 4px 4px 0 rgba(35, 39, 43, 0.16);
+}
+
+.back-link:hover,
+.back-link:focus-visible {
+  background: var(--color-primary);
+  outline: none;
+}
+
+/* Static page */
+.page-head {
+  background:
+    repeating-linear-gradient(45deg, rgba(168, 128, 79, 0.05) 0 2px, transparent 2px 6px),
+    var(--craft-paper);
+  border-bottom: 1px solid var(--color-border);
+  text-align: center;
+  padding: 64px 24px;
+}
+
+.page-head .stamp {
+  display: inline-block;
+  border: 2px solid var(--color-text);
+  padding: 6px 14px;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.28em;
+  margin-bottom: 18px;
+}
+
+.page-head h1 {
+  font-family: "Zen Kaku Gothic New", sans-serif;
+  font-weight: 900;
+  font-size: 1.9rem;
+  letter-spacing: 0.2em;
+}
+
+.menu-card {
+  max-width: 720px;
+  margin: 0 auto;
+  background: var(--color-surface);
+  border: 1px solid var(--color-text);
+  border-radius: 4px;
+  box-shadow: 4px 4px 0 rgba(35, 39, 43, 0.16);
+  padding: 12px 32px;
+}
+
+.menu-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 16px;
+  padding: 20px 0;
+  border-bottom: 1px dashed var(--color-border);
+}
+
+.menu-row:last-child {
+  border-bottom: none;
+}
+
+.menu-row .name {
+  font-weight: 700;
+}
+
+.menu-row .name small {
+  display: block;
+  font-weight: 400;
+  font-size: 0.76rem;
+  color: var(--color-text-muted);
+}
+
+.menu-row .price {
+  font-family: "Zen Kaku Gothic New", sans-serif;
+  font-weight: 900;
+  color: var(--color-accent);
+  white-space: nowrap;
+}
+
+.access-block {
+  max-width: 720px;
+  margin: 56px auto 0;
+  text-align: center;
+}
+
+.access-block h2 {
+  font-family: "Zen Kaku Gothic New", sans-serif;
+  font-weight: 900;
+  font-size: 1.25rem;
+  letter-spacing: 0.2em;
+  margin-bottom: 18px;
+}
+
+.access-block h2::after {
+  content: "";
+  display: block;
+  width: 48px;
+  height: 2px;
+  background: var(--color-accent);
+  margin: 14px auto 0;
+}
+
+.access-block p {
+  color: var(--color-text-muted);
+}
+
+/* Footer */
+.site-footer {
+  background: var(--color-hero-bg);
+  color: var(--color-hero-text);
+  text-align: center;
+  padding: 56px 24px 40px;
+}
+
+.site-footer .brand {
+  margin-bottom: 20px;
+  font-family: "Zen Kaku Gothic New", sans-serif;
+  font-weight: 900;
+  font-size: 1.08rem;
+  letter-spacing: 0.14em;
+}
+
+.site-footer .brand small {
+  display: block;
+  font-size: 0.56rem;
+  letter-spacing: 0.3em;
+  color: var(--color-accent);
+  font-weight: 700;
+}
+
+.footer-nav {
+  display: flex;
+  justify-content: center;
+  gap: 26px;
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  margin-bottom: 28px;
+}
+
+.footer-nav a:hover {
+  color: var(--color-accent);
+}
+
+.copyright {
+  font-size: 0.7rem;
+  letter-spacing: 0.18em;
+  color: var(--color-accent);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .intro .inner {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+  .intro .guide-inner {
+    grid-template-columns: 1fr;
+  }
+  .work-grid {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+}
+
+@media (max-width: 480px) {
+  .site-header {
+    padding: 14px 18px;
+  }
+  .site-nav {
+    gap: 14px;
+    font-size: 0.7rem;
+  }
+  .intro {
+    padding: 48px 20px 32px;
+  }
+  .intro .photo-strip {
+    gap: 8px;
+  }
+  .intro .guide-inner {
+    margin-top: 40px;
+    padding-top: 24px;
+  }
+  .section {
+    padding: 56px 20px;
+  }
+  .menu-card {
+    padding: 8px 20px;
+  }
+  .article-main {
+    padding: 48px 20px 80px;
+  }
+}

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MENU / ACCESS — ASPHALT CLUB</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="site-title">ASPHALT CLUB<small>SHIMOKITA</small></a>
+      <nav class="site-nav" id="navDrawer">
+        <button class="nav-close" id="navClose" aria-label="閉じる">✕</button>
+        <a href="index.html">BLOG</a>
+        <a href="page.html">MENU</a>
+        <a href="page.html">ACCESS</a>
+      </nav>
+      <button class="menu-btn" aria-label="Menu">☰</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-hero">
+      <div class="container">
+        <h1>MENU <span class="marker">&amp;</span> ACCESS</h1>
+      </div>
+    </section>
+
+    <section class="section container">
+      <h2 class="section-title">MENU</h2>
+      <div class="menu-board">
+        <div class="menu-item">
+          <div class="menu-head"><span class="menu-name">DESIGN CUT</span><span class="menu-price">¥6,000</span></div>
+          <p class="menu-note">ウルフ / バズ / バリアート。写真持ち込み歓迎</p>
+        </div>
+        <div class="menu-item">
+          <div class="menu-head"><span class="menu-name">BLEACH + COLOR</span><span class="menu-price">¥13,000〜</span></div>
+          <p class="menu-note">ケアブリーチ使用。2回ブリーチは +¥6,000</p>
+        </div>
+        <div class="menu-item">
+          <div class="menu-head"><span class="menu-name">INNER / POINT COLOR</span><span class="menu-price">¥8,000</span></div>
+          <p class="menu-note">蛍光・パステル系の特殊カラー対応</p>
+        </div>
+        <div class="menu-item">
+          <div class="menu-head"><span class="menu-name">CORNROWS / BRAIDS</span><span class="menu-price">¥10,000〜</span></div>
+          <p class="menu-note">デザインにより変動。DMで要相談</p>
+        </div>
+        <div class="menu-item">
+          <div class="menu-head"><span class="menu-name">EXTENSION</span><span class="menu-price">¥400 / 本</span></div>
+          <p class="menu-note">カラーエクステ50色ストック</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section container">
+      <h2 class="section-title">ACCESS</h2>
+      <div class="access-board">
+        <div class="access-row"><span class="access-label">WHERE</span><p>東京都世田谷区北沢2-30-7 2F（下北沢駅西口から徒歩3分、古着屋「FLAMINGO」の上）</p></div>
+        <div class="access-row"><span class="access-label">HOURS</span><p>11:00〜21:00 / 不定休（スタッフのライブの日は休み）</p></div>
+        <div class="access-row"><span class="access-label">BOOK</span><p>ホットペッパー or Instagram DM。当日飛び込みは空いてたらOK</p></div>
+        <div class="access-row"><span class="access-label">PAY</span><p>現金 / 各種カード / PayPay</p></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p class="foot-brand">ASPHALT CLUB</p>
+      <p class="foot-note">SHIMOKITAZAWA / OPEN 11:00-21:00</p>
+    </div>
+  </footer>
+
+  <script>
+    const btn = document.querySelector('.menu-btn');
+    const drawer = document.getElementById('navDrawer');
+    const closeBtn = document.getElementById('navClose');
+    btn.addEventListener('click', () => drawer.classList.add('open'));
+    closeBtn.addEventListener('click', () => drawer.classList.remove('open'));
+  </script>
+</body>
+</html>

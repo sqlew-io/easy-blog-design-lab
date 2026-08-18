@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OMBRE — 夜のヘアサロン＆スパ</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="site-title">OMBRE</a>
+      <nav class="site-nav" id="navDrawer">
+        <button class="nav-close" id="navClose" aria-label="閉じる">✕</button>
+        <a href="index.html">Journal</a>
+        <a href="page.html">Menu</a>
+        <a href="page.html">Access</a>
+      </nav>
+      <button class="menu-btn" aria-label="Menu">☰</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="masthead container">
+      <div class="masthead-inner">
+        <p class="eyebrow">Omotesando — Open until 21:00</p>
+        <h1>OMBRE</h1>
+        <p class="masthead-sub">夜に灯る、大人のためのヘアサロン＆スパ</p>
+      </div>
+    </section>
+
+    <div class="container layout">
+      <div class="main-col">
+        <section class="editorial-grid">
+          <article class="ed-card ed-large">
+            <a href="article.html">
+              <div class="ed-photo" style="background-image:url('https://picsum.photos/seed/ombre-night/1000/1000')" aria-label="夜のトリートメント"></div>
+              <div class="ed-body">
+                <p class="ed-meta"><span class="ed-cat">Treatment</span><time>07.10</time></p>
+                <h3>夜の髪質改善で、翌朝の「触り心地」を変える</h3>
+                <p class="ed-excerpt">眠っている間こそ、髪は修復される。集中トリートメントの90分が、朝の手触りを決める。</p>
+              </div>
+            </a>
+          </article>
+
+          <article class="ed-card">
+            <a href="article.html">
+              <div class="ed-photo" style="background-image:url('https://picsum.photos/seed/ombre-line/600/600')" aria-label="ベージュラインのハイライト"></div>
+              <div class="ed-body">
+                <p class="ed-meta"><span class="ed-cat">Color</span><time>06.27</time></p>
+                <h3>黒髪を美しく保つ、極細のベージュライン</h3>
+              </div>
+            </a>
+          </article>
+
+          <article class="ed-card">
+            <a href="article.html">
+              <div class="ed-photo" style="background-image:url('https://picsum.photos/seed/ombre-spa/600/600')" aria-label="個室のヘッドスパ"></div>
+              <div class="ed-body">
+                <p class="ed-meta"><span class="ed-cat">Spa</span><time>06.19</time></p>
+                <h3>21時開く個室で受ける、沈黙のヘッドスパ</h3>
+              </div>
+            </a>
+          </article>
+
+          <article class="ed-card ed-wide">
+            <a href="article.html">
+              <div class="ed-photo" style="background-image:url('https://picsum.photos/seed/ombre-room/1200/600')" aria-label="サロンの個室"></div>
+              <div class="ed-body">
+                <p class="ed-meta"><span class="ed-cat">Salon</span><time>05.29</time></p>
+                <h3>全席個室にした理由。「話さない贅沢」について</h3>
+              </div>
+            </a>
+          </article>
+
+          <article class="ed-card">
+            <a href="article.html">
+              <div class="ed-photo" style="background-image:url('https://picsum.photos/seed/ombre-oil/600/600')" aria-label="ホームケアオイル"></div>
+              <div class="ed-body">
+                <p class="ed-meta"><span class="ed-cat">Care</span><time>06.08</time></p>
+                <h3>就寝前の5分で、湿気と戦うホームケア</h3>
+              </div>
+            </a>
+          </article>
+        </section>
+      </div>
+
+      <aside class="side-col">
+        <div class="side-block">
+          <p class="side-title">About</p>
+          <p class="side-text">OMBREは表参道の半地下にある、全席個室のヘアサロン＆スパです。夜21時まで営業。</p>
+          <a class="side-link" href="page.html">Menu &amp; Access</a>
+        </div>
+        <div class="side-block">
+          <p class="side-title">Hours</p>
+          <p class="side-text">12:00–21:00<br>（最終受付 19:30）<br>月曜定休</p>
+        </div>
+        <div class="side-block">
+          <p class="side-title">Reserve</p>
+          <p class="side-text">ご予約はお電話、またはWebにて。当日の夜予約も承ります。</p>
+          <a class="btn" href="page.html">Reserve</a>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p class="footer-brand">OMBRE</p>
+      <p>東京都渋谷区神宮前 4-9-2 &nbsp;/&nbsp; 12:00–21:00（月曜休）</p>
+      <p class="footer-copy">&copy; 2026 OMBRE</p>
+    </div>
+  </footer>
+
+  <script>
+    (function(){
+      var btn=document.querySelector('.menu-btn'), close=document.getElementById('navClose'), nav=document.getElementById('navDrawer');
+      function open(){ nav.classList.add('is-open'); document.body.style.overflow='hidden'; }
+      function closeFn(){ nav.classList.remove('is-open'); document.body.style.overflow=''; }
+      if(btn) btn.addEventListener('click', open);
+      if(close) close.addEventListener('click', closeFn);
+      nav.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', closeFn); });
+    })();
+  </script>
+</body>
+</html>

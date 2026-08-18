@@ -1,0 +1,573 @@
+/* salon_mens_charcoal__grok / dark_hero_list */
+:root {
+  --color-primary: #3e4750;
+  --color-primary-light: #6b7681;
+  --color-bg: #f4f2ee;
+  --color-surface: #ffffff;
+  --color-text: #23272b;
+  --color-text-muted: #61666c;
+  --color-border: #dcd8d0;
+  --color-accent: #a8804f;
+  --color-hero-bg: #1d2126;
+  --color-hero-text: #f0ede6;
+  --color-overlay-header-bg: rgba(29, 33, 38, 0.78);
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+}
+
+body {
+  font-family: "Noto Sans JP", sans-serif;
+  background: var(--color-bg);
+  color: var(--color-text);
+  line-height: 1.8;
+  letter-spacing: 0.02em;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Header: overlay for dark hero */
+.site-header {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: 20;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 28px;
+  background: var(--color-overlay-header-bg);
+  color: var(--color-hero-text);
+}
+
+.brand {
+  font-family: "Zen Kaku Gothic New", sans-serif;
+  font-weight: 900;
+  font-size: 1.05rem;
+  letter-spacing: 0.16em;
+}
+
+.brand small {
+  display: block;
+  font-size: 0.56rem;
+  letter-spacing: 0.32em;
+  color: var(--color-accent);
+  font-weight: 700;
+}
+
+.site-nav {
+  display: flex;
+  gap: 22px;
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+}
+
+.site-nav a {
+  padding: 6px 2px;
+  border-bottom: 2px solid transparent;
+}
+
+.site-nav a:hover,
+.site-nav a:focus-visible {
+  border-bottom-color: var(--color-accent);
+  outline: none;
+}
+
+/* Dark full hero (no photo) */
+.hero {
+  min-height: 85vh;
+  background: var(--color-hero-bg);
+  color: var(--color-hero-text);
+  display: flex;
+  align-items: center;
+  padding: 120px 28px 64px;
+}
+
+.hero .inner {
+  max-width: 920px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.hero .tag {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.36em;
+  color: var(--color-accent);
+  margin-bottom: 22px;
+}
+
+.hero h1 {
+  font-family: "Zen Kaku Gothic New", sans-serif;
+  font-weight: 900;
+  font-size: clamp(2.3rem, 6.5vw, 3.9rem);
+  letter-spacing: 0.09em;
+  line-height: 1.32;
+}
+
+.hero .rule {
+  width: 88px;
+  height: 5px;
+  background: var(--color-accent);
+  margin: 30px 0 24px;
+}
+
+.hero p {
+  font-size: 0.93rem;
+  opacity: 0.82;
+  max-width: 32em;
+}
+
+/* Numbered list section */
+.section {
+  max-width: 920px;
+  margin: 0 auto;
+  padding: 56px 28px 24px;
+}
+
+.section-head {
+  margin-bottom: 8px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--color-text);
+}
+
+.section-head h2 {
+  font-family: "Zen Kaku Gothic New", sans-serif;
+  font-weight: 900;
+  font-size: 1.15rem;
+  letter-spacing: 0.18em;
+}
+
+.list-item {
+  display: grid;
+  grid-template-columns: 88px 1fr auto;
+  gap: 20px;
+  align-items: baseline;
+  padding: 26px 4px;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.list-item:hover {
+  padding-left: 8px;
+}
+
+.list-item .no {
+  font-family: "Zen Kaku Gothic New", sans-serif;
+  font-weight: 900;
+  font-size: 1.95rem;
+  color: var(--color-border);
+  transition: color 0.2s ease;
+}
+
+.list-item:hover .no {
+  color: var(--color-accent);
+}
+
+.list-item .body h3 {
+  font-family: "Zen Kaku Gothic New", sans-serif;
+  font-weight: 700;
+  font-size: 1.08rem;
+  letter-spacing: 0.05em;
+  line-height: 1.55;
+}
+
+.list-item .body p {
+  font-size: 0.84rem;
+  color: var(--color-text-muted);
+  margin-top: 4px;
+}
+
+.list-item .meta {
+  text-align: right;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  color: var(--color-text-muted);
+  white-space: nowrap;
+}
+
+.list-item .meta .cat {
+  display: block;
+  color: var(--color-accent);
+}
+
+/* MENU / ACCESS guide rows (dark with brass left line) */
+.guide-rows {
+  max-width: 920px;
+  margin: 0 auto 72px;
+  padding: 32px 28px 0;
+}
+
+.guide-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--color-hero-bg);
+  color: var(--color-hero-text);
+  padding: 26px 30px;
+  border-left: 5px solid var(--color-accent);
+  margin-bottom: 12px;
+  transition: filter 0.2s;
+}
+
+.guide-row:hover,
+.guide-row:focus-visible {
+  filter: brightness(1.08);
+  outline: none;
+}
+
+.guide-row h3 {
+  font-family: "Zen Kaku Gothic New", sans-serif;
+  font-weight: 900;
+  letter-spacing: 0.22em;
+  font-size: 1.02rem;
+}
+
+.guide-row p {
+  font-size: 0.78rem;
+  opacity: 0.72;
+}
+
+/* Article */
+.article-hero {
+  background: var(--color-hero-bg);
+  color: var(--color-hero-text);
+  padding: 108px 28px 52px;
+}
+
+.article-hero .inner {
+  max-width: 780px;
+  margin: 0 auto;
+}
+
+.article-hero .meta {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  color: var(--color-accent);
+  margin-bottom: 14px;
+}
+
+.article-hero h1 {
+  font-family: "Zen Kaku Gothic New", sans-serif;
+  font-weight: 900;
+  font-size: clamp(1.6rem, 4vw, 2.35rem);
+  letter-spacing: 0.06em;
+  line-height: 1.45;
+}
+
+.article-main {
+  max-width: 740px;
+  margin: 0 auto;
+  padding: 48px 28px 80px;
+}
+
+.article-main .cover {
+  margin: 0 0 40px;
+  background: var(--color-border);
+}
+
+.article-main .cover img {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  background: var(--color-border);
+}
+
+.article-main h2 {
+  font-family: "Zen Kaku Gothic New", sans-serif;
+  font-weight: 900;
+  font-size: 1.22rem;
+  letter-spacing: 0.06em;
+  margin: 42px 0 14px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid var(--color-text);
+}
+
+.article-main p {
+  margin-bottom: 1.45em;
+}
+
+.article-main figure {
+  margin: 32px 0;
+  background: var(--color-border);
+}
+
+.article-main figure img {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  background: var(--color-border);
+}
+
+.article-main figcaption {
+  font-size: 0.74rem;
+  color: var(--color-text-muted);
+  margin-top: 6px;
+}
+
+.article-main ul {
+  margin: 0 0 1.4em 1.3em;
+}
+
+.back-link {
+  display: inline-block;
+  margin-top: 36px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  color: var(--color-accent);
+  border-bottom: 2px solid var(--color-accent);
+  padding-bottom: 2px;
+}
+
+/* Static page */
+.page-hero {
+  background: var(--color-hero-bg);
+  color: var(--color-hero-text);
+  padding: 108px 28px 48px;
+  text-align: center;
+}
+
+.page-hero h1 {
+  font-family: "Zen Kaku Gothic New", sans-serif;
+  font-weight: 900;
+  font-size: 1.7rem;
+  letter-spacing: 0.2em;
+}
+
+.page-hero p {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.3em;
+  color: var(--color-accent);
+  margin-top: 8px;
+}
+
+.menu-table {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.menu-row {
+  display: grid;
+  grid-template-columns: 64px 1fr auto;
+  gap: 18px;
+  align-items: baseline;
+  padding: 18px 4px;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.menu-row .no {
+  font-family: "Zen Kaku Gothic New", sans-serif;
+  font-weight: 900;
+  font-size: 1.2rem;
+  color: var(--color-border);
+}
+
+.menu-row .name {
+  font-weight: 700;
+  letter-spacing: 0.03em;
+}
+
+.menu-row .name small {
+  display: block;
+  font-weight: 400;
+  font-size: 0.74rem;
+  color: var(--color-text-muted);
+  margin-top: 2px;
+}
+
+.menu-row .price {
+  font-family: "Zen Kaku Gothic New", sans-serif;
+  font-weight: 900;
+  color: var(--color-accent);
+  white-space: nowrap;
+}
+
+.access-block {
+  max-width: 700px;
+  margin: 52px auto 0;
+}
+
+.access-block h2 {
+  font-family: "Zen Kaku Gothic New", sans-serif;
+  font-weight: 900;
+  font-size: 1.2rem;
+  letter-spacing: 0.12em;
+  margin-bottom: 14px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid var(--color-text);
+}
+
+.access-block p {
+  color: var(--color-text-muted);
+  font-size: 0.92rem;
+}
+
+/* Footer */
+.site-footer {
+  background: var(--color-hero-bg);
+  color: var(--color-hero-text);
+  text-align: center;
+  padding: 48px 24px 36px;
+  border-top: 4px solid var(--color-accent);
+}
+
+.site-footer .brand {
+  margin-bottom: 16px;
+  font-family: "Zen Kaku Gothic New", sans-serif;
+  font-weight: 900;
+  font-size: 1.05rem;
+  letter-spacing: 0.14em;
+}
+
+.site-footer .brand small {
+  display: block;
+  font-size: 0.56rem;
+  letter-spacing: 0.3em;
+  color: var(--color-accent);
+  font-weight: 700;
+}
+
+.footer-nav {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  margin-bottom: 22px;
+}
+
+.footer-nav a:hover {
+  color: var(--color-accent);
+}
+
+.copyright {
+  font-size: 0.68rem;
+  letter-spacing: 0.18em;
+  color: var(--color-accent);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .hero {
+    min-height: 72vh;
+    padding: 100px 24px 48px;
+  }
+  .hero h1 {
+    font-size: clamp(2rem, 7vw, 3.2rem);
+  }
+  .list-item {
+    grid-template-columns: 60px 1fr;
+    padding: 22px 2px;
+  }
+  .list-item .meta {
+    grid-column: 2;
+    text-align: left;
+    margin-top: 4px;
+  }
+  .list-item .meta .cat {
+    display: inline;
+    margin-right: 8px;
+  }
+  .guide-rows {
+    padding: 24px 24px 0;
+  }
+  .guide-row {
+    padding: 22px 24px;
+  }
+  .article-hero {
+    padding: 92px 24px 44px;
+  }
+  .article-main {
+    padding: 40px 24px 64px;
+  }
+  .page-hero {
+    padding: 92px 24px 40px;
+  }
+  .menu-row {
+    grid-template-columns: 52px 1fr auto;
+  }
+  .section {
+    padding: 48px 24px 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .site-header {
+    padding: 12px 16px;
+  }
+  .site-nav {
+    gap: 14px;
+    font-size: 0.68rem;
+  }
+  .hero {
+    min-height: 68vh;
+    padding: 82px 18px 36px;
+  }
+  .hero .tag {
+    font-size: 0.66rem;
+  }
+  .hero h1 {
+    font-size: 1.95rem;
+    letter-spacing: 0.08em;
+  }
+  .hero .rule {
+    width: 64px;
+    height: 4px;
+  }
+  .list-item {
+    grid-template-columns: 1fr;
+    gap: 2px;
+    padding: 20px 0;
+  }
+  .list-item .no {
+    display: none;
+  }
+  .list-item .body h3 {
+    font-size: 1rem;
+  }
+  .guide-row {
+    padding: 20px 16px;
+    border-left-width: 4px;
+  }
+  .guide-row h3 {
+    font-size: 0.95rem;
+  }
+  .menu-row {
+    grid-template-columns: 1fr auto;
+  }
+  .menu-row .no {
+    display: none;
+  }
+  .section {
+    padding: 36px 18px 12px;
+  }
+  .article-main,
+  .access-block {
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+  .menu-table {
+    padding: 0 2px;
+  }
+}

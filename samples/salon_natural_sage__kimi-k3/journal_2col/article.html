@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>湿気の季節、くせ毛と仲良くする3つの習慣 — そよかぜ通信</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="site-title">そよかぜ<small>soyokaze hair</small></a>
+      <nav class="site-nav" id="navDrawer">
+        <button class="nav-close" id="navClose" aria-label="閉じる">✕</button>
+        <a href="index.html">通信</a>
+        <a href="page.html">メニュー</a>
+        <a href="page.html">店舗案内</a>
+      </nav>
+      <button class="menu-btn" aria-label="Menu">☰</button>
+    </div>
+  </header>
+
+  <main>
+    <div class="journal container">
+      <article class="journal-main">
+        <header class="article-head">
+          <p class="journal-meta"><span class="journal-cat">今月の話題</span><time>2026.07.01</time></p>
+          <h1>湿気の季節、くせ毛と仲良くする3つの習慣</h1>
+        </header>
+
+        <figure class="article-cover" style="background-image:url('https://picsum.photos/seed/wavy-hair/1200/700')">
+          <figcaption>うねりは「直す」ものではなく「活かす」もの</figcaption>
+        </figure>
+
+        <div class="article-body">
+          <p>梅雨から夏にかけて、くせ毛のお客さまの相談が一気に増えます。「縮毛矯正をかけるべきか」と聞かれることも多いのですが、当店ではまず「くせを活かすカット」を提案しています。理由は簡単。矯正をかけ続けると、髪のダメージが蓄積して、数年後にまとまらなくなるからです。</p>
+
+          <h2>習慣1：夜ではなく朝に洗う</h2>
+          <p>くせ毛の方が夜に洗うと、寝ている間の摩擦でうねりが強調されます。朝に洗って、その日の湿気に合わせてスタイリングしたほうが、結果的にまとまります。時間がない方は、前髪と襟足だけでも。</p>
+
+          <h2>習慣2：「乾かしすぎない」ドライ</h2>
+          <p>完全に乾かしきると、くせ毛は広がります。8割乾きで止めて、残りは自然乾燥。ドライヤーは根元にだけ風を当てるイメージで。</p>
+
+          <figure class="body-figure" style="background-image:url('https://picsum.photos/seed/dry-hair/1000/600')">
+            <figcaption>根元を立ち上げるように乾かすと、トップがぺたんこになりません</figcaption>
+          </figure>
+
+          <h2>習慣3：カットは「減らしすぎない」</h2>
+          <p>すきバサミで量を減らしすぎると、短い毛がうねりを押し上げてさらに広がります。くせ毛カットは「重さで落ち着かせる」のが基本。来店周期も6週間以内をおすすめしています。</p>
+
+          <p>うねりは、実は動きのあるスタイルを作れる才能です。この夏は「直す」から「活かす」に切り替えてみませんか。</p>
+        </div>
+
+        <div class="article-foot">
+          <a class="btn" href="index.html">← 通信一覧に戻る</a>
+        </div>
+      </article>
+
+      <aside class="journal-side">
+        <div class="side-block">
+          <h3 class="side-title">バックナンバー</h3>
+          <ul class="side-list">
+            <li><a href="index.html">Vol.41 6月号 — 紫陽花色に染める</a></li>
+            <li><a href="index.html">Vol.40 5月号 — 新緑とヘッドスパ</a></li>
+            <li><a href="index.html">Vol.39 4月号 — 新生活のヘアケア</a></li>
+          </ul>
+        </div>
+        <div class="side-block">
+          <h3 class="side-title">予約する</h3>
+          <p class="side-text">くせ毛相談は無料カウンセリングもあります。</p>
+          <a class="btn" href="page.html">予約・メニュー</a>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p class="foot-brand">そよかぜ</p>
+      <p class="foot-note">たまプラーザ / 月曜定休</p>
+    </div>
+  </footer>
+
+  <script>
+    const btn = document.querySelector('.menu-btn');
+    const drawer = document.getElementById('navDrawer');
+    const closeBtn = document.getElementById('navClose');
+    btn.addEventListener('click', () => drawer.classList.add('open'));
+    closeBtn.addEventListener('click', () => drawer.classList.remove('open'));
+  </script>
+</body>
+</html>

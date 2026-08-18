@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>みどりのとびら — ハーブと整えるヘアサロン</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="site-title">みどりのとびら<small>midori no tobira</small></a>
+      <nav class="site-nav" id="navDrawer">
+        <button class="nav-close" id="navClose" aria-label="閉じる">✕</button>
+        <a href="index.html">記事</a>
+        <a href="page.html">メニュー</a>
+        <a href="page.html">アクセス</a>
+      </nav>
+      <button class="menu-btn" aria-label="Menu">☰</button>
+    </div>
+  </header>
+
+  <main>
+    <!-- botanical_grid: split ヒーロー。写真半分 + 生成りの余白半分 -->
+    <section class="hero">
+      <div class="hero-photo" style="background-image:url('https://picsum.photos/seed/green-door/1200/1400')" role="img" aria-label="グリーンの扉と植物"></div>
+      <div class="hero-copy">
+        <p class="hero-kicker">中野新橋・ハーブケア専門</p>
+        <h1>植物の力で、<br>髪は素直になる。</h1>
+        <p class="hero-lead">ハーブボール、ヘナ、クレイ。化学薬品に頼らないメニューだけを揃えた、小さなケアサロンです。</p>
+        <a class="btn" href="page.html">予約する</a>
+      </div>
+    </section>
+
+    <section class="section container">
+      <div class="section-head">
+        <h2 class="section-title">記事</h2>
+        <a class="section-link" href="index.html">すべて見る →</a>
+      </div>
+
+      <div class="bot-grid">
+        <article class="bot-card bot-feature">
+          <a href="article.html">
+            <div class="bot-image" style="background-image:url('https://picsum.photos/seed/herb-ball/1000/700')" aria-label="ハーブボール"></div>
+            <div class="bot-body">
+              <p class="bot-meta"><span class="bot-cat">ケア</span><time>2026.07.15</time></p>
+              <h3>ハーブボールの温熱で、頭皮はここまで変わる</h3>
+              <p class="bot-excerpt">タイ式ハーブボールを頭皮にあてる60分。血行が良くなり、根元の立ち上がりが翌日まで続きます。</p>
+            </div>
+          </a>
+        </article>
+
+        <article class="bot-card">
+          <a href="article.html">
+            <div class="bot-image" style="background-image:url('https://picsum.photos/seed/henna-leaf/800/600')" aria-label="ヘナ"></div>
+            <div class="bot-body">
+              <p class="bot-meta"><span class="bot-cat">ヘナ</span><time>2026.07.09</time></p>
+              <h3>初めてのヘナ、不安な方へ</h3>
+              <p class="bot-excerpt">「オレンジになるんじゃない？」の疑問に、ビフォーアフター写真でお答えします。</p>
+            </div>
+          </a>
+        </article>
+
+        <article class="bot-card">
+          <a href="article.html">
+            <div class="bot-image" style="background-image:url('https://picsum.photos/seed/clay-spa/800/600')" aria-label="クレイパック"></div>
+            <div class="bot-body">
+              <p class="bot-meta"><span class="bot-cat">ケア</span><time>2026.07.02</time></p>
+              <h3>クレイで頭皮デトックス</h3>
+              <p class="bot-excerpt">毛穴の皮脂を吸着するモンモリロナイト。週1回のスペシャルケアとして。</p>
+            </div>
+          </a>
+        </article>
+
+        <article class="bot-card">
+          <a href="article.html">
+            <div class="bot-image" style="background-image:url('https://picsum.photos/seed/salon-plant/800/600')" aria-label="店内の植物"></div>
+            <div class="bot-body">
+              <p class="bot-meta"><span class="bot-cat">店のこと</span><time>2026.06.25</time></p>
+              <h3>店内の植物、夏の模様替え</h3>
+              <p class="bot-excerpt">モンステラを窓際に。光の入り方が変わると、店の空気も変わります。</p>
+            </div>
+          </a>
+        </article>
+
+        <article class="bot-card">
+          <a href="article.html">
+            <div class="bot-image" style="background-image:url('https://picsum.photos/seed/tea-herb/800/600')" aria-label="ハーブティー"></div>
+            <div class="bot-body">
+              <p class="bot-meta"><span class="bot-cat">おもてなし</span><time>2026.06.18</time></p>
+              <h3>施術後のハーブティー、今月はカモミール</h3>
+              <p class="bot-excerpt">リラックス効果の高いカモミールに、庭のミントをひとつまみ。</p>
+            </div>
+          </a>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p class="foot-brand">みどりのとびら</p>
+      <p class="foot-note">中野新橋 / ハーブケア専門 / 水曜定休</p>
+    </div>
+  </footer>
+
+  <script>
+    const btn = document.querySelector('.menu-btn');
+    const drawer = document.getElementById('navDrawer');
+    const closeBtn = document.getElementById('navClose');
+    btn.addEventListener('click', () => drawer.classList.add('open'));
+    closeBtn.addEventListener('click', () => drawer.classList.remove('open'));
+  </script>
+</body>
+</html>

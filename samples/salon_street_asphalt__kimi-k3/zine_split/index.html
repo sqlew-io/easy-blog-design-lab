@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RIOT ROOTS — 吉祥寺のDIYヘアジン</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="site-title">RIOT ROOTS<small>KICHIJOJI</small></a>
+      <nav class="site-nav" id="navDrawer">
+        <button class="nav-close" id="navClose" aria-label="閉じる">✕</button>
+        <a href="index.html">ZINE</a>
+        <a href="page.html">MENU</a>
+        <a href="page.html">SHOP</a>
+      </nav>
+      <button class="menu-btn" aria-label="Menu">☰</button>
+    </div>
+  </header>
+
+  <main>
+    <!-- zine_split: ジン風。大見出し + 写真/テキストを左右交互に貼り合わせ -->
+    <section class="zine-head container">
+      <p class="zine-issue">ISSUE #09 — SUMMER 2026</p>
+      <h1 class="zine-title">RIOT<br>ROOTS</h1>
+      <p class="zine-sub">吉祥寺の片隅で、髪と音楽とzineを作る店のウェブ版</p>
+    </section>
+
+    <section class="zine-spread container">
+      <a class="zine-block zine-photo" href="article.html" style="background-image:url('https://picsum.photos/seed/punk-hair/900/900')" aria-label="派手髪">
+        <span class="zine-cap">今月の頭 No.1</span>
+      </a>
+      <div class="zine-block zine-text">
+        <p class="zine-tag">FEATURE</p>
+        <h2><a href="article.html">「派手髪＝不良」論を燃やせ</a></h2>
+        <p>2026年になっても言われる。でも髪色と人格に相関はない。店の客で一番まともなのは緑の頭の会計士だ。派手髪差別の歴史と、いま変わりつつある職場事情について書いた。</p>
+        <p class="zine-meta">TEXT: 店主 / 2026.07.19</p>
+      </div>
+
+      <div class="zine-block zine-text zine-dark">
+        <p class="zine-tag">HOW-TO</p>
+        <h2><a href="article.html">セルフブリーチ、やるならこうやれ</a></h2>
+        <p>止めはしない。やるなら知っておくべき5つのこと。市販ブリーチの選び方、放置時間、そして絶対にやってはいけない「追いブリーチ即日」について。</p>
+        <p class="zine-meta">2026.07.12</p>
+      </div>
+      <a class="zine-block zine-photo" href="article.html" style="background-image:url('https://picsum.photos/seed/diy-bleach/900/900')" aria-label="セルフブリーチ">
+        <span class="zine-cap">風呂場は現場</span>
+      </a>
+
+      <a class="zine-block zine-photo" href="article.html" style="background-image:url('https://picsum.photos/seed/live-house/900/900')" aria-label="ライブハウス">
+        <span class="zine-cap">店の下はライブハウス</span>
+      </a>
+      <div class="zine-block zine-text">
+        <p class="zine-tag">COLUMN</p>
+        <h2><a href="article.html">ライブ帰りの髪は語る</a></h2>
+        <p>モッシュで崩れた髪ほど良い顔をしている。店の下がライブハウスなので、終演後の客がそのまま上がってくる。汗とセット剤の匂いは、うちの香水だ。</p>
+        <p class="zine-meta">2026.07.05</p>
+      </div>
+    </section>
+
+    <section class="zine-foot container">
+      <a class="btn" href="page.html">MENU &amp; SHOP INFO</a>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p class="foot-brand">RIOT ROOTS</p>
+      <p class="foot-note">KICHIJOJI / 13:00-23:00 / 火曜定休</p>
+    </div>
+  </footer>
+
+  <script>
+    const btn = document.querySelector('.menu-btn');
+    const drawer = document.getElementById('navDrawer');
+    const closeBtn = document.getElementById('navClose');
+    btn.addEventListener('click', () => drawer.classList.add('open'));
+    closeBtn.addEventListener('click', () => drawer.classList.remove('open'));
+  </script>
+</body>
+</html>

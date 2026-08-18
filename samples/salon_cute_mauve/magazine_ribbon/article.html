@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>くすみピンクを長持ちさせる、お家ケアのコツ — Coquelicot</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="site-title">Coquelicot</a>
+      <nav class="site-nav" id="navDrawer">
+        <button class="nav-close" id="navClose" aria-label="閉じる">✕</button>
+        <a href="index.html">ブログ</a>
+        <a href="page.html">メニュー</a>
+        <a href="page.html">アクセス</a>
+      </nav>
+      <button class="menu-btn" aria-label="Menu">☰</button>
+    </div>
+  </header>
+
+  <main>
+    <article class="article">
+      <div class="container article-container">
+        <header class="article-head">
+          <p class="article-meta"><span class="ribbon-cat">Hair Care</span><time>2026.07.18</time></p>
+          <h1>くすみピンクを長持ちさせる、お家ケアのコツ</h1>
+        </header>
+
+        <figure class="article-cover">
+          <div class="cover-image" style="background-image:url('https://picsum.photos/seed/coquelicot-hair/1000/600')"></div>
+          <figcaption>色落ちしにくいケアで、3週間後もきれいな色味に</figcaption>
+        </figure>
+
+        <div class="article-body">
+          <p class="lede-body">「染めたてのくすみピンクが、2週間で黄味っぽくなった」——そんな経験はありませんか？実は色持ちの8割は、サロンでの施術よりもお家でのケアで決まります。今日からできる3つのポイントをご紹介します。</p>
+
+          <h2>1. シャンプーは「低温」で</h2>
+          <p>熱いお湯はキューティクルを開かせ、色素が流出しやすくなります。38〜40度のぬるま湯で、指の腹で優しく洗うのがコツ。特に染めたての1週間は、洗浄力の強いシャンプーは避けてください。</p>
+
+          <h2>2. ドライヤーは「温風→冷風」の順で</h2>
+          <p>濡れたままの髪は摩擦でダメージを受けやすく、色落ちの原因に。まずは温風で根元を乾かし、最後に冷風でキューティクルを閉じる。これだけでツヤと色持ちが変わります。</p>
+
+          <h2>3. 週1回のカラートリートメント</h2>
+          <p>Coquelicotでもおすすめしている、ピンク系カラートリートメント。シャンプー後に5分置くだけで、色素を補給できます。色が薄くなってきたと感じたら、次の来店までの間にぜひ。</p>
+
+          <div class="article-divider"></div>
+
+          <p class="article-note">※ご自宅でのケアで気になることがあれば、次回ご来店時にスタイリストにお気軽にご相談ください。髪質に合わせたアドバイスをさせていただきます。</p>
+        </div>
+
+        <footer class="article-foot">
+          <a class="btn" href="index.html">ブログ一覧に戻る</a>
+        </footer>
+      </div>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p class="footer-brand">Coquelicot</p>
+      <p>東京都渋谷区代官山町 8-7 2F &nbsp;/&nbsp; 平日 11:00–20:00 &nbsp;/&nbsp; 土日祝 10:00–19:00（水曜休）</p>
+      <p class="footer-copy">&copy; 2026 Coquelicot</p>
+    </div>
+  </footer>
+
+  <script>
+    (function(){
+      var btn=document.querySelector('.menu-btn'), close=document.getElementById('navClose'), nav=document.getElementById('navDrawer');
+      function open(){ nav.classList.add('is-open'); document.body.style.overflow='hidden'; }
+      function closeFn(){ nav.classList.remove('is-open'); document.body.style.overflow=''; }
+      if(btn) btn.addEventListener('click', open);
+      if(close) close.addEventListener('click', closeFn);
+      nav.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', closeFn); });
+    })();
+  </script>
+</body>
+</html>

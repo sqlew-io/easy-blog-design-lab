@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>スキンフェード、0.5mmの世界 — FORGE</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="site-title">FORGE</a>
+      <nav class="site-nav" id="navDrawer">
+        <button class="nav-close" id="navClose" aria-label="閉じる">✕</button>
+        <a href="index.html">Works</a>
+        <a href="page.html">Menu</a>
+        <a href="page.html">Access</a>
+      </nav>
+      <button class="menu-btn" aria-label="Menu">☰</button>
+    </div>
+  </header>
+
+  <main>
+    <div class="container article-layout">
+      <article class="article-main">
+        <header class="article-head">
+          <p class="article-meta"><span class="cat">Style</span><time>2026.07.08</time></p>
+          <h1>スキンフェード、0.5mmの世界</h1>
+          <div class="rule"></div>
+        </header>
+
+        <figure class="article-cover">
+          <div class="cover-image" style="background-image:url('https://picsum.photos/seed/forge-fade/1400/800')" aria-label="スキンフェードの仕上がり"></div>
+          <figcaption>バリカンの刃の厚みで、印象はここまで変わる。</figcaption>
+        </figure>
+
+        <div class="article-body">
+          <p class="lede-body">スキンフェードとひとことで言っても、肌を出す範囲と刈り上げの繋がり方には無数の段階があります。0.5mmの差が、清潔感とワイルドさの境界線です。</p>
+
+          <h2>0.5mm刻みの刈り上げ</h2>
+          <p>当店ではバリカンのアタッチメントを0.5mm刻みで使い分けています。襟足は0mmから、耳まわりで0.5mm、側頭部で1mm、そこから上は指でつまんで切る。グラデーションが滑らかであるほど、伸びても崩れにくいのです。</p>
+
+          <h2>肌色をどこまで出すか</h2>
+          <p>スキンの範囲が広いほどワイルドに、狭いほどビジネス向けに見えます。初めての方には、耳の半分あたりまでの範囲をおすすめしています。2週間後の伸び具合を見て、次回調整するのが確実です。</p>
+
+          <h2>ケアは保湿だけ</h2>
+          <p>刈り上げた部分の肌は、日差しにそのままさらされます。スタイリング剤は上の髪にだけ。刈り上げ部分は保湿クリームを薄く。これだけで、剃り負けの赤みはほぼ防げます。</p>
+
+          <div class="article-divider" aria-hidden="true"></div>
+
+          <p class="article-note">スキンフェードが初めての方は、オーダー時に「様子を見ながら」とお伝えください。鏡で確認しながら、段階的に進めます。</p>
+        </div>
+
+        <footer class="article-foot">
+          <a href="index.html" class="btn btn-outline">← Works 一覧へ</a>
+        </footer>
+      </article>
+
+      <aside class="article-side">
+        <div class="side-block">
+          <p class="side-title">About</p>
+          <p class="side-text">FORGEは高円寺のメンズ専門バーバー。フェード・パーマ・シェービングの専門店です。</p>
+        </div>
+        <div class="side-block">
+          <p class="side-title">This style</p>
+          <dl class="side-list">
+            <dt>Menu</dt><dd>Fade Cut — ¥5,500</dd>
+            <dt>Time</dt><dd>45分（シャンプー込み）</dd>
+            <dt>Hold</dt><dd>2〜3週間で再来が目安</dd>
+          </dl>
+        </div>
+        <div class="side-block">
+          <p class="side-title">Reserve</p>
+          <p class="side-text">予約優先。当日の飛び込みも、空いていれば。</p>
+          <a class="btn" href="page.html">Reserve</a>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p class="footer-brand">FORGE</p>
+      <p>東京都杉並区高円寺南 2-20-5 &nbsp;/&nbsp; 平日 12:00–22:00 &nbsp;/&nbsp; 土日祝 10:00–19:00（火曜休）</p>
+      <p class="footer-copy">&copy; 2026 FORGE</p>
+    </div>
+  </footer>
+
+  <script>
+    (function(){
+      var btn=document.querySelector('.menu-btn'), close=document.getElementById('navClose'), nav=document.getElementById('navDrawer');
+      function open(){ nav.classList.add('is-open'); document.body.style.overflow='hidden'; }
+      function closeFn(){ nav.classList.remove('is-open'); document.body.style.overflow=''; }
+      if(btn) btn.addEventListener('click', open);
+      if(close) close.addEventListener('click', closeFn);
+      nav.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', closeFn); });
+    })();
+  </script>
+</body>
+</html>

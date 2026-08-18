@@ -1,0 +1,246 @@
+/* salon_luxury_noir / noir_fullbleed */
+:root {
+  --color-primary: #1e1e22;
+  --color-primary-light: #4a4a52;
+  --color-bg: #f8f7f5;
+  --color-surface: #ffffff;
+  --color-text: #1f1f23;
+  --color-text-muted: #64615c;
+  --color-border: #e3e0da;
+  --color-accent: #ab8d52;
+  --color-hero-bg: #101013;
+  --color-hero-text: #f3ecdd;
+  --color-overlay-header-bg: rgba(16, 16, 19, 0.82);
+  --font-heading: "Hina Mincho", "Yu Mincho", "Hiragino Mincho ProN", serif;
+  --font-body: "Noto Sans JP", "Hiragino Kaku Gothic ProN", sans-serif;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: var(--font-body);
+  background: var(--color-bg);
+  color: var(--color-text);
+  line-height: 1.9;
+  letter-spacing: 0.04em;
+}
+
+img { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; }
+
+/* Header */
+.site-header {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: 20;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 32px;
+  background: var(--color-overlay-header-bg);
+  color: var(--color-hero-text);
+}
+.brand {
+  font-family: var(--font-heading);
+  font-size: 1.15rem;
+  letter-spacing: 0.28em;
+}
+.brand small { display: block; font-size: 0.6rem; letter-spacing: 0.32em; color: var(--color-accent); }
+.site-nav { display: flex; gap: 28px; font-size: 0.78rem; letter-spacing: 0.22em; }
+.site-nav a { padding: 4px 0; border-bottom: 1px solid transparent; }
+.site-nav a:hover, .site-nav a:focus-visible { border-bottom-color: var(--color-accent); outline: none; }
+
+/* Hero */
+.hero {
+  min-height: 92vh;
+  background: var(--color-hero-bg);
+  color: var(--color-hero-text);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 120px 24px 80px;
+  position: relative;
+}
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 0 50%;
+  transform: translateX(-50%);
+  width: 1px;
+  height: 72px;
+  background: var(--color-accent);
+}
+.hero .rule {
+  width: 64px;
+  height: 1px;
+  background: var(--color-accent);
+  margin: 28px auto;
+}
+.hero h1 {
+  font-family: var(--font-heading);
+  font-weight: 400;
+  font-size: clamp(1.9rem, 5vw, 3.1rem);
+  letter-spacing: 0.24em;
+}
+.hero p { font-size: 0.85rem; letter-spacing: 0.3em; color: var(--color-accent); }
+.hero .lede { color: var(--color-hero-text); opacity: 0.75; font-size: 0.9rem; letter-spacing: 0.14em; max-width: 32em; }
+
+/* Sections */
+.section { max-width: 960px; margin: 0 auto; padding: 96px 24px; }
+.section-title {
+  font-family: var(--font-heading);
+  font-weight: 400;
+  font-size: 1.3rem;
+  letter-spacing: 0.3em;
+  text-align: center;
+  margin-bottom: 12px;
+}
+.section-sub {
+  text-align: center;
+  font-size: 0.72rem;
+  letter-spacing: 0.3em;
+  color: var(--color-accent);
+  margin-bottom: 64px;
+}
+
+/* Journal list (magazine index style) */
+.journal-item {
+  display: grid;
+  grid-template-columns: 64px 140px 1fr 180px;
+  gap: 24px;
+  align-items: center;
+  padding: 28px 8px;
+  border-bottom: 1px solid var(--color-border);
+}
+.journal-item:first-of-type { border-top: 1px solid var(--color-border); }
+.journal-no {
+  font-family: var(--font-heading);
+  font-size: 1.4rem;
+  color: var(--color-accent);
+}
+.journal-thumb {
+  aspect-ratio: 4 / 3;
+  background: linear-gradient(135deg, var(--color-primary-light), var(--color-hero-bg));
+  overflow: hidden;
+}
+.journal-thumb img { width: 100%; height: 100%; object-fit: cover; }
+.journal-body h3 {
+  font-family: var(--font-heading);
+  font-weight: 400;
+  font-size: 1.08rem;
+  letter-spacing: 0.12em;
+  line-height: 1.7;
+}
+.journal-body h3 a:hover { color: var(--color-accent); }
+.journal-meta {
+  text-align: right;
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  color: var(--color-text-muted);
+}
+.journal-meta .cat { color: var(--color-accent); display: block; }
+
+/* Page links */
+.page-links { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+.page-link-card {
+  border: 1px solid var(--color-accent);
+  padding: 48px 32px;
+  text-align: center;
+  transition: background 0.3s, color 0.3s;
+}
+.page-link-card h3 { font-family: var(--font-heading); font-weight: 400; letter-spacing: 0.3em; font-size: 1.1rem; }
+.page-link-card p { font-size: 0.78rem; color: var(--color-text-muted); letter-spacing: 0.12em; margin-top: 10px; }
+.page-link-card:hover, .page-link-card:focus-visible { background: var(--color-hero-bg); color: var(--color-hero-text); outline: none; }
+.page-link-card:hover p { color: var(--color-accent); }
+
+/* Article page */
+.article-cover {
+  margin-top: 66px;
+  height: 52vh;
+  background: var(--color-hero-bg);
+  overflow: hidden;
+}
+.article-cover img { width: 100%; height: 100%; object-fit: cover; opacity: 0.9; }
+.article-main { max-width: 680px; margin: 0 auto; padding: 72px 24px 96px; }
+.article-main .date { font-size: 0.75rem; letter-spacing: 0.22em; color: var(--color-accent); }
+.article-main h1 {
+  font-family: var(--font-heading);
+  font-weight: 400;
+  font-size: clamp(1.5rem, 3.4vw, 2.1rem);
+  letter-spacing: 0.14em;
+  line-height: 1.8;
+  margin: 18px 0 40px;
+  padding-bottom: 28px;
+  border-bottom: 1px solid var(--color-accent);
+}
+.article-main h2 {
+  font-family: var(--font-heading);
+  font-weight: 400;
+  font-size: 1.25rem;
+  letter-spacing: 0.14em;
+  margin: 56px 0 20px;
+}
+.article-main p { margin-bottom: 1.6em; }
+.article-main figure { margin: 40px 0; }
+.article-main figure img { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; background: var(--color-border); }
+.article-main figcaption { font-size: 0.75rem; color: var(--color-text-muted); letter-spacing: 0.1em; margin-top: 10px; text-align: center; }
+.article-main ul { margin: 0 0 1.6em 1.4em; }
+.back-link { display: inline-block; margin-top: 48px; font-size: 0.78rem; letter-spacing: 0.22em; color: var(--color-accent); border-bottom: 1px solid var(--color-accent); padding-bottom: 2px; }
+
+/* Static page */
+.page-hero {
+  margin-top: 66px;
+  background: var(--color-hero-bg);
+  color: var(--color-hero-text);
+  text-align: center;
+  padding: 96px 24px 72px;
+}
+.page-hero h1 { font-family: var(--font-heading); font-weight: 400; font-size: 1.7rem; letter-spacing: 0.32em; }
+.page-hero p { font-size: 0.72rem; letter-spacing: 0.3em; color: var(--color-accent); margin-top: 10px; }
+.menu-table { max-width: 640px; margin: 0 auto; }
+.menu-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 16px;
+  padding: 22px 4px;
+  border-bottom: 1px solid var(--color-border);
+}
+.menu-row .name { letter-spacing: 0.1em; }
+.menu-row .name small { display: block; font-size: 0.75rem; color: var(--color-text-muted); }
+.menu-row .price { font-family: var(--font-heading); color: var(--color-accent); white-space: nowrap; }
+.access-block { max-width: 640px; margin: 64px auto 0; text-align: center; font-size: 0.9rem; }
+.access-block h2 { font-family: var(--font-heading); font-weight: 400; letter-spacing: 0.3em; font-size: 1.2rem; margin-bottom: 24px; }
+.access-block p { color: var(--color-text-muted); }
+
+/* Footer */
+.site-footer {
+  background: var(--color-hero-bg);
+  color: var(--color-hero-text);
+  text-align: center;
+  padding: 72px 24px 48px;
+}
+.site-footer .brand { margin-bottom: 24px; }
+.footer-nav { display: flex; justify-content: center; gap: 28px; font-size: 0.75rem; letter-spacing: 0.22em; margin-bottom: 36px; }
+.footer-nav a:hover { color: var(--color-accent); }
+.copyright { font-size: 0.7rem; letter-spacing: 0.2em; color: var(--color-accent); }
+
+/* Responsive */
+@media (max-width: 768px) {
+  .site-header { padding: 14px 20px; }
+  .site-nav { gap: 16px; font-size: 0.7rem; }
+  .journal-item { grid-template-columns: 40px 110px 1fr; }
+  .journal-meta { grid-column: 2 / 4; text-align: left; }
+  .journal-meta .cat { display: inline; margin-right: 1em; }
+  .page-links { grid-template-columns: 1fr; }
+}
+@media (max-width: 480px) {
+  .hero { min-height: 78vh; }
+  .site-nav { display: none; }
+  .journal-item { grid-template-columns: 96px 1fr; gap: 16px; }
+  .journal-no { display: none; }
+  .journal-meta { grid-column: auto / span 2; }
+  .section { padding: 64px 20px; }
+}

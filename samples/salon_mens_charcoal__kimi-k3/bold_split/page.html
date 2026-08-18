@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Menu & Access — IRONWORKS</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="site-title">IRONWORKS</a>
+      <nav class="site-nav" id="navDrawer">
+        <button class="nav-close" id="navClose" aria-label="閉じる">✕</button>
+        <a href="index.html">Journal</a>
+        <a href="page.html">Menu</a>
+        <a href="page.html">Access</a>
+      </nav>
+      <button class="menu-btn" aria-label="Menu">☰</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-hero">
+      <div class="container">
+        <p class="tag">Menu</p>
+        <h1>料金と、店のこと。</h1>
+        <div class="rule"></div>
+      </div>
+    </section>
+
+    <section class="section container">
+      <div class="menu-list">
+        <div class="menu-item">
+          <div class="menu-item-head">
+            <h3>Fade Cut</h3>
+            <span class="menu-price">¥5,500</span>
+          </div>
+          <p>シャンプー込み・45分。スキンフェードからビジネス向けのナチュラルまで。</p>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-head">
+            <h3>Cut + Perm</h3>
+            <span class="menu-price">¥11,000〜</span>
+          </div>
+          <p>ツイスト・スパイラル・波巻き。スタイリングの仕方までレクチャーします。</p>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-head">
+            <h3>Shaving</h3>
+            <span class="menu-price">¥3,300</span>
+          </div>
+          <p>ホットタオルと直刃のカミソリで。カットとのセットがおすすめです。</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section container">
+      <div class="access-grid">
+        <div>
+          <h2 class="block-title">Access</h2>
+          <dl class="info-list">
+            <dt>Address</dt><dd>東京都杉並区高円寺南 2-20-5 1F</dd>
+            <dt>Hours</dt><dd>平日 12:00–22:00 / 土日祝 10:00–19:00</dd>
+            <dt>Closed</dt><dd>火曜日</dd>
+            <dt>Payment</dt><dd>現金・各種カード・QR決済</dd>
+          </dl>
+        </div>
+        <div class="access-image" style="background-image:url('https://picsum.photos/seed/iron-street/1000/750')" aria-label="高円寺の街"></div>
+      </div>
+      <div class="page-foot">
+        <a class="btn" href="index.html">Back to top</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p class="footer-brand">IRONWORKS</p>
+      <p>東京都杉並区高円寺南 2-20-5 &nbsp;/&nbsp; 平日 12:00–22:00 &nbsp;/&nbsp; 土日祝 10:00–19:00（火曜休）</p>
+      <p class="footer-copy">&copy; 2026 IRONWORKS</p>
+    </div>
+  </footer>
+
+  <script>
+    (function(){
+      var btn=document.querySelector('.menu-btn'), close=document.getElementById('navClose'), nav=document.getElementById('navDrawer');
+      function open(){ nav.classList.add('is-open'); document.body.style.overflow='hidden'; }
+      function closeFn(){ nav.classList.remove('is-open'); document.body.style.overflow=''; }
+      if(btn) btn.addEventListener('click', open);
+      if(close) close.addEventListener('click', closeFn);
+      nav.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', closeFn); });
+    })();
+  </script>
+</body>
+</html>

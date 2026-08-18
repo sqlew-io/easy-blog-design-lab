@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ASPHALT CLUB — 下北沢のストリートヘア</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="site-title">ASPHALT CLUB<small>SHIMOKITA</small></a>
+      <nav class="site-nav" id="navDrawer">
+        <button class="nav-close" id="navClose" aria-label="閉じる">✕</button>
+        <a href="index.html">BLOG</a>
+        <a href="page.html">MENU</a>
+        <a href="page.html">ACCESS</a>
+      </nav>
+      <button class="menu-btn" aria-label="Menu">☰</button>
+    </div>
+  </header>
+
+  <main>
+    <!-- sticker_grid: 黒ヒーローに巨大ディスプレイ見出し + オレンジマーカー -->
+    <section class="hero">
+      <div class="container hero-inner">
+        <p class="hero-kicker">STREET HAIR — SHIMOKITAZAWA</p>
+        <h1 class="hero-title">HAIR IS<br><span class="marker">YOUR FLAG.</span></h1>
+        <p class="hero-lead">ブリーチ、カラーエクステ、デザインカット。街に出るための髪を作る店。予約はDMでもOK。</p>
+        <a class="btn" href="page.html">BOOK NOW</a>
+      </div>
+    </section>
+
+    <section class="section container">
+      <h2 class="section-title">NEW DROPS</h2>
+
+      <div class="sticker-grid">
+        <article class="sticker-card tilt-l">
+          <a href="article.html">
+            <div class="sticker-image" style="background-image:url('https://picsum.photos/seed/bleach-hair/800/800')" aria-label="ブリーチカラー"></div>
+            <div class="sticker-body">
+              <p class="sticker-tag">COLOR</p>
+              <h3>ハイトーンの限界に挑戦。ケアブリーチ3連発レポ</h3>
+              <p class="sticker-meta">2026.07.14</p>
+            </div>
+          </a>
+        </article>
+
+        <article class="sticker-card tilt-r">
+          <a href="article.html">
+            <div class="sticker-image" style="background-image:url('https://picsum.photos/seed/wolf-cut/800/800')" aria-label="ウルフカット"></div>
+            <div class="sticker-body">
+              <p class="sticker-tag">CUT</p>
+              <h3>ウルフは「首元の重さ」で時代が分かれる</h3>
+              <p class="sticker-meta">2026.07.07</p>
+            </div>
+          </a>
+        </article>
+
+        <article class="sticker-card tilt-l">
+          <a href="article.html">
+            <div class="sticker-image" style="background-image:url('https://picsum.photos/seed/neon-color/800/800')" aria-label="ネオンカラー"></div>
+            <div class="sticker-body">
+              <p class="sticker-tag">COLOR</p>
+              <h3>インナーに蛍光オレンジ。派手髪は通勤できるか問題</h3>
+              <p class="sticker-meta">2026.06.30</p>
+            </div>
+          </a>
+        </article>
+
+        <article class="sticker-card tilt-r">
+          <a href="article.html">
+            <div class="sticker-image" style="background-image:url('https://picsum.photos/seed/street-snap/800/800')" aria-label="ストリートスナップ"></div>
+            <div class="sticker-body">
+              <p class="sticker-tag">SNAP</p>
+              <h3>下北沢スナップ 2026夏 — みんなの頭見せて</h3>
+              <p class="sticker-meta">2026.06.22</p>
+            </div>
+          </a>
+        </article>
+
+        <article class="sticker-card tilt-l">
+          <a href="article.html">
+            <div class="sticker-image" style="background-image:url('https://picsum.photos/seed/braid-style/800/800')" aria-label="ブレイズ"></div>
+            <div class="sticker-body">
+              <p class="sticker-tag">STYLE</p>
+              <h3>コーンロウ入門。体育祭・フェス前の駆け込み大歓迎</h3>
+              <p class="sticker-meta">2026.06.15</p>
+            </div>
+          </a>
+        </article>
+
+        <article class="sticker-card tilt-r">
+          <a href="article.html">
+            <div class="sticker-image" style="background-image:url('https://picsum.photos/seed/buzz-art/800/800')" aria-label="バズカット"></div>
+            <div class="sticker-body">
+              <p class="sticker-tag">CUT</p>
+              <h3>バリアート再び。刈り上げに描く夏の線</h3>
+              <p class="sticker-meta">2026.06.08</p>
+            </div>
+          </a>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p class="foot-brand">ASPHALT CLUB</p>
+      <p class="foot-note">SHIMOKITAZAWA / OPEN 11:00-21:00</p>
+    </div>
+  </footer>
+
+  <script>
+    const btn = document.querySelector('.menu-btn');
+    const drawer = document.getElementById('navDrawer');
+    const closeBtn = document.getElementById('navClose');
+    btn.addEventListener('click', () => drawer.classList.add('open'));
+    closeBtn.addEventListener('click', () => drawer.classList.remove('open'));
+  </script>
+</body>
+</html>

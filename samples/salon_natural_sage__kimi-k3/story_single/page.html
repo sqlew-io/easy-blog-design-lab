@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>お品書き・店のこと — 葉のやすらぎ</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="site-title">葉のやすらぎ<small>Hana-no-Yasuragi</small></a>
+      <nav class="site-nav" id="navDrawer">
+        <button class="nav-close" id="navClose" aria-label="閉じる">✕</button>
+        <a href="index.html">つづり</a>
+        <a href="page.html">お品書き</a>
+        <a href="page.html">店のこと</a>
+      </nav>
+      <button class="menu-btn" aria-label="Menu">☰</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-hero container">
+      <p class="hero-kicker">Menu &amp; About</p>
+      <h1 class="hero-title">お品書きと、店のこと</h1>
+    </section>
+
+    <section class="section container">
+      <h2 class="section-title">お品書き</h2>
+      <div class="menu-list">
+        <div class="menu-row">
+          <div class="menu-name">草木染めカラー<small>セージ・ヘナ・ログウッドなど季節の染め材</small></div>
+          <div class="menu-dots" aria-hidden="true"></div>
+          <div class="menu-price">¥8,800〜</div>
+        </div>
+        <div class="menu-row">
+          <div class="menu-name">ハーブ蒸しヘッドスパ<small>60分 / よもぎ・ラベンダー・ローズマリー</small></div>
+          <div class="menu-dots" aria-hidden="true"></div>
+          <div class="menu-price">¥6,600</div>
+        </div>
+        <div class="menu-row">
+          <div class="menu-name">刈り整えカット<small>シャンプーなし・湯洗い仕上げ</small></div>
+          <div class="menu-dots" aria-hidden="true"></div>
+          <div class="menu-price">¥5,500</div>
+        </div>
+        <div class="menu-row">
+          <div class="menu-name">静かな日コース<small>木曜限定 / 会話最小限・読書歓迎</small></div>
+          <div class="menu-dots" aria-hidden="true"></div>
+          <div class="menu-price">上記よりお選びください</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section container">
+      <p class="leaf-divider" aria-hidden="true">❦</p>
+      <h2 class="section-title">店のこと</h2>
+      <dl class="info-list">
+        <div class="info-row"><dt>住所</dt><dd>東京都杉並区西荻北3-14-8（西荻窪駅北口より徒歩6分）</dd></div>
+        <div class="info-row"><dt>営業時間</dt><dd>10:00〜19:00（最終受付はメニューにより異なります）</dd></div>
+        <div class="info-row"><dt>定休日</dt><dd>火曜・第3水曜</dd></div>
+        <div class="info-row"><dt>ご予約</dt><dd>完全予約制。お電話か店頭の予約帖にて</dd></div>
+        <div class="info-row"><dt>席数</dt><dd>2席（貸切可）</dd></div>
+      </dl>
+    </section>
+
+    <section class="section container">
+      <h2 class="section-title">庭のこと</h2>
+      <p class="about-text">小さな庭にセージ、よもぎ、月桃を植えています。染め材はここから摘んだものと、信州の知り合いの畑から分けてもらうもの。枯れた季節は染めもお休みです。植物の都合に合わせて、営業もゆるやかに変わります。</p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p class="foot-brand">葉のやすらぎ</p>
+      <p class="foot-note">西荻窪 / 完全予約制 / 火曜定休</p>
+    </div>
+  </footer>
+
+  <script>
+    const btn = document.querySelector('.menu-btn');
+    const drawer = document.getElementById('navDrawer');
+    const closeBtn = document.getElementById('navClose');
+    btn.addEventListener('click', () => drawer.classList.add('open'));
+    closeBtn.addEventListener('click', () => drawer.classList.remove('open'));
+  </script>
+</body>
+</html>

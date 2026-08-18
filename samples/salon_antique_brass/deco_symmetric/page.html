@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Menu & Salon — Maison Lumière</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="site-title">
+        <span class="site-title-mark">◆</span>
+        <span class="site-title-text">Maison Lumière</span>
+      </a>
+      <nav class="site-nav" id="navDrawer">
+        <button class="nav-close" id="navClose" aria-label="閉じる">✕</button>
+        <a href="index.html">Journal</a>
+        <a href="page.html">Menu</a>
+        <a href="page.html">Salon</a>
+      </nav>
+      <button class="menu-btn" aria-label="Menu">☰</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-hero">
+      <div class="page-hero-inner">
+        <p class="eyebrow">— Menu —</p>
+        <h1>料金と、時間のこと</h1>
+        <div class="hero-ornament" aria-hidden="true">◆ ─────── ◆ ─────── ◆</div>
+      </div>
+    </section>
+
+    <section class="section container">
+      <div class="menu-list">
+        <div class="menu-item">
+          <div class="menu-item-head">
+            <h3>カット</h3>
+            <span class="menu-price">¥7,700</span>
+          </div>
+          <p>カウンセリング・シャンプー込み。骨格と髪質を見極め、ご自宅で再現できる形に。</p>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-head">
+            <h3>カラー</h3>
+            <span class="menu-price">¥9,900〜</span>
+          </div>
+          <p>琥珀色系のくすみカラーが得意です。ダメージを抑えるオイルベースの薬剤を使用。</p>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-head">
+            <h3>ヘッドスパ</h3>
+            <span class="menu-price">¥5,500</span>
+          </div>
+          <p>ラベンダーとカモミールの香り。アンティークの照明を落とした個室で行います。</p>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-head">
+            <h3>夜会巻き・セット</h3>
+            <span class="menu-price">¥4,400</span>
+          </div>
+          <p>結婚式やパーティに。クラシカルなアップスタイルをいちばん得意としています。</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section container">
+      <h2 class="section-title"><span>Salon</span></h2>
+      <div class="intro-grid intro-grid-reverse">
+        <div class="intro-image" style="background-image:url('https://picsum.photos/seed/antique-room/800/600')" aria-label="アンティーク家具の待合室"></div>
+        <div class="intro-text">
+          <h3>待合室は、小さな喫茶室。</h3>
+          <p>お待ちの間は、猫脚の椅子とアールデコのランプのある待合室で。季節のハーブティーをお出ししています。家具はすべて実際にお使いいただける、譲り受けた一点物です。</p>
+          <dl class="info-list">
+            <dt>住所</dt><dd>東京都中央区銀座 3-14-7 ルミエールビル 2F</dd>
+            <dt>営業時間</dt><dd>11:00–20:00（最終受付 19:00）</dd>
+            <dt>定休日</dt><dd>火曜日・第3水曜日</dd>
+            <dt>お支払い</dt><dd>現金・各種カード</dd>
+          </dl>
+          <a class="btn" href="index.html">トップへ戻る</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-ornament" aria-hidden="true">◆ ───────── ◆ ───────── ◆</div>
+      <p class="footer-brand">Maison Lumière</p>
+      <p>東京都中央区銀座 3-14-7 &nbsp;/&nbsp; 11:00–20:00（火曜休）</p>
+      <p class="footer-copy">&copy; 2026 Maison Lumière</p>
+    </div>
+  </footer>
+
+  <script>
+    (function(){
+      var btn=document.querySelector('.menu-btn'), close=document.getElementById('navClose'), nav=document.getElementById('navDrawer');
+      function open(){ nav.classList.add('is-open'); document.body.style.overflow='hidden'; }
+      function closeFn(){ nav.classList.remove('is-open'); document.body.style.overflow=''; }
+      if(btn) btn.addEventListener('click', open);
+      if(close) close.addEventListener('click', closeFn);
+      nav.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', closeFn); });
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MENU / SHOP — RIOT ROOTS</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="site-title">RIOT ROOTS<small>KICHIJOJI</small></a>
+      <nav class="site-nav" id="navDrawer">
+        <button class="nav-close" id="navClose" aria-label="閉じる">✕</button>
+        <a href="index.html">ZINE</a>
+        <a href="page.html">MENU</a>
+        <a href="page.html">SHOP</a>
+      </nav>
+      <button class="menu-btn" aria-label="Menu">☰</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-head container">
+      <p class="zine-issue">INFO</p>
+      <h1>MENU &amp; SHOP</h1>
+    </section>
+
+    <section class="zine-spread container">
+      <div class="zine-block zine-text zine-dark">
+        <p class="zine-tag">MENU</p>
+        <h2>カット＆カラー</h2>
+        <ul class="page-list">
+          <li><span>カット</span><span>¥5,500</span></li>
+          <li><span>ブリーチ（1回）</span><span>¥7,000</span></li>
+          <li><span>カラー（ブリーチ後）</span><span>¥6,000</span></li>
+          <li><span>特殊カラー（緑/青/紫系）</span><span>¥7,000</span></li>
+          <li><span>学生割引（全メニュー）</span><span>20% OFF</span></li>
+        </ul>
+      </div>
+      <div class="zine-block zine-photo" style="background-image:url('https://picsum.photos/seed/salon-chair/900/900')" role="img" aria-label="店内">
+        <span class="zine-cap">席は2つだけ</span>
+      </div>
+
+      <div class="zine-block zine-photo" style="background-image:url('https://picsum.photos/seed/kichijoji-night/900/900')" role="img" aria-label="吉祥寺の夜">
+        <span class="zine-cap">ハモニカ横丁の裏</span>
+      </div>
+      <div class="zine-block zine-text">
+        <p class="zine-tag">SHOP</p>
+        <h2>店舗情報</h2>
+        <ul class="page-list">
+          <li><span>住所</span><span>武蔵野市吉祥寺本町1-8-3 3F</span></li>
+          <li><span>アクセス</span><span>吉祥寺駅北口5分 / ハモニカ横丁裏</span></li>
+          <li><span>営業</span><span>13:00〜23:00（夜型営業）</span></li>
+          <li><span>定休</span><span>火曜</span></li>
+          <li><span>予約</span><span>DM or 電話。当日OK</span></li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p class="foot-brand">RIOT ROOTS</p>
+      <p class="foot-note">KICHIJOJI / 13:00-23:00 / 火曜定休</p>
+    </div>
+  </footer>
+
+  <script>
+    const btn = document.querySelector('.menu-btn');
+    const drawer = document.getElementById('navDrawer');
+    const closeBtn = document.getElementById('navClose');
+    btn.addEventListener('click', () => drawer.classList.add('open'));
+    closeBtn.addEventListener('click', () => drawer.classList.remove('open'));
+  </script>
+</body>
+</html>

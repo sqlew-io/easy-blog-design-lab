@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>シャンプーを「泡立てない」という選択 — 葉のやすらぎ</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="site-title">葉のやすらぎ<small>Hana-no-Yasuragi</small></a>
+      <nav class="site-nav" id="navDrawer">
+        <button class="nav-close" id="navClose" aria-label="閉じる">✕</button>
+        <a href="index.html">つづり</a>
+        <a href="page.html">お品書き</a>
+        <a href="page.html">店のこと</a>
+      </nav>
+      <button class="menu-btn" aria-label="Menu">☰</button>
+    </div>
+  </header>
+
+  <main>
+    <article class="article">
+      <header class="article-head container">
+        <p class="article-meta"><time>2026.07.12</time><span class="story-cat">ケアの話</span></p>
+        <h1>シャンプーを「泡立てない」という選択</h1>
+        <p class="article-lead">泡立ちの良さは、洗浄力の強さと引き換えです。頭皮の常在菌を残しながら洗う「ぬるま湯洗髪」について、店主が思うところを。</p>
+      </header>
+
+      <figure class="article-cover" style="background-image:url('https://picsum.photos/seed/sage-water/1400/700')">
+        <figcaption>湯加減は人肌より少しだけぬるく、35度くらい</figcaption>
+      </figure>
+
+      <div class="article-body container">
+        <p>「泡が立たないと洗えた気がしない」——お客さまからよくいただく言葉です。たしかに、泡のクッションで指どおりが良くなる感覚はあります。でもあの泡の正体は界面活性剤。頭皮の皮脂と一緒に、守ってくれている常在菌まで洗い流してしまいます。</p>
+
+        <p>当店では仕上げのシャンプーを、ぬるま湯での素洗いに変えて半年経つ方が増えてきました。最初の2週間は「べたつく」と感じる方もいますが、頭皮が自分で油分バランスを取り戻すと、朝のセットが驚くほど楽になります。</p>
+
+        <h2>ぬるま湯洗髪の手順</h2>
+        <p>やり方は簡単です。35度くらいのぬるま湯で2〜3分、指の腹で頭皮を揉むように流すだけ。整髪料を使っている日は、先に湯でしっかり落としてから。それでも気になる方は、週に一度だけ低刺激の石鹸シャンプーを。</p>
+
+        <figure class="body-figure" style="background-image:url('https://picsum.photos/seed/sage-leaf/1000/600')">
+          <figcaption>店の庭で育てているセージ。仕上げのハーブ湯に使います</figcaption>
+        </figure>
+
+        <h2>「物足りなさ」は、2週間で消えます</h2>
+        <p>体が「洗いすぎない」状態に慣れるまで、だいたい2週間。それを越えた方からは「頭皮の匂いが気にならなくなった」「夕方のべたつきが減った」という声をいただいています。引き算のケア、試してみる価値はあると思います。</p>
+      </div>
+
+      <div class="container article-foot">
+        <a class="btn btn-quiet" href="index.html">← つづり一覧に戻る</a>
+      </div>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p class="foot-brand">葉のやすらぎ</p>
+      <p class="foot-note">西荻窪 / 完全予約制 / 火曜定休</p>
+    </div>
+  </footer>
+
+  <script>
+    const btn = document.querySelector('.menu-btn');
+    const drawer = document.getElementById('navDrawer');
+    const closeBtn = document.getElementById('navClose');
+    btn.addEventListener('click', () => drawer.classList.add('open'));
+    closeBtn.addEventListener('click', () => drawer.classList.remove('open'));
+  </script>
+</body>
+</html>

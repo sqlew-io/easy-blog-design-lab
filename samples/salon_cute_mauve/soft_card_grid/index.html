@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lilas — 大人かわいいヘアサロン</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="site-title">Lilas</a>
+      <nav class="site-nav" id="navDrawer">
+        <button class="nav-close" id="navClose" aria-label="閉じる">✕</button>
+        <a href="index.html">ブログ</a>
+        <a href="page.html">メニュー</a>
+        <a href="page.html">アクセス</a>
+      </nav>
+      <button class="menu-btn" aria-label="Menu">☰</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-inner">
+        <div class="hero-copy">
+          <p class="tag">Hair / Eyelash / Nail — Omotesando</p>
+          <h1>ふんわり、<br>オトナかわいい。</h1>
+          <p class="hero-text">くすみピンクが似合う、甘さ控えめの空間。<br>表参道で静かに、自分だけの時間を。</p>
+          <a class="btn" href="page.html">ご予約はこちら</a>
+        </div>
+        <div class="hero-image-wrap">
+          <div class="hero-image" style="background-image:url('https://picsum.photos/seed/lilas-hero/800/900')"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section container">
+      <div class="section-head">
+        <h2 class="section-title">Latest Journal</h2>
+        <a class="section-link" href="index.html">すべて見る →</a>
+      </div>
+
+      <div class="card-grid">
+        <article class="card">
+          <a href="article.html">
+            <div class="card-image" style="background-image:url('https://picsum.photos/seed/lilas-hair/600/400')"></div>
+            <div class="card-body">
+              <p class="card-meta"><span class="card-cat">Hair Care</span><time>2026.07.18</time></p>
+              <h3>くすみピンクを長持ちさせる、お家ケアのコツ</h3>
+              <p class="card-excerpt">色落ちしにくいシャンプー選びと、乾かし方のポイントをスタイリストが解説。</p>
+            </div>
+          </a>
+        </article>
+
+        <article class="card">
+          <a href="article.html">
+            <div class="card-image" style="background-image:url('https://picsum.photos/seed/lilas-makeup/600/400')"></div>
+            <div class="card-body">
+              <p class="card-meta"><span class="card-cat">Make Up</span><time>2026.07.11</time></p>
+              <h3>マットリップに合わせる、眉メイクのバランス</h3>
+              <p class="card-excerpt">今年のトレンド、ふんわり眉の描き方をプロが教えます。</p>
+            </div>
+          </a>
+        </article>
+
+        <article class="card">
+          <a href="article.html">
+            <div class="card-image" style="background-image:url('https://picsum.photos/seed/lilas-nail/600/400')"></div>
+            <div class="card-body">
+              <p class="card-meta"><span class="card-cat">Nail</span><time>2026.07.04</time></p>
+              <h3>オフィスでも浮かない、くすみカラーの選び方</h3>
+              <p class="card-excerpt">モーヴピンクからグレージュまで。指先がきれいに見える色の選び方。</p>
+            </div>
+          </a>
+        </article>
+      </div>
+    </section>
+
+    <section class="section container">
+      <div class="banner">
+        <div class="banner-text">
+          <h2>カット＋カラーで、<br>毎日がちょっと特別に。</h2>
+          <a class="btn btn-outline" href="page.html">Menu &amp; Access</a>
+        </div>
+        <div class="banner-image" style="background-image:url('https://picsum.photos/seed/lilas-shop/800/500')"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p class="footer-brand">Lilas</p>
+      <p>東京都渋谷区神宮前 4-12-8 &nbsp;/&nbsp; 平日 11:00–20:00 &nbsp;/&nbsp; 土日祝 10:00–19:00（水曜休）</p>
+      <p class="footer-copy">&copy; 2026 Lilas</p>
+    </div>
+  </footer>
+
+  <script>
+    (function(){
+      var btn=document.querySelector('.menu-btn'), close=document.getElementById('navClose'), nav=document.getElementById('navDrawer');
+      function open(){ nav.classList.add('is-open'); document.body.style.overflow='hidden'; }
+      function closeFn(){ nav.classList.remove('is-open'); document.body.style.overflow=''; }
+      if(btn) btn.addEventListener('click', open);
+      if(close) close.addEventListener('click', closeFn);
+      nav.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', closeFn); });
+    })();
+  </script>
+</body>
+</html>

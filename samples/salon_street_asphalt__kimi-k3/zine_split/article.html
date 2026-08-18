@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>「派手髪＝不良」論を燃やせ — RIOT ROOTS</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="site-title">RIOT ROOTS<small>KICHIJOJI</small></a>
+      <nav class="site-nav" id="navDrawer">
+        <button class="nav-close" id="navClose" aria-label="閉じる">✕</button>
+        <a href="index.html">ZINE</a>
+        <a href="page.html">MENU</a>
+        <a href="page.html">SHOP</a>
+      </nav>
+      <button class="menu-btn" aria-label="Menu">☰</button>
+    </div>
+  </header>
+
+  <main>
+    <article class="article">
+      <header class="article-head container">
+        <p class="zine-issue">FEATURE / 2026.07.19</p>
+        <h1>「派手髪＝不良」論を燃やせ</h1>
+      </header>
+
+      <figure class="article-cover" style="background-image:url('https://picsum.photos/seed/green-hair/1400/800')">
+        <figcaption>うちの常連で一番まともなのは、緑の頭の会計士だ</figcaption>
+      </figure>
+
+      <div class="article-body container">
+        <p>2026年になっても「派手な髪の人は怖そう」という言葉を聞く。でもちょっと考えてほしい。髪の色と人格に、一体どんな相関があるというのか。当店の顧客データ（勝手に集計）によると、一番遅刻しないのは金髪の客、一番チップを置いていくのは緑の頭の会計士だ。</p>
+
+        <h2>差別のルーツは戦後の「規律」</h2>
+        <p>派手髪への拒否反応は、戦後の学校教育における「頭髪検査」に源流がある。髪を揃えることは規律を守ること、その逸脱は「非行」のサインとされた。この構造は、いまだに多くの企業の就業規則に生きている。</p>
+
+        <figure class="body-figure" style="background-image:url('https://picsum.photos/seed/office-hair/1000/600')">
+          <figcaption>変わりつつある職場もある。IT系ではもう誰も気にしない</figcaption>
+        </figure>
+
+        <h2>でも、変わりつつある</h2>
+        <p>この3年で「髪色自由化」を明示する企業が増えた。接客業でも、店が「個性」として許容する例が出てきている。派手髪のお客さんから「面接で何も言われなかった」と報告を受けることも、もはや珍しくない。</p>
+
+        <p>髪は自己表現の一番手軽な手段だ。それを「不良」のレッテルで縛る社会は、もう燃やしてしまっていい。少なくともうちの店では、どんな色の頭も歓迎する。</p>
+      </div>
+
+      <div class="container article-foot">
+        <a class="btn" href="index.html">← BACK TO ZINE</a>
+      </div>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p class="foot-brand">RIOT ROOTS</p>
+      <p class="foot-note">KICHIJOJI / 13:00-23:00 / 火曜定休</p>
+    </div>
+  </footer>
+
+  <script>
+    const btn = document.querySelector('.menu-btn');
+    const drawer = document.getElementById('navDrawer');
+    const closeBtn = document.getElementById('navClose');
+    btn.addEventListener('click', () => drawer.classList.add('open'));
+    closeBtn.addEventListener('click', () => drawer.classList.remove('open'));
+  </script>
+</body>
+</html>

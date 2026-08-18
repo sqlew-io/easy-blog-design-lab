@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Menu &amp; Access — Coquelicot</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="site-title">Coquelicot</a>
+      <nav class="site-nav" id="navDrawer">
+        <button class="nav-close" id="navClose" aria-label="閉じる">✕</button>
+        <a href="index.html">ブログ</a>
+        <a href="page.html">メニュー</a>
+        <a href="page.html">アクセス</a>
+      </nav>
+      <button class="menu-btn" aria-label="Menu">☰</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-hero">
+      <div class="container">
+        <p class="tag">Menu &amp; Access</p>
+        <h1>メニュー・アクセス</h1>
+      </div>
+    </section>
+
+    <section class="section container">
+      <h2 class="block-title">Menu</h2>
+      <div class="menu-list">
+        <div class="menu-item">
+          <div class="menu-item-head">
+            <h3>Cut</h3>
+            <p class="menu-price">¥8,800</p>
+          </div>
+          <p>骨格に合わせた似合わせカット。シャンプー・ブロー込み。</p>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-head">
+            <h3>Color</h3>
+            <p class="menu-price">¥11,000〜</p>
+          </div>
+          <p>くすみカラー・ハイライト・グラデーション。ケアカラー剤使用。</p>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-head">
+            <h3>Perm</h3>
+            <p class="menu-price">¥12,100〜</p>
+          </div>
+          <p>ゆるふわパーマからデジタルパーマまで。前処理トリートメント込み。</p>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-head">
+            <h3>Treatment</h3>
+            <p class="menu-price">¥6,600〜</p>
+          </div>
+          <p>髪質改善トリートメント。ホームケアアドバイス付き。</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section container">
+      <h2 class="block-title">Access</h2>
+      <div class="access-grid">
+        <div class="access-image" style="background-image:url('https://picsum.photos/seed/coquelicot-shop/800/600')"></div>
+        <div>
+          <dl class="info-list">
+            <dt>Address</dt>
+            <dd>東京都渋谷区代官山町 8-7 2F</dd>
+            <dt>Access</dt>
+            <dd>代官山駅 北口より徒歩3分</dd>
+            <dt>Tel</dt>
+            <dd>03-3456-7890</dd>
+            <dt>Hours</dt>
+            <dd>平日 11:00–20:00 / 土日祝 10:00–19:00</dd>
+            <dt>Closed</dt>
+            <dd>水曜日</dd>
+          </dl>
+          <p style="margin-top:24px;"><a class="btn" href="index.html">ご予約はお電話またはWebで</a></p>
+        </div>
+      </div>
+    </section>
+
+    <div class="container page-foot">
+      <a class="btn btn-outline" href="index.html">ブログを読む</a>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p class="footer-brand">Coquelicot</p>
+      <p>東京都渋谷区代官山町 8-7 2F &nbsp;/&nbsp; 平日 11:00–20:00 &nbsp;/&nbsp; 土日祝 10:00–19:00（水曜休）</p>
+      <p class="footer-copy">&copy; 2026 Coquelicot</p>
+    </div>
+  </footer>
+
+  <script>
+    (function(){
+      var btn=document.querySelector('.menu-btn'), close=document.getElementById('navClose'), nav=document.getElementById('navDrawer');
+      function open(){ nav.classList.add('is-open'); document.body.style.overflow='hidden'; }
+      function closeFn(){ nav.classList.remove('is-open'); document.body.style.overflow=''; }
+      if(btn) btn.addEventListener('click', open);
+      if(close) close.addEventListener('click', closeFn);
+      nav.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', closeFn); });
+    })();
+  </script>
+</body>
+</html>

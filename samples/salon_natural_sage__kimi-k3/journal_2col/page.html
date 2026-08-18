@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>メニュー・店舗案内 — そよかぜ</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="site-title">そよかぜ<small>soyokaze hair</small></a>
+      <nav class="site-nav" id="navDrawer">
+        <button class="nav-close" id="navClose" aria-label="閉じる">✕</button>
+        <a href="index.html">通信</a>
+        <a href="page.html">メニュー</a>
+        <a href="page.html">店舗案内</a>
+      </nav>
+      <button class="menu-btn" aria-label="Menu">☰</button>
+    </div>
+  </header>
+
+  <main>
+    <div class="journal container">
+      <section class="journal-main">
+        <header class="page-head">
+          <p class="masthead-kicker">Menu &amp; Information</p>
+          <h1>メニューと店舗案内</h1>
+        </header>
+
+        <h2 class="block-title">メニュー</h2>
+        <div class="menu-list">
+          <div class="menu-row">
+            <div class="menu-name">カット<small>くせ毛相談・無料カウンセリング付き</small></div>
+            <div class="menu-dots" aria-hidden="true"></div>
+            <div class="menu-price">¥6,600</div>
+          </div>
+          <div class="menu-row">
+            <div class="menu-name">ナチュラルカラー<small>低刺激オーガニックカラー剤使用</small></div>
+            <div class="menu-dots" aria-hidden="true"></div>
+            <div class="menu-price">¥8,250〜</div>
+          </div>
+          <div class="menu-row">
+            <div class="menu-name">ヘッドスパ<small>40分 / 炭酸泉使用</small></div>
+            <div class="menu-dots" aria-hidden="true"></div>
+            <div class="menu-price">¥4,950</div>
+          </div>
+          <div class="menu-row">
+            <div class="menu-name">縮毛矯正（部分）<small>前髪・顔まわりのみのライト矯正</small></div>
+            <div class="menu-dots" aria-hidden="true"></div>
+            <div class="menu-price">¥7,700〜</div>
+          </div>
+        </div>
+
+        <h2 class="block-title">店舗案内</h2>
+        <dl class="info-list">
+          <div class="info-row"><dt>住所</dt><dd>神奈川県横浜市青葉区美しが丘1-7-2（たまプラーザ駅より徒歩8分）</dd></div>
+          <div class="info-row"><dt>営業時間</dt><dd>9:30〜19:00</dd></div>
+          <div class="info-row"><dt>定休日</dt><dd>月曜・第1火曜</dd></div>
+          <div class="info-row"><dt>席数</dt><dd>3席（キッズスペースあり）</dd></div>
+          <div class="info-row"><dt>駐車場</dt><dd>店舗前に1台分あり</dd></div>
+        </dl>
+      </section>
+
+      <aside class="journal-side">
+        <div class="side-block">
+          <h3 class="side-title">初めての方へ</h3>
+          <p class="side-text">くせ毛・ダメージの相談は、無料カウンセリング（20分）からどうぞ。施術の強引な勧誘はしません。</p>
+        </div>
+        <div class="side-block side-photo" style="background-image:url('https://picsum.photos/seed/green-salon/600/700')" role="img" aria-label="店内">
+          <p class="side-photo-cap">木のぬくもりの店内です</p>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p class="foot-brand">そよかぜ</p>
+      <p class="foot-note">たまプラーザ / 月曜定休</p>
+    </div>
+  </footer>
+
+  <script>
+    const btn = document.querySelector('.menu-btn');
+    const drawer = document.getElementById('navDrawer');
+    const closeBtn = document.getElementById('navClose');
+    btn.addEventListener('click', () => drawer.classList.add('open'));
+    closeBtn.addEventListener('click', () => drawer.classList.remove('open'));
+  </script>
+</body>
+</html>

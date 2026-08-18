@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Menu & Salon — NUIT</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="site-title">NUIT<span class="site-title-sub">hair &amp; spa</span></a>
+      <nav class="site-nav" id="navDrawer">
+        <button class="nav-close" id="navClose" aria-label="閉じる">✕</button>
+        <a href="index.html">Journal</a>
+        <a href="page.html">Menu</a>
+        <a href="page.html">Salon</a>
+      </nav>
+      <button class="menu-btn" aria-label="Menu">☰</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-hero">
+      <div class="container">
+        <p class="eyebrow">Menu</p>
+        <div class="rule rule-center"></div>
+        <h1>夜のための、<br>三つの時間。</h1>
+      </div>
+    </section>
+
+    <section class="section container">
+      <div class="menu-list">
+        <div class="menu-item">
+          <div class="menu-item-head">
+            <h3>Night Cut</h3>
+            <span class="menu-price">¥9,900</span>
+          </div>
+          <p>カウンセリング・シャンプー込み・60分。一日の終わりに似合う、静かなシルエットを。</p>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-head">
+            <h3>Noir Color</h3>
+            <span class="menu-price">¥13,200〜</span>
+          </div>
+          <p>深みのあるグレージュとダークトーン。夜の光で艶めく、透明感のある暗さを設計します。</p>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-head">
+            <h3>Head Spa — 90 min</h3>
+            <span class="menu-price">¥16,500</span>
+          </div>
+          <p>照明を落とした個室で、頭皮と首肩をほどく。NUITの看板メニューです。</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section container salon-intro">
+      <div class="intro-rule" aria-hidden="true"></div>
+      <div class="intro-grid">
+        <div class="intro-text">
+          <h2 class="intro-title">Salon</h2>
+          <p class="intro-lead">漆黒の壁、真鍮の灯り、低い音楽。</p>
+          <dl class="info-list">
+            <dt>Address</dt><dd>東京都渋谷区神宮前 4-9-2 NUITビル B1F</dd>
+            <dt>Hours</dt><dd>12:00–21:00（最終受付 19:30）</dd>
+            <dt>Closed</dt><dd>月曜日</dd>
+            <dt>Payment</dt><dd>現金・各種カード・QR決済</dd>
+          </dl>
+          <a class="btn" href="index.html">Back to top</a>
+        </div>
+        <div class="intro-image" style="background-image:url('https://picsum.photos/seed/nuit-room/1000/750')" aria-label="漆黒のサロン空間"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-rule" aria-hidden="true"></div>
+      <p class="footer-brand">NUIT</p>
+      <p>東京都渋谷区神宮前 4-9-2 &nbsp;/&nbsp; 12:00–21:00（月曜休）</p>
+      <p class="footer-copy">&copy; 2026 NUIT</p>
+    </div>
+  </footer>
+
+  <script>
+    (function(){
+      var btn=document.querySelector('.menu-btn'), close=document.getElementById('navClose'), nav=document.getElementById('navDrawer');
+      function open(){ nav.classList.add('is-open'); document.body.style.overflow='hidden'; }
+      function closeFn(){ nav.classList.remove('is-open'); document.body.style.overflow=''; }
+      if(btn) btn.addEventListener('click', open);
+      if(close) close.addEventListener('click', closeFn);
+      nav.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', closeFn); });
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>指通りのよい髪は、夜の仕込みで決まる — Maison Lumière</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="site-title">
+        <span class="site-title-mark">◆</span>
+        <span class="site-title-text">Maison Lumière</span>
+      </a>
+      <nav class="site-nav" id="navDrawer">
+        <button class="nav-close" id="navClose" aria-label="閉じる">✕</button>
+        <a href="index.html">Journal</a>
+        <a href="page.html">Menu</a>
+        <a href="page.html">Salon</a>
+      </nav>
+      <button class="menu-btn" aria-label="Menu">☰</button>
+    </div>
+  </header>
+
+  <main>
+    <article class="article">
+      <div class="container article-container">
+        <div class="article-head">
+          <p class="eyebrow">— Journal —</p>
+          <h1>指通りのよい髪は、夜の仕込みで決まる</h1>
+          <p class="article-meta"><time>2026.07.12</time> &nbsp;·&nbsp; ヘアケア</p>
+          <div class="article-ornament" aria-hidden="true">◆ ─────── ◆ ─────── ◆</div>
+        </div>
+
+        <figure class="article-cover">
+          <div class="cover-image" style="background-image:url('https://picsum.photos/seed/antique-hair1/1200/700')" aria-label="ブラッシングの様子"></div>
+          <figcaption>眠る前の五分間。百年物の猪毛ブラシで、ていねいに。</figcaption>
+        </figure>
+
+        <div class="article-body">
+          <p class="lead">お店でセットしたての髪が、翌朝には乱れてしまう——その原因の多くは、夜の過ごし方にあります。翌日の髪は、眠る前の五分間でほぼ決まってしまうのです。</p>
+
+          <h2>ブラッシングは「梳かす」より「磨く」</h2>
+          <p>アンティークの猪毛ブラシは、静電気を起こさず、頭皮の皮脂を毛先まで運んでくれます。力を入れず、地肌にブラシの腹を沿わせるように。耳の後ろ、襟足など、摩擦で絡まりやすい場所はとくにゆっくりと。</p>
+          <p>目安は片側十五回ずつ。時間にして三分ほどです。櫛どおりが変わるのが、指で分かるはずです。</p>
+
+          <h2>絹のナイトキャップという選択</h2>
+          <p>枕との摩擦は、キューティクルの大敵です。祖母の世代が使っていた絹のナイトキャップは、いま見直されつつある道具のひとつ。絹は吸湿性に優れ、寝返りを打っても髪がこすれません。</p>
+          <p>帽子型が苦手な方は、絹の枕カバーでも十分に効果があります。大切なのは「摩擦を減らす」という一点です。</p>
+
+          <h2>朝の手間を、夜に預ける</h2>
+          <p>夜の仕込みを習慣にすると、朝のスタイリング時間は半分になります。寝癖を直す熱も減り、髪への負担はぐっと軽くなる。美しい髪は、美容院ではなく、日々の寝室でつくられるのです。</p>
+
+          <div class="article-divider" aria-hidden="true">◆</div>
+
+          <p>Maison Lumière では、お客様の髪質に合わせたブラシとナイトケアのご相談を承っております。カットの際に、どうぞお気軽にお尋ねください。</p>
+        </div>
+
+        <div class="article-foot">
+          <a href="index.html" class="btn btn-outline">← Journal 一覧へ戻る</a>
+        </div>
+      </div>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-ornament" aria-hidden="true">◆ ───────── ◆ ───────── ◆</div>
+      <p class="footer-brand">Maison Lumière</p>
+      <p>東京都中央区銀座 3-14-7 &nbsp;/&nbsp; 11:00–20:00（火曜休）</p>
+      <p class="footer-copy">&copy; 2026 Maison Lumière</p>
+    </div>
+  </footer>
+
+  <script>
+    (function(){
+      var btn=document.querySelector('.menu-btn'), close=document.getElementById('navClose'), nav=document.getElementById('navDrawer');
+      function open(){ nav.classList.add('is-open'); document.body.style.overflow='hidden'; }
+      function closeFn(){ nav.classList.remove('is-open'); document.body.style.overflow=''; }
+      if(btn) btn.addEventListener('click', open);
+      if(close) close.addEventListener('click', closeFn);
+      nav.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', closeFn); });
+    })();
+  </script>
+</body>
+</html>

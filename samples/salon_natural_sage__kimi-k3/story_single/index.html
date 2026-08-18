@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>葉のやすらぎ — ヘッドスパと草木染めの小さなサロン</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="site-title">葉のやすらぎ<small>Hana-no-Yasuragi</small></a>
+      <nav class="site-nav" id="navDrawer">
+        <button class="nav-close" id="navClose" aria-label="閉じる">✕</button>
+        <a href="index.html">つづり</a>
+        <a href="page.html">お品書き</a>
+        <a href="page.html">店のこと</a>
+      </nav>
+      <button class="menu-btn" aria-label="Menu">☰</button>
+    </div>
+  </header>
+
+  <main>
+    <!-- story_single: 静かな帯ヒーロー。写真は脇役、余白が主役 -->
+    <section class="hero">
+      <div class="container hero-inner">
+        <p class="hero-kicker">西荻窪・ヘッドスパと草木染めの店</p>
+        <h1 class="hero-title">髪を休ませる、<br>木陰のような時間。</h1>
+        <p class="hero-lead">化学薬品を減らし、ハーブとぬるま湯で整える。<br>そんな「引き算の美容」をしています。</p>
+        <a class="btn" href="page.html">ご予約について</a>
+      </div>
+    </section>
+
+    <section class="section container">
+      <p class="leaf-divider" aria-hidden="true">❦</p>
+      <h2 class="section-title">つづり — 店主の手帖</h2>
+
+      <div class="story-list">
+        <article class="story-item">
+          <a href="article.html">
+            <p class="story-meta"><time>2026.07.12</time><span class="story-cat">ケアの話</span></p>
+            <h3>シャンプーを「泡立てない」という選択</h3>
+            <p class="story-excerpt">泡立ちの良さは洗浄力の強さと引き換えです。頭皮の常在菌を残しながら洗う、ぬるま湯洗髪のすすめ。</p>
+            <p class="story-more">つづきを読む →</p>
+          </a>
+        </article>
+
+        <article class="story-item">
+          <a href="article.html">
+            <p class="story-meta"><time>2026.07.05</time><span class="story-cat">草木染め</span></p>
+            <h3>セージで染める、初夏のグレージュ</h3>
+            <p class="story-excerpt">庭のセージが伸びすぎたので、今月の染め材に。白髪にほんのり緑がかった灰色がのります。</p>
+            <p class="story-more">つづきを読む →</p>
+          </a>
+        </article>
+
+        <article class="story-item">
+          <a href="article.html">
+            <p class="story-meta"><time>2026.06.28</time><span class="story-cat">店のこと</span></p>
+            <h3>木曜は「静かな日」にしました</h3>
+            <p class="story-excerpt">BGMを消し、会話も最小限に。読書しながら施術を受けたい方のための曜日を作りました。</p>
+            <p class="story-more">つづきを読む →</p>
+          </a>
+        </article>
+
+        <article class="story-item">
+          <a href="article.html">
+            <p class="story-meta"><time>2026.06.20</time><span class="story-cat">ケアの話</span></p>
+            <h3>ブラッシングは「乾いた髪に」が原則です</h3>
+            <p class="story-excerpt">濡れた髪はキューティクルが開いて傷みやすい。朝の3分ブラシが、一番のトリートメント。</p>
+            <p class="story-more">つづきを読む →</p>
+          </a>
+        </article>
+      </div>
+    </section>
+
+    <section class="section container about-strip">
+      <p class="leaf-divider" aria-hidden="true">❦</p>
+      <h2 class="section-title">店のこと</h2>
+      <p class="about-text">西荻窪駅北口から徒歩6分。築60年の平屋を改装した、席数2つの小さな店です。水・木はハーブ蒸しスパの日、土日は草木染め中心。完全予約制。</p>
+      <a class="btn btn-quiet" href="page.html">アクセス・お品書き</a>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p class="foot-brand">葉のやすらぎ</p>
+      <p class="foot-note">西荻窪 / 完全予約制 / 火曜定休</p>
+    </div>
+  </footer>
+
+  <script>
+    const btn = document.querySelector('.menu-btn');
+    const drawer = document.getElementById('navDrawer');
+    const closeBtn = document.getElementById('navClose');
+    btn.addEventListener('click', () => drawer.classList.add('open'));
+    closeBtn.addEventListener('click', () => drawer.classList.remove('open'));
+  </script>
+</body>
+</html>

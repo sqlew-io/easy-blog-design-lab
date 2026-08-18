@@ -1,0 +1,547 @@
+:root {
+  --color-primary: #1e1e22;
+  --color-primary-light: #4a4a52;
+  --color-bg: #f8f7f5;
+  --color-surface: #ffffff;
+  --color-text: #1f1f23;
+  --color-text-muted: #64615c;
+  --color-border: #e3e0da;
+  --color-accent: #ab8d52;
+  --color-hero-bg: #101013;
+  --color-hero-text: #f3ecdd;
+  --color-overlay-header-bg: rgba(16, 16, 19, 0.82);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+}
+
+body {
+  font-family: "Noto Sans JP", sans-serif;
+  color: var(--color-text);
+  background-color: var(--color-bg);
+  line-height: 2.0;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3 {
+  font-family: "Hina Mincho", "Yu Mincho", serif;
+  letter-spacing: 0.12em;
+  line-height: 1.7;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Header (fixed overlay for fullbleed hero) */
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background-color: var(--color-overlay-header-bg);
+  color: var(--color-hero-text);
+}
+
+.header-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 1.25rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  font-family: "Hina Mincho", "Yu Mincho", serif;
+  font-size: 1.1rem;
+  letter-spacing: 0.2em;
+  color: var(--color-hero-text);
+}
+
+nav {
+  display: flex;
+  gap: 1.75rem;
+  font-size: 0.85rem;
+  letter-spacing: 0.1em;
+}
+
+nav a {
+  color: var(--color-hero-text);
+}
+
+nav a:hover {
+  color: var(--color-accent);
+}
+
+/* Hero - fullbleed ~90vh */
+.hero {
+  min-height: 92vh;
+  background-color: var(--color-hero-bg);
+  color: var(--color-hero-text);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 120px 24px 80px;
+  position: relative;
+}
+
+.hero .rule {
+  width: 64px;
+  height: 1px;
+  background-color: var(--color-accent);
+  margin: 28px auto;
+}
+
+.hero h1 {
+  font-family: "Hina Mincho", "Yu Mincho", serif;
+  font-weight: 400;
+  font-size: clamp(1.9rem, 5vw, 3.1rem);
+  letter-spacing: 0.24em;
+  line-height: 1.5;
+}
+
+.hero .location {
+  font-size: 0.85rem;
+  letter-spacing: 0.3em;
+  color: var(--color-accent);
+}
+
+.hero .lede {
+  color: var(--color-hero-text);
+  opacity: 0.78;
+  font-size: 0.92rem;
+  letter-spacing: 0.14em;
+  max-width: 34em;
+  margin-top: 0.5rem;
+}
+
+/* Journal / TOC style list */
+.section {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 88px 24px;
+}
+
+.section-title {
+  font-family: "Hina Mincho", "Yu Mincho", serif;
+  font-weight: 400;
+  font-size: 1.25rem;
+  letter-spacing: 0.28em;
+  text-align: center;
+  margin-bottom: 8px;
+}
+
+.section-sub {
+  text-align: center;
+  font-size: 0.72rem;
+  letter-spacing: 0.28em;
+  color: var(--color-accent);
+  margin-bottom: 56px;
+}
+
+.journal-item {
+  display: grid;
+  grid-template-columns: 56px 148px 1fr 168px;
+  gap: 22px;
+  align-items: center;
+  padding: 26px 4px;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.journal-item:first-of-type {
+  border-top: 1px solid var(--color-border);
+}
+
+.journal-no {
+  font-family: "Hina Mincho", "Yu Mincho", serif;
+  font-size: 1.35rem;
+  color: var(--color-accent);
+  letter-spacing: 0.1em;
+}
+
+.journal-thumb {
+  aspect-ratio: 4 / 3;
+  background-color: var(--color-border);
+  overflow: hidden;
+}
+
+.journal-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.journal-body h3 {
+  font-family: "Hina Mincho", "Yu Mincho", serif;
+  font-weight: 400;
+  font-size: 1.05rem;
+  letter-spacing: 0.12em;
+  line-height: 1.65;
+}
+
+.journal-body h3 a:hover {
+  color: var(--color-accent);
+}
+
+.journal-meta {
+  text-align: right;
+  font-size: 0.7rem;
+  letter-spacing: 0.16em;
+  color: var(--color-text-muted);
+  line-height: 1.4;
+}
+
+.journal-meta .cat {
+  color: var(--color-accent);
+  display: block;
+  margin-bottom: 2px;
+}
+
+/* Guide links to MENU/ACCESS */
+.guide {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 24px 24px 96px;
+}
+
+.guide-links {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+}
+
+.guide-card {
+  border: 1px solid var(--color-accent);
+  padding: 44px 32px;
+  text-align: center;
+}
+
+.guide-card h3 {
+  font-family: "Hina Mincho", "Yu Mincho", serif;
+  font-weight: 400;
+  font-size: 1.1rem;
+  letter-spacing: 0.28em;
+}
+
+.guide-card p {
+  font-size: 0.78rem;
+  color: var(--color-text-muted);
+  letter-spacing: 0.12em;
+  margin-top: 12px;
+}
+
+.guide-card:hover,
+.guide-card:focus-visible {
+  background-color: var(--color-hero-bg);
+  color: var(--color-hero-text);
+}
+
+.guide-card:hover p {
+  color: var(--color-accent);
+}
+
+/* Article */
+.article-cover {
+  margin-top: 66px;
+  height: 58vh;
+  min-height: 320px;
+  background-color: var(--color-hero-bg);
+  overflow: hidden;
+}
+
+.article-cover img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.article-main {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 64px 24px 96px;
+}
+
+.article-main .meta {
+  font-size: 0.74rem;
+  letter-spacing: 0.2em;
+  color: var(--color-accent);
+}
+
+.article-main h1 {
+  font-family: "Hina Mincho", "Yu Mincho", serif;
+  font-weight: 400;
+  font-size: clamp(1.45rem, 3.4vw, 2.05rem);
+  letter-spacing: 0.13em;
+  line-height: 1.7;
+  margin: 16px 0 36px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--color-accent);
+}
+
+.article-main h2 {
+  font-family: "Hina Mincho", "Yu Mincho", serif;
+  font-weight: 400;
+  font-size: 1.2rem;
+  letter-spacing: 0.13em;
+  margin: 52px 0 18px;
+}
+
+.article-main p {
+  margin-bottom: 1.55em;
+}
+
+.article-main figure {
+  margin: 36px 0;
+}
+
+.img-wrap {
+  background-color: var(--color-border);
+  overflow: hidden;
+}
+
+.aspect-16x9 {
+  aspect-ratio: 16 / 9;
+}
+
+.article-main figure img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.article-main figcaption {
+  font-size: 0.72rem;
+  color: var(--color-text-muted);
+  letter-spacing: 0.1em;
+  margin-top: 10px;
+  text-align: center;
+}
+
+.article-main ul {
+  margin: 0 0 1.55em 1.35em;
+  line-height: 2.05;
+}
+
+.article-main li {
+  margin-bottom: 0.35em;
+}
+
+.back-link {
+  display: inline-block;
+  margin-top: 44px;
+  font-size: 0.78rem;
+  letter-spacing: 0.2em;
+  color: var(--color-accent);
+  border-bottom: 1px solid var(--color-accent);
+  padding-bottom: 3px;
+}
+
+/* Page (menu + access) */
+.page-top {
+  margin-top: 66px;
+  background-color: var(--color-hero-bg);
+  color: var(--color-hero-text);
+  text-align: center;
+  padding: 88px 24px 64px;
+}
+
+.page-top h1 {
+  font-family: "Hina Mincho", "Yu Mincho", serif;
+  font-weight: 400;
+  font-size: 1.65rem;
+  letter-spacing: 0.3em;
+}
+
+.page-top p {
+  font-size: 0.7rem;
+  letter-spacing: 0.28em;
+  color: var(--color-accent);
+  margin-top: 8px;
+}
+
+.menu-section {
+  max-width: 620px;
+  margin: 0 auto;
+  padding: 56px 24px 32px;
+}
+
+.menu-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 16px;
+  padding: 20px 4px;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.menu-row .name {
+  letter-spacing: 0.08em;
+}
+
+.menu-row .name small {
+  display: block;
+  font-size: 0.72rem;
+  color: var(--color-text-muted);
+  letter-spacing: 0.06em;
+  margin-top: 2px;
+}
+
+.menu-row .price {
+  font-family: "Hina Mincho", "Yu Mincho", serif;
+  color: var(--color-accent);
+  font-size: 1rem;
+  white-space: nowrap;
+  letter-spacing: 0.04em;
+}
+
+.access-section {
+  max-width: 620px;
+  margin: 0 auto;
+  padding: 48px 24px 88px;
+  text-align: center;
+}
+
+.access-section h2 {
+  font-family: "Hina Mincho", "Yu Mincho", serif;
+  font-weight: 400;
+  font-size: 1.15rem;
+  letter-spacing: 0.26em;
+  margin-bottom: 28px;
+}
+
+.access-info {
+  font-size: 0.95rem;
+  color: var(--color-text-muted);
+  line-height: 1.9;
+}
+
+/* Footer */
+.site-footer {
+  background-color: var(--color-hero-bg);
+  color: var(--color-hero-text);
+  text-align: center;
+  padding: 64px 24px 44px;
+}
+
+.footer-brand {
+  font-family: "Hina Mincho", "Yu Mincho", serif;
+  font-size: 1rem;
+  letter-spacing: 0.22em;
+  margin-bottom: 20px;
+}
+
+.footer-nav {
+  display: flex;
+  justify-content: center;
+  gap: 26px;
+  font-size: 0.74rem;
+  letter-spacing: 0.2em;
+  margin-bottom: 32px;
+}
+
+.footer-nav a:hover {
+  color: var(--color-accent);
+}
+
+.copyright {
+  font-size: 0.68rem;
+  letter-spacing: 0.18em;
+  color: var(--color-accent);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .site-header {
+    padding: 0;
+  }
+  .header-inner {
+    padding: 1rem 1rem;
+  }
+  nav {
+    gap: 1.1rem;
+    font-size: 0.78rem;
+  }
+  .journal-item {
+    grid-template-columns: 44px 110px 1fr;
+    gap: 18px;
+  }
+  .journal-meta {
+    grid-column: 2 / 4;
+    text-align: left;
+    margin-top: 4px;
+  }
+  .journal-meta .cat {
+    display: inline;
+    margin-right: 0.8em;
+  }
+  .guide-links {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero {
+    min-height: 82vh;
+    padding: 100px 18px 60px;
+  }
+  .hero h1 {
+    font-size: 1.7rem;
+  }
+  .header-inner {
+    padding: 0.9rem 0.9rem;
+  }
+  nav {
+    gap: 0.9rem;
+    font-size: 0.72rem;
+  }
+  .journal-item {
+    grid-template-columns: 92px 1fr;
+    gap: 14px;
+  }
+  .journal-no {
+    display: none;
+  }
+  .journal-meta {
+    grid-column: auto / span 2;
+    text-align: left;
+  }
+  .section {
+    padding: 64px 18px;
+  }
+  .guide {
+    padding: 16px 18px 72px;
+  }
+  .article-main {
+    padding: 48px 18px 72px;
+  }
+  .menu-section,
+  .access-section {
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+}

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>眠る前の一滴。夜用オイルの重ね方 — NUIT</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="site-title">NUIT<span class="site-title-sub">hair &amp; spa</span></a>
+      <nav class="site-nav" id="navDrawer">
+        <button class="nav-close" id="navClose" aria-label="閉じる">✕</button>
+        <a href="index.html">Journal</a>
+        <a href="page.html">Menu</a>
+        <a href="page.html">Salon</a>
+      </nav>
+      <button class="menu-btn" aria-label="Menu">☰</button>
+    </div>
+  </header>
+
+  <main>
+    <article class="article">
+      <div class="container article-container">
+        <header class="article-head">
+          <p class="article-meta"><span class="mag-no">No.04</span><time>2026.07.10</time><span class="mag-cat">Care</span></p>
+          <h1>眠る前の一滴。<br>夜用オイルの重ね方</h1>
+          <div class="rule rule-center"></div>
+        </header>
+
+        <figure class="article-cover">
+          <div class="cover-image" style="background-image:url('https://picsum.photos/seed/nuit-oil/1400/800')" aria-label="夜用ヘアオイル"></div>
+          <figcaption>熱が冷めた髪に、毛先へ一滴ずつ。</figcaption>
+        </figure>
+
+        <div class="article-body">
+          <p class="lede-body">夜のオイルケアでいちばん多い失敗は、「ドライヤーの直後に塗ってしまう」こと。髪が温かいうちはキューティクルが開いたままで、油分が逃げやすいのです。正解は、熱がすっと冷めてから。</p>
+
+          <h2>一滴ずつ、毛先にだけ</h2>
+          <p>オイルは手のひらに一滴。両手をすり合わせて薄くのばし、毛先から中間にかけて、握るようになじませます。根元には触れないこと。頭皮には頭皮の皮脂があるので、夜のオイルは毛先のためだけのものです。</p>
+          <p>足りないと感じたら、もう一滴。「多すぎたかも」と思ったときは、すでに多すぎます。NUITでは、小豆ひと粒分を目安にお伝えしています。</p>
+
+          <h2>ブラシでとかして、油を均す</h2>
+          <p>塗布のあとは、猪毛ブラシで軽くとかします。ブラシの毛がオイルを均一にのばし、毛束の表面を静かに整えてくれます。力は要りません。梳かすというより、撫でるように。</p>
+
+          <h2>朝、手ぐしで確かめる</h2>
+          <p>翌朝、まず手ぐしを通してみてください。指が止まらず、するりと抜けるようなら成功です。夜の五分が、朝の十分を助けてくれます。</p>
+
+          <div class="article-divider" aria-hidden="true"></div>
+
+          <p class="article-note">お使いのオイルが髪質に合っているかどうかは、施術の際にお調べできます。ボトルをお持ちいただければ、量と付け方をその場でご案内いたします。</p>
+        </div>
+
+        <footer class="article-foot">
+          <a href="index.html" class="btn btn-outline">← Journal 一覧へ</a>
+        </footer>
+      </div>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-rule" aria-hidden="true"></div>
+      <p class="footer-brand">NUIT</p>
+      <p>東京都渋谷区神宮前 4-9-2 &nbsp;/&nbsp; 12:00–21:00（月曜休）</p>
+      <p class="footer-copy">&copy; 2026 NUIT</p>
+    </div>
+  </footer>
+
+  <script>
+    (function(){
+      var btn=document.querySelector('.menu-btn'), close=document.getElementById('navClose'), nav=document.getElementById('navDrawer');
+      function open(){ nav.classList.add('is-open'); document.body.style.overflow='hidden'; }
+      function closeFn(){ nav.classList.remove('is-open'); document.body.style.overflow=''; }
+      if(btn) btn.addEventListener('click', open);
+      if(close) close.addEventListener('click', closeFn);
+      nav.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', closeFn); });
+    })();
+  </script>
+</body>
+</html>

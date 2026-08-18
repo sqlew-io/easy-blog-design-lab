@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IRONWORKS — メンズ専門バーバー</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="site-title">IRONWORKS</a>
+      <nav class="site-nav" id="navDrawer">
+        <button class="nav-close" id="navClose" aria-label="閉じる">✕</button>
+        <a href="index.html">Journal</a>
+        <a href="page.html">Menu</a>
+        <a href="page.html">Access</a>
+      </nav>
+      <button class="menu-btn" aria-label="Menu">☰</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" style="background-image:url('https://picsum.photos/seed/iron-barber/1800/1100')">
+      <div class="hero-band">
+        <div class="container hero-band-inner">
+          <div class="hero-copy">
+            <p class="tag">Fade / Perm / Shave — Koenji Tokyo</p>
+            <h1>刈り上げは、<br>男の名刺だ。</h1>
+          </div>
+          <div class="hero-side">
+            <p>高円寺駅南口から徒歩3分。フェードカットとシェービングの専門店。仕事帰りに寄れる、平日22時まで営業。</p>
+            <a class="btn" href="page.html">Reserve</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section container">
+      <div class="section-head">
+        <h2 class="section-title">Journal</h2>
+        <a class="section-link" href="index.html">All articles →</a>
+      </div>
+
+      <div class="magazine-grid">
+        <article class="mag-feature">
+          <a href="article.html">
+            <div class="mag-image" style="background-image:url('https://picsum.photos/seed/iron-fade/1000/750')" aria-label="フェードカット"></div>
+            <div class="mag-body">
+              <p class="mag-meta"><span class="mag-cat">Style</span><time>2026.07.08</time></p>
+              <h3>フェードは「高さ」で決まる。骨格別・失敗しないオーダー術</h3>
+              <p class="mag-excerpt">ハイ・ミッド・ロー。名前だけで決めると、骨格に合わないことがある。鏡で見るべき3つのポイントを、写真とともに。</p>
+            </div>
+          </a>
+        </article>
+
+        <article class="mag-item">
+          <a href="article.html">
+            <div class="mag-image" style="background-image:url('https://picsum.photos/seed/iron-shave/800/600')" aria-label="シェービング"></div>
+            <div class="mag-body">
+              <p class="mag-meta"><span class="mag-cat">Shave</span><time>2026.06.30</time></p>
+              <h3>月イチのシェービングが、肌を変える</h3>
+            </div>
+          </a>
+        </article>
+
+        <article class="mag-item">
+          <a href="article.html">
+            <div class="mag-image" style="background-image:url('https://picsum.photos/seed/iron-perm/800/600')" aria-label="パーマ"></div>
+            <div class="mag-body">
+              <p class="mag-meta"><span class="mag-cat">Perm</span><time>2026.06.21</time></p>
+              <h3>パーマの持ちは、乾かし方が8割</h3>
+            </div>
+          </a>
+        </article>
+      </div>
+    </section>
+
+    <section class="section container">
+      <div class="shop-strip">
+        <div class="shop-strip-text">
+          <h2>椅子二台、理容師二名。<br>飾らない店ですが、仕事は丁寧です。</h2>
+          <a class="btn btn-outline" href="page.html">About the shop</a>
+        </div>
+        <div class="shop-strip-image" style="background-image:url('https://picsum.photos/seed/iron-shop/1000/600')" aria-label="店内"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p class="footer-brand">IRONWORKS</p>
+      <p>東京都杉並区高円寺南 2-20-5 &nbsp;/&nbsp; 平日 12:00–22:00 &nbsp;/&nbsp; 土日祝 10:00–19:00（火曜休）</p>
+      <p class="footer-copy">&copy; 2026 IRONWORKS</p>
+    </div>
+  </footer>
+
+  <script>
+    (function(){
+      var btn=document.querySelector('.menu-btn'), close=document.getElementById('navClose'), nav=document.getElementById('navDrawer');
+      function open(){ nav.classList.add('is-open'); document.body.style.overflow='hidden'; }
+      function closeFn(){ nav.classList.remove('is-open'); document.body.style.overflow=''; }
+      if(btn) btn.addEventListener('click', open);
+      if(close) close.addEventListener('click', closeFn);
+      nav.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', closeFn); });
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>夜の髪質改善で、翌朝の「触り心地」を変える — OMBRE</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="site-title">OMBRE</a>
+      <nav class="site-nav" id="navDrawer">
+        <button class="nav-close" id="navClose" aria-label="閉じる">✕</button>
+        <a href="index.html">Journal</a>
+        <a href="page.html">Menu</a>
+        <a href="page.html">Access</a>
+      </nav>
+      <button class="menu-btn" aria-label="Menu">☰</button>
+    </div>
+  </header>
+
+  <main>
+    <article class="article">
+      <div class="container article-container">
+        <header class="article-head">
+          <p class="article-meta"><span class="ed-cat">Treatment</span><time>2026.07.10</time></p>
+          <h1>夜の髪質改善で、翌朝の「触り心地」を変える</h1>
+          <div class="rule rule-center"></div>
+        </header>
+
+        <figure class="article-cover">
+          <div class="cover-image" style="background-image:url('https://picsum.photos/seed/ombre-night/1400/800')" aria-label="夜のトリートメント"></div>
+          <figcaption>眠っている間こそ、髪は修復される。</figcaption>
+        </figure>
+
+        <div class="article-body">
+          <p class="lede-body">「朝、髪がまとまらない」。ご来店のお客様から最も多くいただくご相談です。実はその原因の多くは、夜の過ごし方にあります。日中のダメージよりも、夜の数時間が髪の質感を左右するのです。</p>
+
+          <h2>修復は、眠りの前半に起きる</h2>
+          <p>髪の主成分であるケラチンの補修は、入眠後の最初の三時間に集中します。この時間に髪が摩擦や乾燥にさらされていると、補修が追いつきません。逆に言えば、寝る前の五分で環境を整えるだけで、修復効率は大きく変わります。</p>
+
+          <h2>夜のトリートメントは「薄く、長く」</h2>
+          <p>洗い流さないトリートメントは、多くつければよいものではありません。毛先中心に薄くなじませ、ブラシで均す。髪がべたつく量では、枕との摩擦をかえって増やしてしまいます。</p>
+          <p>OMBREでは、夜の集中トリートメントとして、ケラチン配合のオイルを毛先に一滴ずつ重ねる方法をおすすめしています。施術での髪質改善とあわせることで、翌朝の手触りがまるで違うものになります。</p>
+
+          <h2>朝、指で確かめる</h2>
+          <p>起きたらまず、毛先に指を通してみてください。するりと抜ける感触があれば、夜のケアは成功です。その感触を週のうち何日つくれるか。それが髪質改善の、いちばん確かな指標です。</p>
+
+          <div class="article-divider" aria-hidden="true"></div>
+
+          <p class="article-note">夜の集中トリートメントは、カットまたはカラーとあわせてご予約いただけます。ホームケア用のオイルも、施術後に髪質を見ながらお選びいたします。</p>
+        </div>
+
+        <footer class="article-foot">
+          <a href="index.html" class="btn btn-outline">← Journal 一覧へ</a>
+        </footer>
+      </div>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p class="footer-brand">OMBRE</p>
+      <p>東京都渋谷区神宮前 4-9-2 &nbsp;/&nbsp; 12:00–21:00（月曜休）</p>
+      <p class="footer-copy">&copy; 2026 OMBRE</p>
+    </div>
+  </footer>
+
+  <script>
+    (function(){
+      var btn=document.querySelector('.menu-btn'), close=document.getElementById('navClose'), nav=document.getElementById('navDrawer');
+      function open(){ nav.classList.add('is-open'); document.body.style.overflow='hidden'; }
+      function closeFn(){ nav.classList.remove('is-open'); document.body.style.overflow=''; }
+      if(btn) btn.addEventListener('click', open);
+      if(close) close.addEventListener('click', closeFn);
+      nav.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', closeFn); });
+    })();
+  </script>
+</body>
+</html>

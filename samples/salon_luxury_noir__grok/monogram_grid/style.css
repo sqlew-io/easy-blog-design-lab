@@ -1,0 +1,228 @@
+/* salon_luxury_noir / monogram_grid */
+:root {
+  --color-primary: #1e1e22;
+  --color-primary-light: #4a4a52;
+  --color-bg: #f8f7f5;
+  --color-surface: #ffffff;
+  --color-text: #1f1f23;
+  --color-text-muted: #64615c;
+  --color-border: #e3e0da;
+  --color-accent: #ab8d52;
+  --color-hero-bg: #101013;
+  --color-hero-text: #f3ecdd;
+  --color-overlay-header-bg: rgba(16, 16, 19, 0.82);
+  --font-heading: "Hina Mincho", "Yu Mincho", serif;
+  --font-body: "Noto Sans JP", sans-serif;
+  --color-accent-rgb: 171, 141, 82;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: var(--font-body);
+  background: var(--color-bg);
+  color: var(--color-text);
+  line-height: 1.9;
+  letter-spacing: 0.04em;
+}
+
+img { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; }
+
+/* Header: static, hairline */
+.site-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 22px 36px;
+  border-bottom: 1px solid var(--color-border);
+  background: var(--color-surface);
+}
+.brand { font-family: var(--font-heading); font-size: 1.05rem; letter-spacing: 0.3em; }
+.brand small { display: block; font-size: 0.58rem; letter-spacing: 0.34em; color: var(--color-accent); }
+.site-nav { display: flex; gap: 26px; font-size: 0.75rem; letter-spacing: 0.24em; }
+.site-nav a { padding: 4px 0; border-bottom: 1px solid transparent; }
+.site-nav a:hover, .site-nav a:focus-visible { border-bottom-color: var(--color-accent); outline: none; }
+
+/* Quiet logotype top — no photo hero */
+.logotype {
+  text-align: center;
+  padding: 110px 24px 90px;
+  border-bottom: 1px solid var(--color-border);
+  background: var(--color-surface);
+}
+.logotype .mark {
+  width: 56px;
+  height: 56px;
+  margin: 0 auto 28px;
+  border: 1px solid var(--color-accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  color: var(--color-accent);
+}
+.logotype h1 {
+  font-family: var(--font-heading);
+  font-weight: 400;
+  font-size: clamp(1.6rem, 4vw, 2.3rem);
+  letter-spacing: 0.4em;
+  text-indent: 0.4em;
+}
+.logotype p { font-size: 0.75rem; letter-spacing: 0.3em; color: var(--color-text-muted); margin-top: 16px; }
+
+/* Monogram grid */
+.section { max-width: 1080px; margin: 0 auto; padding: 88px 28px; }
+.section-head { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 48px; }
+.section-head h2 { font-family: var(--font-heading); font-weight: 400; font-size: 1.2rem; letter-spacing: 0.32em; }
+.section-head span { font-size: 0.7rem; letter-spacing: 0.26em; color: var(--color-accent); }
+
+.mono-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px 32px;
+}
+.mono-card { position: relative; }
+.mono-card .photo {
+  aspect-ratio: 1 / 1;
+  background: linear-gradient(160deg, var(--color-primary-light), var(--color-hero-bg));
+  overflow: hidden;
+}
+.mono-card .photo img { width: 100%; height: 100%; object-fit: cover; transition: opacity 0.3s; }
+.mono-card:hover .photo img { opacity: 0.85; }
+.mono-card .date-mark {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  background: var(--color-hero-bg);
+  color: var(--color-accent);
+  border: 1px solid var(--color-accent);
+  font-family: var(--font-heading);
+  font-size: 0.68rem;
+  letter-spacing: 0.14em;
+  padding: 6px 10px;
+  line-height: 1.5;
+  text-align: center;
+}
+.mono-card .cat { font-size: 0.68rem; letter-spacing: 0.26em; color: var(--color-accent); margin: 18px 0 6px; }
+.mono-card h3 {
+  font-family: var(--font-heading);
+  font-weight: 400;
+  font-size: 1.02rem;
+  letter-spacing: 0.1em;
+  line-height: 1.8;
+}
+.mono-card h3 a:hover { color: var(--color-accent); }
+
+/* Guide band */
+.guide-band {
+  background: var(--color-hero-bg);
+  color: var(--color-hero-text);
+}
+.guide-band .inner {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 80px 28px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+}
+.guide-cell { border: 1px solid rgba(var(--color-accent-rgb), 0.55); padding: 44px 32px; text-align: center; transition: border-color 0.3s; }
+.guide-cell:hover, .guide-cell:focus-visible { border-color: var(--color-accent); outline: none; }
+.guide-cell h3 { font-family: var(--font-heading); font-weight: 400; font-size: 1.05rem; letter-spacing: 0.32em; color: var(--color-accent); }
+.guide-cell p { font-size: 0.78rem; letter-spacing: 0.12em; margin-top: 12px; opacity: 0.8; }
+
+/* Article page */
+.article-main { max-width: 660px; margin: 0 auto; padding: 80px 24px 100px; }
+.article-main .date-mark-inline {
+  display: inline-block;
+  border: 1px solid var(--color-accent);
+  color: var(--color-accent);
+  font-family: var(--font-heading);
+  font-size: 0.7rem;
+  letter-spacing: 0.16em;
+  padding: 5px 12px;
+}
+.article-main h1 {
+  font-family: var(--font-heading);
+  font-weight: 400;
+  font-size: clamp(1.45rem, 3.2vw, 2rem);
+  letter-spacing: 0.12em;
+  line-height: 1.85;
+  margin: 24px 0 36px;
+}
+.article-main .cover { margin: 0 0 48px; }
+.article-main .cover img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; background: var(--color-border); }
+.article-main h2 {
+  font-family: var(--font-heading);
+  font-weight: 400;
+  font-size: 1.2rem;
+  letter-spacing: 0.14em;
+  margin: 52px 0 18px;
+  padding-left: 16px;
+  border-left: 1px solid var(--color-accent);
+}
+.article-main p { margin-bottom: 1.6em; }
+.article-main figure { margin: 40px 0; }
+.article-main figure img { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; background: var(--color-border); }
+.article-main figcaption { font-size: 0.75rem; color: var(--color-text-muted); margin-top: 10px; text-align: center; letter-spacing: 0.1em; }
+.article-main ul { margin: 0 0 1.6em 1.4em; }
+.back-link { display: inline-block; margin-top: 44px; font-size: 0.76rem; letter-spacing: 0.24em; color: var(--color-accent); border-bottom: 1px solid var(--color-accent); padding-bottom: 2px; }
+
+/* Static page */
+.page-head { text-align: center; padding: 90px 24px 0; }
+.page-head .mark {
+  width: 48px; height: 48px; margin: 0 auto 22px;
+  border: 1px solid var(--color-accent);
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-heading); color: var(--color-accent); font-size: 1.2rem;
+}
+.page-head h1 { font-family: var(--font-heading); font-weight: 400; font-size: 1.5rem; letter-spacing: 0.36em; text-indent: 0.36em; }
+.menu-grid {
+  max-width: 880px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 64px;
+}
+.menu-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 16px;
+  padding: 20px 4px;
+  border-bottom: 1px solid var(--color-border);
+}
+.menu-row .name { letter-spacing: 0.08em; font-size: 0.95rem; }
+.menu-row .name small { display: block; font-size: 0.72rem; color: var(--color-text-muted); }
+.menu-row .price { font-family: var(--font-heading); color: var(--color-accent); white-space: nowrap; }
+.access-block { max-width: 640px; margin: 72px auto 0; text-align: center; font-size: 0.9rem; }
+.access-block h2 { font-family: var(--font-heading); font-weight: 400; letter-spacing: 0.32em; font-size: 1.15rem; margin-bottom: 22px; }
+.access-block p { color: var(--color-text-muted); }
+
+/* Footer */
+.site-footer {
+  border-top: 1px solid var(--color-border);
+  text-align: center;
+  padding: 64px 24px 48px;
+  background: var(--color-surface);
+}
+.site-footer .brand { margin-bottom: 20px; }
+.footer-nav { display: flex; justify-content: center; gap: 26px; font-size: 0.74rem; letter-spacing: 0.24em; margin-bottom: 30px; }
+.footer-nav a:hover { color: var(--color-accent); }
+.copyright { font-size: 0.68rem; letter-spacing: 0.22em; color: var(--color-accent); }
+
+/* Responsive */
+@media (max-width: 768px) {
+  .mono-grid { grid-template-columns: repeat(2, 1fr); gap: 32px 20px; }
+  .guide-band .inner { grid-template-columns: 1fr; padding: 56px 24px; }
+  .menu-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 480px) {
+  .site-header { padding: 16px 20px; }
+  .site-nav { gap: 14px; font-size: 0.66rem; }
+  .logotype { padding: 72px 20px 56px; }
+  .mono-grid { grid-template-columns: 1fr; }
+  .section { padding: 60px 20px; }
+}

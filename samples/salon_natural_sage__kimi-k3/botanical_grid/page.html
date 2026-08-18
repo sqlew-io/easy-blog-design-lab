@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>メニュー・アクセス — みどりのとびら</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="site-title">みどりのとびら<small>midori no tobira</small></a>
+      <nav class="site-nav" id="navDrawer">
+        <button class="nav-close" id="navClose" aria-label="閉じる">✕</button>
+        <a href="index.html">記事</a>
+        <a href="page.html">メニュー</a>
+        <a href="page.html">アクセス</a>
+      </nav>
+      <button class="menu-btn" aria-label="Menu">☰</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-hero">
+      <div class="container">
+        <p class="hero-kicker">Menu &amp; Access</p>
+        <h1>メニューとアクセス</h1>
+      </div>
+    </section>
+
+    <section class="section container">
+      <h2 class="section-title">ケアメニュー</h2>
+      <div class="menu-cards">
+        <div class="menu-card">
+          <h3>ハーブボールスパ</h3>
+          <p class="menu-time">60分 / シャンプーブロー込み</p>
+          <p class="menu-desc">蒸したハーブボールで頭皮を温める、当店の看板メニュー。眼精疲労・肩こりの方にも。</p>
+          <p class="menu-price">¥7,700</p>
+        </div>
+        <div class="menu-card">
+          <h3>ヘナカラー</h3>
+          <p class="menu-time">90分〜 / 放置時間含む</p>
+          <p class="menu-desc">天然植物100%のヘナで染めるカラー。白髪がほんのり赤みを帯びたブラウンに。</p>
+          <p class="menu-price">¥9,900〜</p>
+        </div>
+        <div class="menu-card">
+          <h3>クレイヘッドスパ</h3>
+          <p class="menu-time">45分</p>
+          <p class="menu-desc">モンモリロナイトのパックで毛穴の皮脂を吸着。夏場のスッキリケアに。</p>
+          <p class="menu-price">¥5,500</p>
+        </div>
+        <div class="menu-card">
+          <h3>カット</h3>
+          <p class="menu-time">60分 / 湯洗い仕上げ</p>
+          <p class="menu-desc">シャンプーは使わず、ぬるま湯とハーブ湯で仕上げます。乾かしながらのドライカット。</p>
+          <p class="menu-price">¥6,050</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section container">
+      <h2 class="section-title">アクセス</h2>
+      <dl class="info-list">
+        <div class="info-row"><dt>住所</dt><dd>東京都中野区弥生町2-18-5 グリーンハイツ1F（中野新橋駅より徒歩4分）</dd></div>
+        <div class="info-row"><dt>営業時間</dt><dd>10:00〜20:00（平日）/ 9:00〜19:00（土日祝）</dd></div>
+        <div class="info-row"><dt>定休日</dt><dd>水曜</dd></div>
+        <div class="info-row"><dt>ご予約</dt><dd>LINE・お電話にて。当日予約も空きがあれば可能です</dd></div>
+      </dl>
+      <div class="map-block">
+        <p>※ 駅前ロータリーから川沿いの道へ。緑の扉が目印です。</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p class="foot-brand">みどりのとびら</p>
+      <p class="foot-note">中野新橋 / ハーブケア専門 / 水曜定休</p>
+    </div>
+  </footer>
+
+  <script>
+    const btn = document.querySelector('.menu-btn');
+    const drawer = document.getElementById('navDrawer');
+    const closeBtn = document.getElementById('navClose');
+    btn.addEventListener('click', () => drawer.classList.add('open'));
+    closeBtn.addEventListener('click', () => drawer.classList.remove('open'));
+  </script>
+</body>
+</html>

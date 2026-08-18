@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ハーブボールの温熱で、頭皮はここまで変わる — みどりのとびら</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="site-title">みどりのとびら<small>midori no tobira</small></a>
+      <nav class="site-nav" id="navDrawer">
+        <button class="nav-close" id="navClose" aria-label="閉じる">✕</button>
+        <a href="index.html">記事</a>
+        <a href="page.html">メニュー</a>
+        <a href="page.html">アクセス</a>
+      </nav>
+      <button class="menu-btn" aria-label="Menu">☰</button>
+    </div>
+  </header>
+
+  <main>
+    <article class="article">
+      <div class="article-wrap container">
+        <header class="article-head">
+          <p class="article-meta"><span class="bot-cat">ケア</span><time>2026.07.15</time></p>
+          <h1>ハーブボールの温熱で、頭皮はここまで変わる</h1>
+          <p class="article-lead">タイ古来のハーブボールを頭皮ケアに取り入れて3年。リピーターが絶えない理由を、施術の流れとともに紹介します。</p>
+        </header>
+
+        <figure class="article-cover" style="background-image:url('https://picsum.photos/seed/herb-steam/1200/700')">
+          <figcaption>蒸したてのハーブボール。カフィアライムの香りが立つ</figcaption>
+        </figure>
+
+        <div class="article-body">
+          <p>ハーブボールは、タマリンドの葉やカフィアライム、ターメリックなどを布に包んで蒸し上げたもの。温かいボールを頭皮にゆっくり押しあてると、毛穴が開いてハーブの成分が浸透し、血行がぐっと良くなります。</p>
+
+          <h2>施術の流れ（60分）</h2>
+          <p>最初に10分かけて湯洗いで頭皮を温め、そのあとボールを首筋→側頭部→頭頂部の順にあてていきます。じんわり汗ばむくらいがちょうどいい温度。最後は冷たいタオルで毛穴を引き締めて終了です。</p>
+
+          <figure class="body-figure" style="background-image:url('https://picsum.photos/seed/scalp-care/1000/600')">
+            <figcaption>頭頂部へのプレスは、眼精疲労にも効果的です</figcaption>
+          </figure>
+
+          <h2>翌日まで続く、根元の立ち上がり</h2>
+          <p>施術直後よりも、実は翌朝のほうが変化に気づきます。頭皮の血行が改善して毛根に栄養が届くと、根元がふわっと立ち上がる。ブローなしでトップにボリュームが出る、という声をよくいただきます。週に1度、自分へのごほうびとしてぜひ。</p>
+        </div>
+
+        <div class="article-foot">
+          <a class="btn" href="index.html">← 記事一覧に戻る</a>
+        </div>
+      </div>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p class="foot-brand">みどりのとびら</p>
+      <p class="foot-note">中野新橋 / ハーブケア専門 / 水曜定休</p>
+    </div>
+  </footer>
+
+  <script>
+    const btn = document.querySelector('.menu-btn');
+    const drawer = document.getElementById('navDrawer');
+    const closeBtn = document.getElementById('navClose');
+    btn.addEventListener('click', () => drawer.classList.add('open'));
+    closeBtn.addEventListener('click', () => drawer.classList.remove('open'));
+  </script>
+</body>
+</html>

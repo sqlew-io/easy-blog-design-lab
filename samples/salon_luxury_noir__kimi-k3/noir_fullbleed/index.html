@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NUIT — 夜のヘアサロン＆スパ</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="site-title">NUIT<span class="site-title-sub">hair &amp; spa</span></a>
+      <nav class="site-nav" id="navDrawer">
+        <button class="nav-close" id="navClose" aria-label="閉じる">✕</button>
+        <a href="index.html">Journal</a>
+        <a href="page.html">Menu</a>
+        <a href="page.html">Salon</a>
+      </nav>
+      <button class="menu-btn" aria-label="Menu">☰</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-text">
+          <p class="eyebrow">Omotesando — Open until 21:00</p>
+          <div class="rule"></div>
+          <h1>夜に、<br>髪を解く。</h1>
+          <div class="rule"></div>
+          <p class="lede">一日の終わりに、髪と頭皮をほどく90分。<br>NUITは、灯りを落とした漆黒の空間で、<br>大人のためのヘアサロン＆スパです。</p>
+          <a class="btn" href="page.html">Reserve</a>
+        </div>
+        <div class="hero-visual">
+          <div class="hero-image" style="background-image:url('https://picsum.photos/seed/nuit-night/1000/1250')" aria-label="夜のサロン内装"></div>
+          <p class="hero-caption">21:00 — the last light</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section container">
+      <div class="section-head">
+        <h2 class="section-title">Journal</h2>
+        <p class="section-note">夜の手入れと、美しいものの話。</p>
+      </div>
+
+      <div class="magazine-grid">
+        <article class="mag-feature">
+          <a href="article.html">
+            <div class="mag-image" style="background-image:url('https://picsum.photos/seed/nuit-oil/1200/900')" aria-label="ナイトオイル"></div>
+            <div class="mag-body">
+              <p class="mag-meta"><span class="mag-no">No.04</span><time>2026.07.10</time><span class="mag-cat">Care</span></p>
+              <h3>眠る前の一滴。夜用オイルの重ね方</h3>
+              <p class="mag-excerpt">ドライヤーの熱が冷めてから、毛先にだけ。朝のまとまりがまるで違う、夜の仕込みの話。</p>
+            </div>
+          </a>
+        </article>
+
+        <article class="mag-item">
+          <a href="article.html">
+            <div class="mag-image" style="background-image:url('https://picsum.photos/seed/nuit-brush/800/600')" aria-label="ブラシ"></div>
+            <div class="mag-body">
+              <p class="mag-meta"><span class="mag-no">No.03</span><time>2026.07.02</time><span class="mag-cat">Tool</span></p>
+              <h3>猪毛ブラシは、夜だけ使う</h3>
+            </div>
+          </a>
+        </article>
+
+        <article class="mag-item">
+          <a href="article.html">
+            <div class="mag-image" style="background-image:url('https://picsum.photos/seed/nuit-silk/800/600')" aria-label="シルク"></div>
+            <div class="mag-body">
+              <p class="mag-meta"><span class="mag-no">No.02</span><time>2026.06.25</time><span class="mag-cat">Night</span></p>
+              <h3>シルクの枕カバーという静かな投資</h3>
+            </div>
+          </a>
+        </article>
+
+        <article class="mag-item">
+          <a href="article.html">
+            <div class="mag-image" style="background-image:url('https://picsum.photos/seed/nuit-bath/800/600')" aria-label="バスタイム"></div>
+            <div class="mag-body">
+              <p class="mag-meta"><span class="mag-no">No.01</span><time>2026.06.18</time><span class="mag-cat">Bath</span></p>
+              <h3>湯船の十分間が、頭皮を変える</h3>
+            </div>
+          </a>
+        </article>
+      </div>
+    </section>
+
+    <section class="section container salon-intro">
+      <div class="intro-rule" aria-hidden="true"></div>
+      <div class="intro-grid">
+        <div class="intro-text">
+          <h2 class="intro-title">Salon</h2>
+          <p class="intro-lead">漆黒の壁、真鍮の灯り、低い音楽。</p>
+          <p>NUITの店内に、白い壁はありません。深い黒に包まれた空間で、五感を静かにほぐしていく。施術のあとは、ハーブティーとともに窓の夜景を。夜の予約だからこそ味わえる、非日常の90分をご用意しています。</p>
+          <a class="btn btn-outline" href="page.html">About the salon</a>
+        </div>
+        <div class="intro-image" style="background-image:url('https://picsum.photos/seed/nuit-room/1000/750')" aria-label="漆黒のサロン空間"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-rule" aria-hidden="true"></div>
+      <p class="footer-brand">NUIT</p>
+      <p>東京都渋谷区神宮前 4-9-2 &nbsp;/&nbsp; 12:00–21:00（月曜休）</p>
+      <p class="footer-copy">&copy; 2026 NUIT</p>
+    </div>
+  </footer>
+
+  <script>
+    (function(){
+      var btn=document.querySelector('.menu-btn'), close=document.getElementById('navClose'), nav=document.getElementById('navDrawer');
+      function open(){ nav.classList.add('is-open'); document.body.style.overflow='hidden'; }
+      function closeFn(){ nav.classList.remove('is-open'); document.body.style.overflow=''; }
+      if(btn) btn.addEventListener('click', open);
+      if(close) close.addEventListener('click', closeFn);
+      nav.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', closeFn); });
+    })();
+  </script>
+</body>
+</html>

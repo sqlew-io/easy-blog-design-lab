@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Menu & Access — SERENE</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="site-title">SERENE</a>
+      <nav class="site-nav" id="navDrawer">
+        <button class="nav-close" id="navClose" aria-label="閉じる">✕</button>
+        <a href="index.html">Essays</a>
+        <a href="page.html">Menu</a>
+        <a href="page.html">Access</a>
+      </nav>
+      <button class="menu-btn" aria-label="Menu">☰</button>
+    </div>
+  </header>
+
+  <main>
+    <div class="container prose-col">
+      <section class="page-head">
+        <p class="eyebrow">Menu</p>
+        <h1>静けさを、体験として。</h1>
+        <div class="rule"></div>
+      </section>
+
+      <section class="section-block">
+        <div class="menu-list">
+          <div class="menu-item">
+            <div class="menu-item-head">
+              <h3>Head Spa — 60 min</h3>
+              <span class="menu-price">¥11,000</span>
+            </div>
+            <p>頭皮クレンジングと首肩のケア。夜の予約で、そのまま眠れる状態に。</p>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-head">
+              <h3>Head Spa — 90 min</h3>
+              <span class="menu-price">¥16,500</span>
+            </div>
+            <p>フルコース。施術後15分の「居眠り時間」つき。SERENEの看板メニューです。</p>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-head">
+              <h3>Night Cut</h3>
+              <span class="menu-price">¥9,900</span>
+            </div>
+            <p>カウンセリング・シャンプー込み・60分。静かな個室で、似合うシルエットを。</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-block">
+        <h2 class="block-title">Access</h2>
+        <dl class="info-list">
+          <dt>Address</dt><dd>東京都渋谷区神宮前 4-9-2 SERENEビル B1F</dd>
+          <dt>Hours</dt><dd>12:00–21:00（最終受付 19:30）</dd>
+          <dt>Closed</dt><dd>月曜日</dd>
+          <dt>Payment</dt><dd>現金・各種カード・QR決済</dd>
+        </dl>
+        <div class="page-foot">
+          <a class="btn" href="index.html">Back to top</a>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p class="footer-brand">SERENE</p>
+      <p>東京都渋谷区神宮前 4-9-2 &nbsp;/&nbsp; 12:00–21:00（月曜休）</p>
+      <p class="footer-copy">&copy; 2026 SERENE</p>
+    </div>
+  </footer>
+
+  <script>
+    (function(){
+      var btn=document.querySelector('.menu-btn'), close=document.getElementById('navClose'), nav=document.getElementById('navDrawer');
+      function open(){ nav.classList.add('is-open'); document.body.style.overflow='hidden'; }
+      function closeFn(){ nav.classList.remove('is-open'); document.body.style.overflow=''; }
+      if(btn) btn.addEventListener('click', open);
+      if(close) close.addEventListener('click', closeFn);
+      nav.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', closeFn); });
+    })();
+  </script>
+</body>
+</html>

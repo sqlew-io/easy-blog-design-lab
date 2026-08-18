@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>コンクリートフラワー — 高円寺の攻め髪サロン</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="site-title">CONCRETE FLOWER<small>KOENJI</small></a>
+      <nav class="site-nav" id="navDrawer">
+        <button class="nav-close" id="navClose" aria-label="閉じる">✕</button>
+        <a href="index.html">LOG</a>
+        <a href="page.html">MENU</a>
+        <a href="page.html">MAP</a>
+      </nav>
+      <button class="menu-btn" aria-label="Menu">☰</button>
+    </div>
+  </header>
+
+  <main>
+    <!-- tape_hero_list: 写真にマステで貼ったタイトル帯 + テキストリスト一覧 -->
+    <section class="hero">
+      <div class="hero-photo" style="background-image:url('https://picsum.photos/seed/concrete-wall/1800/1000')" role="img" aria-label="コンクリートの壁"></div>
+      <div class="hero-tape-wrap container">
+        <h1 class="hero-tape">攻め髪は、<br>日常の抵抗だ。</h1>
+        <p class="hero-sub">高円寺・デザインカラーと前髪改造の店</p>
+      </div>
+    </section>
+
+    <section class="section container">
+      <h2 class="section-title">LOG — 施工記録</h2>
+
+      <ul class="log-list">
+        <li class="log-item">
+          <a href="article.html">
+            <span class="log-date">07.18</span>
+            <span class="log-title">前髪を「斜めギザギザ」に切るという選択 — 施工例と注意点</span>
+            <span class="log-cat">CUT</span>
+          </a>
+        </li>
+        <li class="log-item">
+          <a href="article.html">
+            <span class="log-date">07.11</span>
+            <span class="log-title">グラデーションカラーは「境目をぼかさない」時代</span>
+            <span class="log-cat">COLOR</span>
+          </a>
+        </li>
+        <li class="log-item">
+          <a href="article.html">
+            <span class="log-date">07.04</span>
+            <span class="log-title">ブリーチ毛にパーマはかけられるか（答：条件付きで可）</span>
+            <span class="log-cat">PERM</span>
+          </a>
+        </li>
+        <li class="log-item">
+          <a href="article.html">
+            <span class="log-date">06.27</span>
+            <span class="log-title">黒髪に見えるけど黒くない「透けブラック」の作り方</span>
+            <span class="log-cat">COLOR</span>
+          </a>
+        </li>
+        <li class="log-item">
+          <a href="article.html">
+            <span class="log-date">06.20</span>
+            <span class="log-title">金髪就活生のための「1日だけ黒髪」講座</span>
+            <span class="log-cat">HOW-TO</span>
+          </a>
+        </li>
+        <li class="log-item">
+          <a href="article.html">
+            <span class="log-date">06.13</span>
+            <span class="log-title">店の壁をコンクリート打ちっぱなしにした理由</span>
+            <span class="log-cat">SHOP</span>
+          </a>
+        </li>
+      </ul>
+
+      <div class="list-foot">
+        <a class="btn" href="page.html">MENUを見る</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p class="foot-brand">CONCRETE FLOWER</p>
+      <p class="foot-note">KOENJI / 12:00-22:00 / 水曜定休</p>
+    </div>
+  </footer>
+
+  <script>
+    const btn = document.querySelector('.menu-btn');
+    const drawer = document.getElementById('navDrawer');
+    const closeBtn = document.getElementById('navClose');
+    btn.addEventListener('click', () => drawer.classList.add('open'));
+    closeBtn.addEventListener('click', () => drawer.classList.remove('open'));
+  </script>
+</body>
+</html>

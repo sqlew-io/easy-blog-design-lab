@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>フェードは「高さ」で決まる。骨格別・失敗しないオーダー術 — IRONWORKS</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="site-title">IRONWORKS</a>
+      <nav class="site-nav" id="navDrawer">
+        <button class="nav-close" id="navClose" aria-label="閉じる">✕</button>
+        <a href="index.html">Journal</a>
+        <a href="page.html">Menu</a>
+        <a href="page.html">Access</a>
+      </nav>
+      <button class="menu-btn" aria-label="Menu">☰</button>
+    </div>
+  </header>
+
+  <main>
+    <article class="article">
+      <div class="container article-container">
+        <header class="article-head">
+          <p class="article-meta"><span class="mag-cat">Style</span><time>2026.07.08</time></p>
+          <h1>フェードは「高さ」で決まる。<br>骨格別・失敗しないオーダー術</h1>
+          <div class="rule rule-center"></div>
+        </header>
+
+        <figure class="article-cover">
+          <div class="cover-image" style="background-image:url('https://picsum.photos/seed/iron-fade/1400/800')" aria-label="フェードカットの仕上がり"></div>
+          <figcaption>ハイ・ミッド・ロー。名前だけで決めると、骨格に合わないことがある。</figcaption>
+        </figure>
+
+        <div class="article-body">
+          <p class="lede-body">「フェードで」とオーダーして、思ったのと違う仕上がりになった——その原因は、高さの指定にあります。ハイ・ミッド・ローのどこで刈り上げを始めるかが、印象の8割を決めるのです。</p>
+
+          <h2>面長なら、ローフェード</h2>
+          <p>刈り上げの開始位置が高いほど、縦のラインが強調されます。面長の方がハイフェードにすると、顔の長さがさらに目立つ。耳の上あたりから始まるローフェードで、横のボリュームを残すのが正解です。</p>
+
+          <h2>丸顔なら、ハイフェード</h2>
+          <p>逆に丸顔の方は、高い位置から刈り上げることで顔まわりがすっきりします。トップに長さを残して縦のシルエットを作れば、輪郭の丸さが気になりにくくなります。</p>
+
+          <h2>迷ったら「ミッド」＋写真</h2>
+          <p>骨格が標準的ならミッドフェードが無難ですが、いちばん確実なのは写真を見せること。「このくらいの高さで」と一枚あるだけで、理容師との認識のずれがほぼなくなります。当店でも、オーダー時の写真の持ち込みを歓迎しています。</p>
+
+          <div class="article-divider" aria-hidden="true"></div>
+
+          <p class="article-note">初回のご来店時には、骨格と髪質を見ておすすめの高さをご提案します。気に入らなければ、遠慮なくおっしゃってください。</p>
+        </div>
+
+        <footer class="article-foot">
+          <a href="index.html" class="btn btn-outline">← Journal 一覧へ</a>
+        </footer>
+      </div>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p class="footer-brand">IRONWORKS</p>
+      <p>東京都杉並区高円寺南 2-20-5 &nbsp;/&nbsp; 平日 12:00–22:00 &nbsp;/&nbsp; 土日祝 10:00–19:00（火曜休）</p>
+      <p class="footer-copy">&copy; 2026 IRONWORKS</p>
+    </div>
+  </footer>
+
+  <script>
+    (function(){
+      var btn=document.querySelector('.menu-btn'), close=document.getElementById('navClose'), nav=document.getElementById('navDrawer');
+      function open(){ nav.classList.add('is-open'); document.body.style.overflow='hidden'; }
+      function closeFn(){ nav.classList.remove('is-open'); document.body.style.overflow=''; }
+      if(btn) btn.addEventListener('click', open);
+      if(close) close.addEventListener('click', closeFn);
+      nav.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', closeFn); });
+    })();
+  </script>
+</body>
+</html>

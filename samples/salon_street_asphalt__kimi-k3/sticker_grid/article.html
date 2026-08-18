@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ハイトーンの限界に挑戦。ケアブリーチ3連発レポ — ASPHALT CLUB</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="site-title">ASPHALT CLUB<small>SHIMOKITA</small></a>
+      <nav class="site-nav" id="navDrawer">
+        <button class="nav-close" id="navClose" aria-label="閉じる">✕</button>
+        <a href="index.html">BLOG</a>
+        <a href="page.html">MENU</a>
+        <a href="page.html">ACCESS</a>
+      </nav>
+      <button class="menu-btn" aria-label="Menu">☰</button>
+    </div>
+  </header>
+
+  <main>
+    <article class="article">
+      <header class="article-head">
+        <div class="container">
+          <p class="article-tag">COLOR / 2026.07.14</p>
+          <h1>ハイトーンの限界に挑戦。<br><span class="marker">ケアブリーチ3連発</span>レポ</h1>
+        </div>
+      </header>
+
+      <figure class="article-cover" style="background-image:url('https://picsum.photos/seed/white-bleach/1400/800')">
+        <figcaption>ブリーチ3回後のホワイト。まだ生きてる</figcaption>
+      </figure>
+
+      <div class="article-body container">
+        <p>「真っ白にしたい」——そう言って来店したMくんの髪は、黒染め履歴2回の最難関コンディション。普通なら断るところですが、ケアブリーチなら3回に分ければ白まで行けます。今回はその全記録。</p>
+
+        <h2>1回目：オレンジ地獄</h2>
+        <p>黒染めが抜けかけた最初の状態は、まさかのオレンジ。ここで諦める人が多いのですが、実はここが一番体力のある状態。1週間のトリートメント期間を挟んで次へ。</p>
+
+        <figure class="body-figure" style="background-image:url('https://picsum.photos/seed/orange-hair/1000/600')">
+          <figcaption>1回目後。通称「みかん期」</figcaption>
+        </figure>
+
+        <h2>2回目：イエロー、そして3回目で白へ</h2>
+        <p>2回目でビビッドなイエローに。ここから紫シャンプーで黄味を殺しつつ、さらに2週間後に3回目。仕上がりは肉眼で青みが見えるレベルのホワイト。毛先の状態は……写真の通り、ギリ生きてます。</p>
+
+        <h2>家でのケアが9割</h2>
+        <p>ハイトーンを維持する鍵は、週2回の紫シャンプーと、ドライ後のオイル2滴。これをサボると1週間で「黄色い海苔」になります。白は1日にしてならず、そして白は1週間で死にます。</p>
+      </div>
+
+      <div class="container article-foot">
+        <a class="btn" href="index.html">← BACK TO LIST</a>
+      </div>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p class="foot-brand">ASPHALT CLUB</p>
+      <p class="foot-note">SHIMOKITAZAWA / OPEN 11:00-21:00</p>
+    </div>
+  </footer>
+
+  <script>
+    const btn = document.querySelector('.menu-btn');
+    const drawer = document.getElementById('navDrawer');
+    const closeBtn = document.getElementById('navClose');
+    btn.addEventListener('click', () => drawer.classList.add('open'));
+    closeBtn.addEventListener('click', () => drawer.classList.remove('open'));
+  </script>
+</body>
+</html>

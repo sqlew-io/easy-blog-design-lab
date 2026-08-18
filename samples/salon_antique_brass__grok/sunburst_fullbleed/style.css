@@ -1,0 +1,516 @@
+/* salon_antique_brass__grok / sunburst_fullbleed — Antique Brass (Art Deco) */
+:root {
+  --color-primary: #8c6b3d;
+  --color-primary-light: #c8a86a;
+  --color-bg: #f6efe4;
+  --color-surface: #fffdf8;
+  --color-text: #2e2620;
+  --color-text-muted: #7a6c5c;
+  --color-border: #e2d5bd;
+  --color-accent: #a5854f;
+  --color-hero-bg: #262019;
+  --color-hero-text: #f2e8d5;
+  --color-overlay-header-bg: rgba(38, 32, 25, 0.78);
+
+  --font-heading: "Cinzel", "Shippori Mincho", "Noto Serif JP", "Yu Mincho", serif;
+  --font-body: "Noto Sans JP", "Hiragino Sans", sans-serif;
+
+  --section-gap: 88px;
+  --container-max: 1020px;
+  --radius-button: 0px;
+  --shadow-card: 0 2px 0 rgba(38, 32, 25, 0.9), 0 10px 24px rgba(38, 32, 25, 0.1);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html { font-size: 16px; }
+
+body {
+  font-family: var(--font-body);
+  background: var(--color-bg);
+  color: var(--color-text);
+  line-height: 1.9;
+  letter-spacing: 0.06em;
+  -webkit-font-smoothing: antialiased;
+}
+
+img { max-width: 100%; height: auto; display: block; }
+a { color: inherit; text-decoration: none; }
+
+h1, h2, h3 {
+  font-family: var(--font-heading);
+  font-weight: 400;
+  letter-spacing: 0.08em;
+}
+
+/* Overlay header */
+.site-header {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: 100;
+  background: var(--color-overlay-header-bg);
+  color: var(--color-hero-text);
+  border-bottom: 1px solid rgba(200, 168, 106, 0.4);
+}
+
+.header-inner {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 16px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.brand {
+  font-family: var(--font-heading);
+  letter-spacing: 0.4em;
+  font-size: 1.05rem;
+}
+
+.brand small {
+  display: block;
+  font-family: var(--font-body);
+  font-size: 0.55rem;
+  letter-spacing: 0.32em;
+  color: var(--color-primary-light);
+  margin-top: 3px;
+}
+
+.site-nav {
+  display: flex;
+  gap: 26px;
+  font-size: 0.72rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.site-nav a:hover {
+  color: var(--color-primary-light);
+}
+
+/* Fullbleed sunburst hero — pure CSS geometry */
+.hero {
+  position: relative;
+  min-height: 92vh;
+  background: var(--color-hero-bg);
+  color: var(--color-hero-text);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 120px 24px 88px;
+  overflow: hidden;
+}
+
+.sunburst {
+  position: absolute;
+  inset: 50% auto auto 50%;
+  width: 160vmax;
+  height: 160vmax;
+  transform: translate(-50%, -50%);
+  background: repeating-conic-gradient(
+    from 0deg,
+    rgba(200, 168, 106, 0.09) 0deg 8deg,
+    transparent 8deg 16deg
+  );
+  opacity: 0.9;
+  pointer-events: none;
+}
+
+.sunburst::after {
+  content: "";
+  position: absolute;
+  inset: 28%;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(38, 32, 25, 0.2) 0%, var(--color-hero-bg) 70%);
+}
+
+.hero-inner {
+  position: relative;
+  z-index: 1;
+  max-width: 640px;
+}
+
+.hero-eyebrow {
+  font-size: 0.72rem;
+  letter-spacing: 0.36em;
+  color: var(--color-primary-light);
+  margin-bottom: 18px;
+}
+
+.hero h1 {
+  font-size: clamp(2.1rem, 6vw, 3rem);
+  line-height: 1.3;
+  margin-bottom: 18px;
+}
+
+.hero-line {
+  width: 72px;
+  height: 1px;
+  background: var(--color-primary-light);
+  margin: 0 auto 18px;
+  position: relative;
+}
+
+.hero-line::before,
+.hero-line::after {
+  content: "";
+  position: absolute;
+  top: -3px;
+  width: 7px;
+  height: 7px;
+  border: 1px solid var(--color-primary-light);
+  transform: rotate(45deg);
+  background: var(--color-hero-bg);
+}
+
+.hero-line::before { left: -12px; }
+.hero-line::after { right: -12px; }
+
+.hero .lede {
+  font-size: 0.95rem;
+  opacity: 0.9;
+  max-width: 28em;
+  margin: 0 auto 32px;
+  line-height: 1.95;
+}
+
+.btn {
+  display: inline-block;
+  padding: 12px 30px;
+  border: 1px solid var(--color-primary-light);
+  outline: 1px solid rgba(200, 168, 106, 0.3);
+  outline-offset: 3px;
+  font-size: 0.74rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-hero-text);
+  transition: background 0.2s, color 0.2s;
+}
+
+.btn:hover {
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+  color: #fff;
+}
+
+.btn-brass {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+  outline-color: rgba(140, 107, 61, 0.25);
+}
+
+.btn-brass:hover {
+  background: var(--color-primary);
+  color: #fff;
+}
+
+/* Horizontal journal list — poster / theater */
+.section {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: var(--section-gap) 24px 0;
+}
+
+.section-head {
+  text-align: center;
+  margin-bottom: 36px;
+}
+
+.section-title {
+  font-size: 1.4rem;
+  letter-spacing: 0.28em;
+  margin-bottom: 8px;
+}
+
+.section-sub {
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+}
+
+.journal-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  border-top: 1px solid var(--color-border);
+}
+
+.journal-item {
+  display: grid;
+  grid-template-columns: 100px 160px 1fr auto;
+  gap: 24px;
+  align-items: center;
+  padding: 28px 0;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.journal-item:hover {
+  background: linear-gradient(90deg, transparent, rgba(200, 168, 106, 0.06), transparent);
+}
+
+.journal-no {
+  font-family: var(--font-heading);
+  font-size: 1.4rem;
+  color: var(--color-primary);
+  letter-spacing: 0.12em;
+}
+
+.journal-thumb {
+  aspect-ratio: 4 / 3;
+  border: 1px solid var(--color-border);
+  outline: 1px solid var(--color-border);
+  outline-offset: 3px;
+  background: linear-gradient(145deg, #e2d5bd, #f6efe4);
+  overflow: hidden;
+}
+
+.journal-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.journal-body h3 {
+  font-size: 1.1rem;
+  line-height: 1.55;
+  margin-bottom: 8px;
+}
+
+.journal-body h3 a:hover {
+  color: var(--color-primary);
+}
+
+.journal-body p {
+  font-size: 0.86rem;
+  color: var(--color-text-muted);
+  line-height: 1.7;
+}
+
+.journal-meta {
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  color: var(--color-text-muted);
+  text-align: right;
+}
+
+.journal-meta .cat {
+  display: block;
+  color: var(--color-accent);
+  margin-bottom: 6px;
+}
+
+/* Poster band */
+.poster-band {
+  margin-top: var(--section-gap);
+  background: var(--color-hero-bg);
+  color: var(--color-hero-text);
+  text-align: center;
+  padding: 72px 24px;
+  position: relative;
+  overflow: hidden;
+}
+
+.poster-band .sunburst-sm {
+  position: absolute;
+  inset: 50% auto auto 50%;
+  width: 90vmax;
+  height: 90vmax;
+  transform: translate(-50%, -50%);
+  background: repeating-conic-gradient(
+    from 0deg,
+    rgba(200, 168, 106, 0.08) 0deg 10deg,
+    transparent 10deg 20deg
+  );
+  pointer-events: none;
+}
+
+.poster-band .inner {
+  position: relative;
+  z-index: 1;
+}
+
+.poster-band h2 {
+  font-size: 1.6rem;
+  letter-spacing: 0.2em;
+  margin-bottom: 14px;
+}
+
+.poster-band p {
+  opacity: 0.88;
+  margin-bottom: 28px;
+  font-size: 0.92rem;
+}
+
+/* Footer */
+.site-footer {
+  padding: 48px 24px 56px;
+  text-align: center;
+  font-size: 0.74rem;
+  color: var(--color-text-muted);
+  border-top: 1px solid var(--color-border);
+}
+
+.site-footer .brand {
+  color: var(--color-text);
+  margin-bottom: 12px;
+}
+
+.footer-nav {
+  display: flex;
+  justify-content: center;
+  gap: 22px;
+  margin: 12px 0 16px;
+  font-size: 0.7rem;
+  letter-spacing: 0.14em;
+}
+
+/* Article */
+.article-cover {
+  width: 100%;
+  max-height: 58vh;
+  overflow: hidden;
+  background: var(--color-hero-bg);
+}
+
+.article-cover img {
+  width: 100%;
+  max-height: 58vh;
+  object-fit: cover;
+  opacity: 0.92;
+}
+
+.article-main {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 48px 24px 88px;
+}
+
+.article-kicker {
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  color: var(--color-accent);
+  margin-bottom: 12px;
+}
+
+.article-main h1 {
+  font-size: clamp(1.55rem, 3.4vw, 2rem);
+  line-height: 1.45;
+  margin-bottom: 24px;
+}
+
+.article-main h2 {
+  font-size: 1.3rem;
+  margin: 40px 0 12px;
+}
+
+.article-main p { margin-bottom: 1.1em; }
+
+.article-main figure {
+  margin: 32px 0;
+  border: 1px solid var(--color-border);
+  outline: 1px solid var(--color-border);
+  outline-offset: 4px;
+  padding: 4px;
+  background: var(--color-surface);
+}
+
+.article-main figcaption {
+  font-size: 0.78rem;
+  color: var(--color-text-muted);
+  margin-top: 8px;
+  padding: 0 4px 4px;
+}
+
+.back-link {
+  display: inline-block;
+  margin-top: 32px;
+  color: var(--color-primary);
+  font-size: 0.8rem;
+  letter-spacing: 0.12em;
+}
+
+/* Page */
+.page-hero {
+  position: relative;
+  background: var(--color-hero-bg);
+  color: var(--color-hero-text);
+  text-align: center;
+  padding: 120px 24px 72px;
+  overflow: hidden;
+}
+
+.page-hero .sunburst {
+  opacity: 0.7;
+}
+
+.page-hero h1 {
+  position: relative;
+  z-index: 1;
+  font-size: 1.9rem;
+  letter-spacing: 0.3em;
+}
+
+.page-body {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 48px 24px 88px;
+}
+
+.menu-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 18px 0;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.menu-row:first-child { border-top: 1px solid var(--color-border); }
+
+.menu-row small {
+  display: block;
+  color: var(--color-text-muted);
+  font-size: 0.8rem;
+  margin-top: 4px;
+}
+
+.menu-row .price {
+  font-family: var(--font-heading);
+  flex-shrink: 0;
+}
+
+.page-block { margin-top: 52px; }
+.page-block h2 {
+  font-size: 1.25rem;
+  letter-spacing: 0.2em;
+  margin-bottom: 14px;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .journal-item {
+    grid-template-columns: 48px 1fr;
+    gap: 12px 16px;
+  }
+  .journal-thumb {
+    grid-column: 1 / -1;
+    max-width: 280px;
+  }
+  .journal-body { grid-column: 1 / -1; }
+  .journal-meta {
+    grid-column: 1 / -1;
+    text-align: left;
+  }
+}
+
+@media (max-width: 480px) {
+  .brand small { display: none; }
+  .site-nav { gap: 12px; font-size: 0.64rem; }
+  .menu-row { flex-direction: column; gap: 6px; }
+}

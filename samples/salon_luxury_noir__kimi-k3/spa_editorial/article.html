@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ヘッドスパは「眠りに落ちる」が正解。深夜の頭皮ケア論 — SERENE</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="site-title">SERENE</a>
+      <nav class="site-nav" id="navDrawer">
+        <button class="nav-close" id="navClose" aria-label="閉じる">✕</button>
+        <a href="index.html">Essays</a>
+        <a href="page.html">Menu</a>
+        <a href="page.html">Access</a>
+      </nav>
+      <button class="menu-btn" aria-label="Menu">☰</button>
+    </div>
+  </header>
+
+  <main>
+    <article class="article">
+      <div class="container prose-col">
+        <header class="article-head">
+          <p class="article-meta"><span class="essay-cat-sm">Spa</span><time>2026.05.30</time></p>
+          <h1>ヘッドスパは「眠りに落ちる」が正解。<br>深夜の頭皮ケア論</h1>
+          <div class="rule rule-center"></div>
+        </header>
+
+        <div class="article-body">
+          <p class="lede-body">施術中に眠ってしまうことを恥ずかしがるお客様がいらっしゃいます。「寝てしまってすみません」と目覚めて謝られることも少なくありません。けれど、それこそが自律神経が整った何よりの証拠なのです。</p>
+
+          <h2>眠りに落ちる、ということ</h2>
+          <p>頭皮への適度な圧は、副交感神経を優位にします。呼吸が深くなり、筋肉の緊張がほぐれ、体が「休息モード」に入る。ヘッドスパで眠ってしまうのは、その過程が正しく進んでいるサインです。</p>
+          <p>夜のスパが髪を変えるのは、眠りの質を変えるから。深い睡眠の前半に分泌される成長ホルモンは、髪の主成分ケラチンの合成を助けます。つまり、よく眠れる人の髪は、修復が速いのです。</p>
+
+          <blockquote class="pull-quote">
+            <p>「髪を洗うことは、一日を手放すこと。」</p>
+          </blockquote>
+
+          <h2>21時の予約という選択</h2>
+          <p>SERENEが夜21時まで営業しているのは、帰宅後の「もう一度シャンプー」をなくしていただきたいからです。サロンで頭皮を清潔にし、そのまま眠りにつく。夜のスパの醍醐味は、施術後の何もしない時間にあります。</p>
+
+          <h2>眠りを誘う指先の圧</h2>
+          <p>強ければよいというものではありません。頭皮は薄く、繊細です。私たちが大切にしているのは「眠りを妨げない圧」。一定のリズムと、ゆっくりした動き。お客様の呼吸に合わせて、指先の速度を落としていきます。</p>
+
+          <div class="article-divider" aria-hidden="true"></div>
+
+          <p class="article-note">ヘッドスパは60分と90分のコースをご用意しています。90分コースは、施術後にそのまま15分ほどお休みいただける「居眠り時間」つきです。</p>
+        </div>
+
+        <footer class="article-foot">
+          <a href="index.html" class="btn btn-outline">← Essays 一覧へ</a>
+        </footer>
+      </div>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p class="footer-brand">SERENE</p>
+      <p>東京都渋谷区神宮前 4-9-2 &nbsp;/&nbsp; 12:00–21:00（月曜休）</p>
+      <p class="footer-copy">&copy; 2026 SERENE</p>
+    </div>
+  </footer>
+
+  <script>
+    (function(){
+      var btn=document.querySelector('.menu-btn'), close=document.getElementById('navClose'), nav=document.getElementById('navDrawer');
+      function open(){ nav.classList.add('is-open'); document.body.style.overflow='hidden'; }
+      function closeFn(){ nav.classList.remove('is-open'); document.body.style.overflow=''; }
+      if(btn) btn.addEventListener('click', open);
+      if(close) close.addEventListener('click', closeFn);
+      nav.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', closeFn); });
+    })();
+  </script>
+</body>
+</html>

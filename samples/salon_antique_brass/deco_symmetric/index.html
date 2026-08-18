@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Maison Lumière — アンティークとアールデコの美容室</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="site-title">
+        <span class="site-title-mark">◆</span>
+        <span class="site-title-text">Maison Lumière</span>
+      </a>
+      <nav class="site-nav" id="navDrawer">
+        <button class="nav-close" id="navClose" aria-label="閉じる">✕</button>
+        <a href="index.html">Journal</a>
+        <a href="page.html">Menu</a>
+        <a href="page.html">Salon</a>
+      </nav>
+      <button class="menu-btn" aria-label="Menu">☰</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-frame">
+        <div class="hero-sunburst" aria-hidden="true"></div>
+        <div class="hero-inner">
+          <p class="eyebrow">— Est. 1925 —</p>
+          <h1>Maison Lumière</h1>
+          <p class="hero-sub">時代を経ても、色褪せない美しさを。</p>
+          <div class="hero-ornament" aria-hidden="true">◆ ─────── ◆ ─────── ◆</div>
+          <p class="lead">アールデコの幾何学と、アンティーク家具のぬくもり。<br>銀座の片隅で、静かに髪を磨き上げるサロンです。</p>
+          <a class="btn" href="page.html">ご予約はこちら</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section container">
+      <h2 class="section-title"><span>Journal</span></h2>
+      <p class="section-note">日々の手入れと、美しいものの話。</p>
+
+      <div class="card-grid">
+        <article class="card">
+          <div class="card-image" style="background-image:url('https://picsum.photos/seed/antique-hair1/800/560')" aria-label="クラシカルなヘアセット"></div>
+          <div class="card-body">
+            <time>2026.07.12</time>
+            <h3>指通りのよい髪は、夜の仕込みで決まる</h3>
+            <p>眠る前のブラッシングと、絹のナイトキャップ。祖母の時代の知恵が、いまもいちばん優しい。</p>
+            <a href="article.html" class="card-link">記事を読む</a>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-image" style="background-image:url('https://picsum.photos/seed/antique-hair2/800/560')" aria-label="アンティークなドレッサー"></div>
+          <div class="card-body">
+            <time>2026.07.05</time>
+            <h3>ドレッサー前の五分間を、儀式にする</h3>
+            <p>鏡を拭き、ブラシを整える。支度の時間そのものが、心を整える行いになるのです。</p>
+            <a href="article.html" class="card-link">記事を読む</a>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-image" style="background-image:url('https://picsum.photos/seed/antique-hair3/800/560')" aria-label="琥珀色のヘアオイル"></div>
+          <div class="card-body">
+            <time>2026.06.28</time>
+            <h3>琥珀色のオイル、一本の選び方</h3>
+            <p>香料の重なりを確かめるように、髪に合う一滴を。アンティークボトルの話とともに。</p>
+            <a href="article.html" class="card-link">記事を読む</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section container salon-intro">
+      <h2 class="section-title"><span>Salon</span></h2>
+      <div class="intro-grid">
+        <div class="intro-image" style="background-image:url('https://picsum.photos/seed/antique-salon/800/600')" aria-label="サロン内装"></div>
+        <div class="intro-text">
+          <h3>家具はすべて、1920年代の譲り受け品。</h3>
+          <p>真鍮の取っ手のドレッサー、幾何学模様のステンドグラス、脚の曲がった猫脚の椅子。Maison Lumière の店内は、パリの蚤の市で一点ずつ集めたアンティークでできています。</p>
+          <p>古いものは、手入れを重ねた人の時間を映します。私たちは、お客様の髪にも同じ時間をかけたいと考えています。</p>
+          <a class="btn btn-outline" href="page.html">サロンについて</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-ornament" aria-hidden="true">◆ ───────── ◆ ───────── ◆</div>
+      <p class="footer-brand">Maison Lumière</p>
+      <p>東京都中央区銀座 3-14-7 &nbsp;/&nbsp; 11:00–20:00（火曜休）</p>
+      <p class="footer-copy">&copy; 2026 Maison Lumière</p>
+    </div>
+  </footer>
+
+  <script>
+    (function(){
+      var btn=document.querySelector('.menu-btn'), close=document.getElementById('navClose'), nav=document.getElementById('navDrawer');
+      function open(){ nav.classList.add('is-open'); document.body.style.overflow='hidden'; }
+      function closeFn(){ nav.classList.remove('is-open'); document.body.style.overflow=''; }
+      if(btn) btn.addEventListener('click', open);
+      if(close) close.addEventListener('click', closeFn);
+      nav.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', closeFn); });
+    })();
+  </script>
+</body>
+</html>

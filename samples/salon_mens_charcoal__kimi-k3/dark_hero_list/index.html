@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KEG — メンズ専門バーバー</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="site-title">KEG</a>
+      <nav class="site-nav" id="navDrawer">
+        <button class="nav-close" id="navClose" aria-label="閉じる">✕</button>
+        <a href="index.html">Journal</a>
+        <a href="page.html">Menu</a>
+        <a href="page.html">Access</a>
+      </nav>
+      <button class="menu-btn" aria-label="Menu">☰</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-inner">
+        <p class="tag">Since 2019 — Koenji Tokyo</p>
+        <h1>整えるのは、<br>髪と、覚悟。</h1>
+        <div class="rule"></div>
+        <p class="lede">フェードカットとシェービングの専門店。理容師二名、椅子二台。<br>飾らない店ですが、仕事は丁寧です。平日22時まで。</p>
+        <a class="btn" href="page.html">Reserve</a>
+      </div>
+    </section>
+
+    <section class="section container">
+      <div class="section-head">
+        <h2 class="section-title">Journal</h2>
+      </div>
+
+      <ol class="journal-list">
+        <li class="journal-item">
+          <a href="article.html">
+            <span class="journal-no">04</span>
+            <div class="journal-thumb" style="background-image:url('https://picsum.photos/seed/keg-fade/400/400')" aria-label="フェード"></div>
+            <div class="journal-body">
+              <h3>フェードは「高さ」で決まる。骨格別・失敗しないオーダー術</h3>
+              <p class="journal-meta"><span class="cat">Style</span><time>2026.07.08</time></p>
+            </div>
+          </a>
+        </li>
+        <li class="journal-item">
+          <a href="article.html">
+            <span class="journal-no">03</span>
+            <div class="journal-thumb" style="background-image:url('https://picsum.photos/seed/keg-shave/400/400')" aria-label="シェービング"></div>
+            <div class="journal-body">
+              <h3>月イチのシェービングが、肌を変える</h3>
+              <p class="journal-meta"><span class="cat">Shave</span><time>2026.06.30</time></p>
+            </div>
+          </a>
+        </li>
+        <li class="journal-item">
+          <a href="article.html">
+            <span class="journal-no">02</span>
+            <div class="journal-thumb" style="background-image:url('https://picsum.photos/seed/keg-perm/400/400')" aria-label="パーマ"></div>
+            <div class="journal-body">
+              <h3>パーマの持ちは、乾かし方が8割</h3>
+              <p class="journal-meta"><span class="cat">Perm</span><time>2026.06.21</time></p>
+            </div>
+          </a>
+        </li>
+        <li class="journal-item">
+          <a href="article.html">
+            <span class="journal-no">01</span>
+            <div class="journal-thumb" style="background-image:url('https://picsum.photos/seed/keg-oil/400/400')" aria-label="スタイリング剤"></div>
+            <div class="journal-body">
+              <h3>スタイリング剤、量の間違いがいちばん多い</h3>
+              <p class="journal-meta"><span class="cat">Care</span><time>2026.06.12</time></p>
+            </div>
+          </a>
+        </li>
+      </ol>
+    </section>
+
+    <section class="section container">
+      <div class="guide-card">
+        <div class="guide-text">
+          <h2 class="block-title">Shop</h2>
+          <p>KEGは高円寺のメンズ専門バーバーです。予約優先。当日の飛び込みも、空いていればお受けします。</p>
+        </div>
+        <div class="guide-links">
+          <a class="btn" href="page.html">Menu</a>
+          <a class="btn btn-outline" href="page.html">Access</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p class="footer-brand">KEG</p>
+      <p>東京都杉並区高円寺南 2-20-5 &nbsp;/&nbsp; 平日 12:00–22:00 &nbsp;/&nbsp; 土日祝 10:00–19:00（火曜休）</p>
+      <p class="footer-copy">&copy; 2026 KEG</p>
+    </div>
+  </footer>
+
+  <script>
+    (function(){
+      var btn=document.querySelector('.menu-btn'), close=document.getElementById('navClose'), nav=document.getElementById('navDrawer');
+      function open(){ nav.classList.add('is-open'); document.body.style.overflow='hidden'; }
+      function closeFn(){ nav.classList.remove('is-open'); document.body.style.overflow=''; }
+      if(btn) btn.addEventListener('click', open);
+      if(close) close.addEventListener('click', closeFn);
+      nav.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', closeFn); });
+    })();
+  </script>
+</body>
+</html>

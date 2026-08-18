@@ -1,0 +1,1107 @@
+<!doctype html><html lang="ja"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Design Lab Gallery (43)</title>
+<style>
+  :root {
+    --bg: #f5f5f7;
+    --panel: #fff;
+    --line: #e2e2e6;
+    --text: #222;
+    --muted: #666;
+    --accent: #3730a3;
+    --accent-soft: #e0e7ff;
+    --theme: #0f766e;
+    --theme-soft: #ccfbf1;
+  }
+  * { box-sizing: border-box; }
+  body { font-family: system-ui, "Noto Sans JP", sans-serif; margin:0; background:var(--bg); color:var(--text); }
+  header {
+    position: sticky; top: 0; z-index: 10;
+    background: var(--panel);
+    border-bottom: 1px solid #ddd;
+  }
+  .header-bar {
+    display: flex; gap: 12px; align-items: center; flex-wrap: wrap;
+    padding: 10px 16px;
+  }
+  header h1 { font-size: 16px; margin: 0; }
+  #count { font-size: 13px; color: var(--muted); flex: 1; min-width: 8em; }
+  .header-actions { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; margin-left: auto; }
+  #btn-menu {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 13px; padding: 6px 12px;
+    border: 1px solid #ccc; border-radius: 6px; background: #fff; cursor: pointer;
+  }
+  #btn-menu:hover { background: #fafafa; }
+  #btn-menu .chev {
+    display: inline-block;
+    width: 0; height: 0;
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    border-top: 5px solid currentColor;
+    transition: transform 0.15s;
+  }
+  header.is-open #btn-menu .chev { transform: rotate(180deg); }
+  header.is-open #btn-menu {
+    background: #111; color: #fff; border-color: #111;
+  }
+  .header-panel {
+    display: none;
+    flex-direction: column;
+    gap: 10px;
+    padding: 0 16px 12px;
+    border-top: 1px solid #eee;
+  }
+  header.is-open .header-panel { display: flex; padding-top: 12px; }
+  .toolbar { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+  .toolbar > span { font-size: 12px; color: var(--muted); }
+  .toolbar-sep {
+    width: 1px; height: 18px; background: #ddd; margin: 0 2px;
+  }
+  .filters { display: flex; flex-direction: column; gap: 8px; }
+  .filter-row { display: flex; gap: 10px; align-items: flex-start; flex-wrap: wrap; }
+  .filter-label {
+    flex: 0 0 52px;
+    font-size: 12px; font-weight: 600; color: var(--muted);
+    padding-top: 6px; letter-spacing: 0.04em;
+  }
+  .chips { display: flex; flex-wrap: wrap; gap: 6px; }
+  .chip {
+    font-size: 12px; padding: 5px 10px;
+    border: 1px solid var(--line); border-radius: 999px;
+    background: #fff; color: var(--text); cursor: pointer;
+    line-height: 1.2;
+  }
+  .chip:hover { border-color: #bbb; }
+  .chip.active {
+    background: var(--accent-soft); border-color: #a5b4fc; color: var(--accent);
+    font-weight: 600;
+  }
+  .filter-row[data-filter-group="theme"] .chip.active {
+    background: var(--theme-soft); border-color: #5eead4; color: var(--theme);
+  }
+  .filter-row[data-filter-group="mood"] .chip.active {
+    background: #fce7f3; border-color: #f9a8d4; color: #9d174d;
+  }
+  .chip-all.active { background: #f3f4f6; border-color: #d1d5db; color: #374151; }
+  button, .btn {
+    font-size: 13px; padding: 6px 10px;
+    border: 1px solid #ccc; border-radius: 6px; background: #fff; cursor: pointer;
+  }
+  button:hover, .btn:hover { background: #fafafa; }
+  button.active-w, button.active-cols {
+    background: #111; color: #fff; border-color: #111;
+  }
+  .grid {
+    display: grid;
+    gap: 16px;
+    padding: 16px;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  .grid.cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .grid.cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .grid.cols-5 { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+  .card {
+    background: #fff; border: 1px solid var(--line); border-radius: 10px;
+    overflow: hidden; min-width: 0;
+  }
+  .card.is-hidden { display: none; }
+  .card-head {
+    display: flex; justify-content: space-between; align-items: center; gap: 8px;
+    padding: 8px 10px; font-size: 13px; border-bottom: 1px solid #eee;
+  }
+  .card-head label { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  /*
+   * Thumbnail preview (constant zoom):
+   * - iframe は指定幅(375/768/1280)でレイアウト（メディアクエリが正しく効く）
+   * - 縮小率は常に cardWidth/1280（幅モードを変えても同じズーム）
+   * - 狭い幅はカード中央にデバイス枠として配置
+   * - カード枠のアスペクトは全モード共通 → 高さが飛び跳ねない
+   *
+   * 重要: scale() は単位なし数値が必要。
+   *   calc(100cqi / 1280)  → 長さ（無効 → transform 無視 → 原寸切り抜き）
+   *   calc(100cqi / 1280px) → 数（正しい縮小）
+   */
+  .frame {
+    overflow: hidden;
+    background: #e8e8ec;
+    container-type: inline-size;
+    container-name: preview;
+    position: relative;
+    height: auto;
+    aspect-ratio: 16 / 10;
+  }
+  .frame iframe {
+    border: 0;
+    display: block;
+    position: absolute;
+    top: 0;
+    transform-origin: top left;
+    /* 見える領域 ≈ 800px 分（frameH / scale = 62.5cqi / (100cqi/1280px)） */
+    height: 800px;
+    box-shadow: 0 0 0 1px rgba(0,0,0,0.06), 0 8px 24px rgba(0,0,0,0.08);
+    background: #fff;
+  }
+  /* 共通ズーム: scale = 100cqi / 1280px （length/length = number） */
+  .frame-w iframe {
+    width: 1280px;
+    left: 0;
+    transform: scale(calc(100cqi / 1280px));
+  }
+  .w-768 .frame iframe {
+    width: 768px;
+    left: calc((100cqi - 768px * 100cqi / 1280px) / 2);
+    transform: scale(calc(100cqi / 1280px));
+  }
+  .w-375 .frame iframe {
+    width: 375px;
+    left: calc((100cqi - 375px * 100cqi / 1280px) / 2);
+    transform: scale(calc(100cqi / 1280px));
+  }
+  .links { padding: 6px 10px; font-size: 12px; display: flex; gap: 10px; }
+  .b { font-size: 11px; padding: 2px 8px; border-radius: 999px; white-space: nowrap; }
+  .b-good { background: #dcfce7; color: #166534; }
+  .b-mid { background: #fef9c3; color: #854d0e; }
+  .b-bad { background: #fee2e2; color: #991b1b; }
+  .b-none { background: #eee; color: #666; }
+  .b-model { background: var(--accent-soft); color: var(--accent); }
+  .b-theme { background: var(--theme-soft); color: var(--theme); }
+  .badges { display: flex; gap: 4px; align-items: center; flex-shrink: 0; flex-wrap: wrap; justify-content: flex-end; }
+  .grid.cols-5 .card-head { font-size: 11px; padding: 6px 8px; }
+  .grid.cols-5 .badges .b { font-size: 10px; padding: 1px 6px; }
+  .grid.cols-5 .links { font-size: 11px; padding: 4px 8px; }
+  #out {
+    font-size: 12px; background: #111; color: #0f0;
+    padding: 8px; margin: 0 16px 16px; border-radius: 6px;
+    white-space: pre-wrap; display: none;
+  }
+  .empty {
+    display: none; margin: 32px 16px; padding: 24px; text-align: center;
+    color: var(--muted); background: #fff; border: 1px dashed #ccc; border-radius: 10px;
+  }
+  .empty.show { display: block; }
+  @media (max-width: 900px) {
+    .grid.cols-5 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  }
+  @media (max-width: 640px) {
+    .filter-label { flex-basis: 100%; padding-top: 0; }
+    .grid, .grid.cols-2, .grid.cols-3, .grid.cols-5 {
+      grid-template-columns: 1fr;
+      padding: 12px;
+    }
+    #count { flex: none; width: 100%; order: 3; }
+  }
+</style></head><body>
+<header id="site-header">
+  <div class="header-bar">
+    <h1>Design Lab Gallery</h1>
+    <span id="count">43 / 43 variants</span>
+    <div class="header-actions">
+      <button type="button" id="btn-menu" aria-expanded="false" aria-controls="header-panel">
+        メニュー <span class="chev" aria-hidden="true"></span>
+      </button>
+    </div>
+  </div>
+  <div class="header-panel" id="header-panel" hidden>
+    <div class="toolbar">
+      <span>カラム:</span>
+      <button type="button" data-cols="2">2</button>
+      <button type="button" data-cols="3" class="active-cols">3</button>
+      <button type="button" data-cols="5">5</button>
+      <span class="toolbar-sep" aria-hidden="true"></span>
+      <span>幅:</span>
+      <button type="button" data-w="w-375">375</button>
+      <button type="button" data-w="w-768">768</button>
+      <button type="button" data-w="" class="active-w">1280</button>
+      <span class="toolbar-sep" aria-hidden="true"></span>
+      <button type="button" id="btn-clear-filters">フィルタ解除</button>
+      <button type="button" id="btn-dump">選別リスト出力</button>
+    </div>
+    <div class="filters">
+      
+  <div class="filter-row" data-filter-group="model">
+    <span class="filter-label">モデル</span>
+    <div class="chips">
+      <button type="button" class="chip chip-all active" data-filter="model" data-value="*" aria-pressed="true">すべて</button>
+      <button type="button" class="chip" data-filter="model" data-value="claude-fable-5" aria-pressed="false">claude-fable-5</button><button type="button" class="chip" data-filter="model" data-value="fugu-ultra" aria-pressed="false">fugu-ultra</button><button type="button" class="chip" data-filter="model" data-value="grok-4.3" aria-pressed="false">grok-4.3</button><button type="button" class="chip" data-filter="model" data-value="grok-4.5" aria-pressed="false">grok-4.5</button><button type="button" class="chip" data-filter="model" data-value="grok-build" aria-pressed="false">grok-build</button><button type="button" class="chip" data-filter="model" data-value="Kimi-K3" aria-pressed="false">Kimi-K3</button>
+    </div>
+  </div>
+      
+  <div class="filter-row" data-filter-group="theme">
+    <span class="filter-label">テーマ</span>
+    <div class="chips">
+      <button type="button" class="chip chip-all active" data-filter="theme" data-value="*" aria-pressed="true">すべて</button>
+      <button type="button" class="chip" data-filter="theme" data-value="salon_antique_brass" aria-pressed="false">Antique Brass (Art Deco)</button><button type="button" class="chip" data-filter="theme" data-value="salon_cute_mauve" aria-pressed="false">Otona Kawaii Mauve</button><button type="button" class="chip" data-filter="theme" data-value="salon_goth_orchid" aria-pressed="false">Light Goth Orchid</button><button type="button" class="chip" data-filter="theme" data-value="salon_luxury_noir" aria-pressed="false">Luxury Noir</button><button type="button" class="chip" data-filter="theme" data-value="salon_mens_charcoal" aria-pressed="false">Mens Charcoal</button><button type="button" class="chip" data-filter="theme" data-value="salon_natural_sage" aria-pressed="false">Natural Sage</button><button type="button" class="chip" data-filter="theme" data-value="salon_street_asphalt" aria-pressed="false">Street Asphalt</button>
+    </div>
+  </div>
+      
+  <div class="filter-row" data-filter-group="mood">
+    <span class="filter-label">ムード</span>
+    <div class="chips">
+      <button type="button" class="chip chip-all active" data-filter="mood" data-value="*" aria-pressed="true">すべて</button>
+      <button type="button" class="chip" data-filter="mood" data-value="antique" aria-pressed="false">antique</button><button type="button" class="chip" data-filter="mood" data-value="cute" aria-pressed="false">cute</button><button type="button" class="chip" data-filter="mood" data-value="goth" aria-pressed="false">goth</button><button type="button" class="chip" data-filter="mood" data-value="luxury" aria-pressed="false">luxury</button><button type="button" class="chip" data-filter="mood" data-value="mens" aria-pressed="false">mens</button><button type="button" class="chip" data-filter="mood" data-value="natural" aria-pressed="false">natural</button><button type="button" class="chip" data-filter="mood" data-value="street" aria-pressed="false">street</button>
+    </div>
+  </div>
+    </div>
+  </div>
+</header>
+<div id="grid" class="grid cols-3">
+
+  <div class="card" data-model="Kimi-K3" data-theme="salon_antique_brass" data-mood="antique" data-system="salon_antique_brass" data-variant="deco_symmetric">
+    <div class="card-head">
+      <label><input type="checkbox" data-name="salon_antique_brass/deco_symmetric"> salon_antique_brass / <b>deco_symmetric</b></label>
+      <span class="badges"><span class="b b-model">Kimi-K3</span><span class="b b-theme">antique_brass</span><span class="b b-none">視覚批評待ち</span></span>
+    </div>
+    <div class="frame frame-w">
+      <iframe src="../samples/salon_antique_brass/deco_symmetric/index.html" loading="lazy" title="salon_antique_brass/deco_symmetric"></iframe>
+    </div>
+    <div class="links">
+      <a href="../samples/salon_antique_brass/deco_symmetric/index.html" target="_blank">index</a>
+      <a href="../samples/salon_antique_brass/deco_symmetric/article.html" target="_blank">article</a>
+      <a href="../samples/salon_antique_brass/deco_symmetric/page.html" target="_blank">page</a>
+    </div>
+  </div>
+
+  <div class="card" data-model="fugu-ultra" data-theme="salon_antique_brass" data-mood="antique" data-system="salon_antique_brass__fugu-ultra" data-variant="deco_symmetric">
+    <div class="card-head">
+      <label><input type="checkbox" data-name="salon_antique_brass__fugu-ultra/deco_symmetric"> salon_antique_brass__fugu-ultra / <b>deco_symmetric</b></label>
+      <span class="badges"><span class="b b-model">fugu-ultra</span><span class="b b-theme">antique_brass</span><span class="b b-good">score 5.0</span></span>
+    </div>
+    <div class="frame frame-w">
+      <iframe src="../samples/salon_antique_brass__fugu-ultra/deco_symmetric/index.html" loading="lazy" title="salon_antique_brass__fugu-ultra/deco_symmetric"></iframe>
+    </div>
+    <div class="links">
+      <a href="../samples/salon_antique_brass__fugu-ultra/deco_symmetric/index.html" target="_blank">index</a>
+      <a href="../samples/salon_antique_brass__fugu-ultra/deco_symmetric/article.html" target="_blank">article</a>
+      <a href="../samples/salon_antique_brass__fugu-ultra/deco_symmetric/page.html" target="_blank">page</a>
+    </div>
+  </div>
+
+  <div class="card" data-model="fugu-ultra" data-theme="salon_antique_brass" data-mood="antique" data-system="salon_antique_brass__fugu-ultra" data-variant="mirror_editorial">
+    <div class="card-head">
+      <label><input type="checkbox" data-name="salon_antique_brass__fugu-ultra/mirror_editorial"> salon_antique_brass__fugu-ultra / <b>mirror_editorial</b></label>
+      <span class="badges"><span class="b b-model">fugu-ultra</span><span class="b b-theme">antique_brass</span><span class="b b-good">score 5.0</span></span>
+    </div>
+    <div class="frame frame-w">
+      <iframe src="../samples/salon_antique_brass__fugu-ultra/mirror_editorial/index.html" loading="lazy" title="salon_antique_brass__fugu-ultra/mirror_editorial"></iframe>
+    </div>
+    <div class="links">
+      <a href="../samples/salon_antique_brass__fugu-ultra/mirror_editorial/index.html" target="_blank">index</a>
+      <a href="../samples/salon_antique_brass__fugu-ultra/mirror_editorial/article.html" target="_blank">article</a>
+      <a href="../samples/salon_antique_brass__fugu-ultra/mirror_editorial/page.html" target="_blank">page</a>
+    </div>
+  </div>
+
+  <div class="card" data-model="fugu-ultra" data-theme="salon_antique_brass" data-mood="antique" data-system="salon_antique_brass__fugu-ultra" data-variant="sunburst_fullbleed">
+    <div class="card-head">
+      <label><input type="checkbox" data-name="salon_antique_brass__fugu-ultra/sunburst_fullbleed"> salon_antique_brass__fugu-ultra / <b>sunburst_fullbleed</b></label>
+      <span class="badges"><span class="b b-model">fugu-ultra</span><span class="b b-theme">antique_brass</span><span class="b b-good">score 5.0</span></span>
+    </div>
+    <div class="frame frame-w">
+      <iframe src="../samples/salon_antique_brass__fugu-ultra/sunburst_fullbleed/index.html" loading="lazy" title="salon_antique_brass__fugu-ultra/sunburst_fullbleed"></iframe>
+    </div>
+    <div class="links">
+      <a href="../samples/salon_antique_brass__fugu-ultra/sunburst_fullbleed/index.html" target="_blank">index</a>
+      <a href="../samples/salon_antique_brass__fugu-ultra/sunburst_fullbleed/article.html" target="_blank">article</a>
+      <a href="../samples/salon_antique_brass__fugu-ultra/sunburst_fullbleed/page.html" target="_blank">page</a>
+    </div>
+  </div>
+
+  <div class="card" data-model="grok-4.5" data-theme="salon_antique_brass" data-mood="antique" data-system="salon_antique_brass__grok" data-variant="deco_symmetric">
+    <div class="card-head">
+      <label><input type="checkbox" data-name="salon_antique_brass__grok/deco_symmetric"> salon_antique_brass__grok / <b>deco_symmetric</b></label>
+      <span class="badges"><span class="b b-model">grok-4.5</span><span class="b b-theme">antique_brass</span><span class="b b-none">視覚批評待ち</span></span>
+    </div>
+    <div class="frame frame-w">
+      <iframe src="../samples/salon_antique_brass__grok/deco_symmetric/index.html" loading="lazy" title="salon_antique_brass__grok/deco_symmetric"></iframe>
+    </div>
+    <div class="links">
+      <a href="../samples/salon_antique_brass__grok/deco_symmetric/index.html" target="_blank">index</a>
+      <a href="../samples/salon_antique_brass__grok/deco_symmetric/article.html" target="_blank">article</a>
+      <a href="../samples/salon_antique_brass__grok/deco_symmetric/page.html" target="_blank">page</a>
+    </div>
+  </div>
+
+  <div class="card" data-model="grok-4.5" data-theme="salon_antique_brass" data-mood="antique" data-system="salon_antique_brass__grok" data-variant="mirror_editorial">
+    <div class="card-head">
+      <label><input type="checkbox" data-name="salon_antique_brass__grok/mirror_editorial"> salon_antique_brass__grok / <b>mirror_editorial</b></label>
+      <span class="badges"><span class="b b-model">grok-4.5</span><span class="b b-theme">antique_brass</span><span class="b b-none">視覚批評待ち</span></span>
+    </div>
+    <div class="frame frame-w">
+      <iframe src="../samples/salon_antique_brass__grok/mirror_editorial/index.html" loading="lazy" title="salon_antique_brass__grok/mirror_editorial"></iframe>
+    </div>
+    <div class="links">
+      <a href="../samples/salon_antique_brass__grok/mirror_editorial/index.html" target="_blank">index</a>
+      <a href="../samples/salon_antique_brass__grok/mirror_editorial/article.html" target="_blank">article</a>
+      <a href="../samples/salon_antique_brass__grok/mirror_editorial/page.html" target="_blank">page</a>
+    </div>
+  </div>
+
+  <div class="card" data-model="grok-4.5" data-theme="salon_antique_brass" data-mood="antique" data-system="salon_antique_brass__grok" data-variant="sunburst_fullbleed">
+    <div class="card-head">
+      <label><input type="checkbox" data-name="salon_antique_brass__grok/sunburst_fullbleed"> salon_antique_brass__grok / <b>sunburst_fullbleed</b></label>
+      <span class="badges"><span class="b b-model">grok-4.5</span><span class="b b-theme">antique_brass</span><span class="b b-none">視覚批評待ち</span></span>
+    </div>
+    <div class="frame frame-w">
+      <iframe src="../samples/salon_antique_brass__grok/sunburst_fullbleed/index.html" loading="lazy" title="salon_antique_brass__grok/sunburst_fullbleed"></iframe>
+    </div>
+    <div class="links">
+      <a href="../samples/salon_antique_brass__grok/sunburst_fullbleed/index.html" target="_blank">index</a>
+      <a href="../samples/salon_antique_brass__grok/sunburst_fullbleed/article.html" target="_blank">article</a>
+      <a href="../samples/salon_antique_brass__grok/sunburst_fullbleed/page.html" target="_blank">page</a>
+    </div>
+  </div>
+
+  <div class="card" data-model="Kimi-K3" data-theme="salon_cute_mauve" data-mood="cute" data-system="salon_cute_mauve" data-variant="centered_airy">
+    <div class="card-head">
+      <label><input type="checkbox" data-name="salon_cute_mauve/centered_airy"> salon_cute_mauve / <b>centered_airy</b></label>
+      <span class="badges"><span class="b b-model">Kimi-K3</span><span class="b b-theme">cute_mauve</span><span class="b b-none">視覚批評待ち</span></span>
+    </div>
+    <div class="frame frame-w">
+      <iframe src="../samples/salon_cute_mauve/centered_airy/index.html" loading="lazy" title="salon_cute_mauve/centered_airy"></iframe>
+    </div>
+    <div class="links">
+      <a href="../samples/salon_cute_mauve/centered_airy/index.html" target="_blank">index</a>
+      <a href="../samples/salon_cute_mauve/centered_airy/article.html" target="_blank">article</a>
+      <a href="../samples/salon_cute_mauve/centered_airy/page.html" target="_blank">page</a>
+    </div>
+  </div>
+
+  <div class="card" data-model="Kimi-K3" data-theme="salon_cute_mauve" data-mood="cute" data-system="salon_cute_mauve" data-variant="magazine_ribbon">
+    <div class="card-head">
+      <label><input type="checkbox" data-name="salon_cute_mauve/magazine_ribbon"> salon_cute_mauve / <b>magazine_ribbon</b></label>
+      <span class="badges"><span class="b b-model">Kimi-K3</span><span class="b b-theme">cute_mauve</span><span class="b b-none">視覚批評待ち</span></span>
+    </div>
+    <div class="frame frame-w">
+      <iframe src="../samples/salon_cute_mauve/magazine_ribbon/index.html" loading="lazy" title="salon_cute_mauve/magazine_ribbon"></iframe>
+    </div>
+    <div class="links">
+      <a href="../samples/salon_cute_mauve/magazine_ribbon/index.html" target="_blank">index</a>
+      <a href="../samples/salon_cute_mauve/magazine_ribbon/article.html" target="_blank">article</a>
+      <a href="../samples/salon_cute_mauve/magazine_ribbon/page.html" target="_blank">page</a>
+    </div>
+  </div>
+
+  <div class="card" data-model="Kimi-K3" data-theme="salon_cute_mauve" data-mood="cute" data-system="salon_cute_mauve" data-variant="soft_card_grid">
+    <div class="card-head">
+      <label><input type="checkbox" data-name="salon_cute_mauve/soft_card_grid"> salon_cute_mauve / <b>soft_card_grid</b></label>
+      <span class="badges"><span class="b b-model">Kimi-K3</span><span class="b b-theme">cute_mauve</span><span class="b b-none">視覚批評待ち</span></span>
+    </div>
+    <div class="frame frame-w">
+      <iframe src="../samples/salon_cute_mauve/soft_card_grid/index.html" loading="lazy" title="salon_cute_mauve/soft_card_grid"></iframe>
+    </div>
+    <div class="links">
+      <a href="../samples/salon_cute_mauve/soft_card_grid/index.html" target="_blank">index</a>
+      <a href="../samples/salon_cute_mauve/soft_card_grid/article.html" target="_blank">article</a>
+      <a href="../samples/salon_cute_mauve/soft_card_grid/page.html" target="_blank">page</a>
+    </div>
+  </div>
+
+  <div class="card" data-model="grok-4.3" data-theme="salon_goth_orchid" data-mood="goth" data-system="salon_goth_orchid" data-variant="gothic_editorial">
+    <div class="card-head">
+      <label><input type="checkbox" data-name="salon_goth_orchid/gothic_editorial"> salon_goth_orchid / <b>gothic_editorial</b></label>
+      <span class="badges"><span class="b b-model">grok-4.3</span><span class="b b-theme">goth_orchid</span><span class="b b-none">視覚批評待ち</span></span>
+    </div>
+    <div class="frame frame-w">
+      <iframe src="../samples/salon_goth_orchid/gothic_editorial/index.html" loading="lazy" title="salon_goth_orchid/gothic_editorial"></iframe>
+    </div>
+    <div class="links">
+      <a href="../samples/salon_goth_orchid/gothic_editorial/index.html" target="_blank">index</a>
+      <a href="../samples/salon_goth_orchid/gothic_editorial/article.html" target="_blank">article</a>
+      <a href="../samples/salon_goth_orchid/gothic_editorial/page.html" target="_blank">page</a>
+    </div>
+  </div>
+
+  <div class="card" data-model="grok-4.3" data-theme="salon_goth_orchid" data-mood="goth" data-system="salon_goth_orchid" data-variant="lace_frame_grid">
+    <div class="card-head">
+      <label><input type="checkbox" data-name="salon_goth_orchid/lace_frame_grid"> salon_goth_orchid / <b>lace_frame_grid</b></label>
+      <span class="badges"><span class="b b-model">grok-4.3</span><span class="b b-theme">goth_orchid</span><span class="b b-none">視覚批評待ち</span></span>
+    </div>
+    <div class="frame frame-w">
+      <iframe src="../samples/salon_goth_orchid/lace_frame_grid/index.html" loading="lazy" title="salon_goth_orchid/lace_frame_grid"></iframe>
+    </div>
+    <div class="links">
+      <a href="../samples/salon_goth_orchid/lace_frame_grid/index.html" target="_blank">index</a>
+      <a href="../samples/salon_goth_orchid/lace_frame_grid/article.html" target="_blank">article</a>
+      <a href="../samples/salon_goth_orchid/lace_frame_grid/page.html" target="_blank">page</a>
+    </div>
+  </div>
+
+  <div class="card" data-model="grok-4.3" data-theme="salon_goth_orchid" data-mood="goth" data-system="salon_goth_orchid" data-variant="veil_hero_list">
+    <div class="card-head">
+      <label><input type="checkbox" data-name="salon_goth_orchid/veil_hero_list"> salon_goth_orchid / <b>veil_hero_list</b></label>
+      <span class="badges"><span class="b b-model">grok-4.3</span><span class="b b-theme">goth_orchid</span><span class="b b-none">視覚批評待ち</span></span>
+    </div>
+    <div class="frame frame-w">
+      <iframe src="../samples/salon_goth_orchid/veil_hero_list/index.html" loading="lazy" title="salon_goth_orchid/veil_hero_list"></iframe>
+    </div>
+    <div class="links">
+      <a href="../samples/salon_goth_orchid/veil_hero_list/index.html" target="_blank">index</a>
+      <a href="../samples/salon_goth_orchid/veil_hero_list/article.html" target="_blank">article</a>
+      <a href="../samples/salon_goth_orchid/veil_hero_list/page.html" target="_blank">page</a>
+    </div>
+  </div>
+
+  <div class="card" data-model="grok-4.5" data-theme="salon_goth_orchid" data-mood="goth" data-system="salon_goth_orchid__grok" data-variant="gothic_editorial">
+    <div class="card-head">
+      <label><input type="checkbox" data-name="salon_goth_orchid__grok/gothic_editorial"> salon_goth_orchid__grok / <b>gothic_editorial</b></label>
+      <span class="badges"><span class="b b-model">grok-4.5</span><span class="b b-theme">goth_orchid</span><span class="b b-none">視覚批評待ち</span></span>
+    </div>
+    <div class="frame frame-w">
+      <iframe src="../samples/salon_goth_orchid__grok/gothic_editorial/index.html" loading="lazy" title="salon_goth_orchid__grok/gothic_editorial"></iframe>
+    </div>
+    <div class="links">
+      <a href="../samples/salon_goth_orchid__grok/gothic_editorial/index.html" target="_blank">index</a>
+      <a href="../samples/salon_goth_orchid__grok/gothic_editorial/article.html" target="_blank">article</a>
+      <a href="../samples/salon_goth_orchid__grok/gothic_editorial/page.html" target="_blank">page</a>
+    </div>
+  </div>
+
+  <div class="card" data-model="grok-4.5" data-theme="salon_goth_orchid" data-mood="goth" data-system="salon_goth_orchid__grok" data-variant="lace_frame_grid">
+    <div class="card-head">
+      <label><input type="checkbox" data-name="salon_goth_orchid__grok/lace_frame_grid"> salon_goth_orchid__grok / <b>lace_frame_grid</b></label>
+      <span class="badges"><span class="b b-model">grok-4.5</span><span class="b b-theme">goth_orchid</span><span class="b b-none">視覚批評待ち</span></span>
+    </div>
+    <div class="frame frame-w">
+      <iframe src="../samples/salon_goth_orchid__grok/lace_frame_grid/index.html" loading="lazy" title="salon_goth_orchid__grok/lace_frame_grid"></iframe>
+    </div>
+    <div class="links">
+      <a href="../samples/salon_goth_orchid__grok/lace_frame_grid/index.html" target="_blank">index</a>
+      <a href="../samples/salon_goth_orchid__grok/lace_frame_grid/article.html" target="_blank">article</a>
+      <a href="../samples/salon_goth_orchid__grok/lace_frame_grid/page.html" target="_blank">page</a>
+    </div>
+  </div>
+
+  <div class="card" data-model="grok-4.5" data-theme="salon_goth_orchid" data-mood="goth" data-system="salon_goth_orchid__grok" data-variant="veil_hero_list">
+    <div class="card-head">
+      <label><input type="checkbox" data-name="salon_goth_orchid__grok/veil_hero_list"> salon_goth_orchid__grok / <b>veil_hero_list</b></label>
+      <span class="badges"><span class="b b-model">grok-4.5</span><span class="b b-theme">goth_orchid</span><span class="b b-none">視覚批評待ち</span></span>
+    </div>
+    <div class="frame frame-w">
+      <iframe src="../samples/salon_goth_orchid__grok/veil_hero_list/index.html" loading="lazy" title="salon_goth_orchid__grok/veil_hero_list"></iframe>
+    </div>
+    <div class="links">
+      <a href="../samples/salon_goth_orchid__grok/veil_hero_list/index.html" target="_blank">index</a>
+      <a href="../samples/salon_goth_orchid__grok/veil_hero_list/article.html" target="_blank">article</a>
+      <a href="../samples/salon_goth_orchid__grok/veil_hero_list/page.html" target="_blank">page</a>
+    </div>
+  </div>
+
+  <div class="card" data-model="claude-fable-5" data-theme="salon_luxury_noir" data-mood="luxury" data-system="salon_luxury_noir" data-variant="monogram_grid">
+    <div class="card-head">
+      <label><input type="checkbox" data-name="salon_luxury_noir/monogram_grid"> salon_luxury_noir / <b>monogram_grid</b></label>
+      <span class="badges"><span class="b b-model">claude-fable-5</span><span class="b b-theme">luxury_noir</span><span class="b b-none">視覚批評待ち</span></span>
+    </div>
+    <div class="frame frame-w">
+      <iframe src="../samples/salon_luxury_noir/monogram_grid/index.html" loading="lazy" title="salon_luxury_noir/monogram_grid"></iframe>
+    </div>
+    <div class="links">
+      <a href="../samples/salon_luxury_noir/monogram_grid/index.html" target="_blank">index</a>
+      <a href="../samples/salon_luxury_noir/monogram_grid/article.html" target="_blank">article</a>
+      <a href="../samples/salon_luxury_noir/monogram_grid/page.html" target="_blank">page</a>
+    </div>
+  </div>
+
+  <div class="card" data-model="claude-fable-5" data-theme="salon_luxury_noir" data-mood="luxury" data-system="salon_luxury_noir" data-variant="noir_fullbleed">
+    <div class="card-head">
+      <label><input type="checkbox" data-name="salon_luxury_noir/noir_fullbleed"> salon_luxury_noir / <b>noir_fullbleed</b></label>
+      <span class="badges"><span class="b b-model">claude-fable-5</span><span class="b b-theme">luxury_noir</span><span class="b b-none">視覚批評待ち</span></span>
+    </div>
+    <div class="frame frame-w">
+      <iframe src="../samples/salon_luxury_noir/noir_fullbleed/index.html" loading="lazy" title="salon_luxury_noir/noir_fullbleed"></iframe>
+    </div>
+    <div class="links">
+      <a href="../samples/salon_luxury_noir/noir_fullbleed/index.html" target="_blank">index</a>
+      <a href="../samples/salon_luxury_noir/noir_fullbleed/article.html" target="_blank">article</a>
+      <a href="../samples/salon_luxury_noir/noir_fullbleed/page.html" target="_blank">page</a>
+    </div>
+  </div>
+
+  <div class="card" data-model="claude-fable-5" data-theme="salon_luxury_noir" data-mood="luxury" data-system="salon_luxury_noir" data-variant="spa_editorial">
+    <div class="card-head">
+      <label><input type="checkbox" data-name="salon_luxury_noir/spa_editorial"> salon_luxury_noir / <b>spa_editorial</b></label>
+      <span class="badges"><span class="b b-model">claude-fable-5</span><span class="b b-theme">luxury_noir</span><span class="b b-none">視覚批評待ち</span></span>
+    </div>
+    <div class="frame frame-w">
+      <iframe src="../samples/salon_luxury_noir/spa_editorial/index.html" loading="lazy" title="salon_luxury_noir/spa_editorial"></iframe>
+    </div>
+    <div class="links">
+      <a href="../samples/salon_luxury_noir/spa_editorial/index.html" target="_blank">index</a>
+      <a href="../samples/salon_luxury_noir/spa_editorial/article.html" target="_blank">article</a>
+      <a href="../samples/salon_luxury_noir/spa_editorial/page.html" target="_blank">page</a>
+    </div>
+  </div>
+
+  <div class="card" data-model="grok-build" data-theme="salon_luxury_noir" data-mood="luxury" data-system="salon_luxury_noir__grok" data-variant="monogram_grid">
+    <div class="card-head">
+      <label><input type="checkbox" data-name="salon_luxury_noir__grok/monogram_grid"> salon_luxury_noir__grok / <b>monogram_grid</b></label>
+      <span class="badges"><span class="b b-model">grok-build</span><span class="b b-theme">luxury_noir</span><span class="b b-none">視覚批評待ち</span></span>
+    </div>
+    <div class="frame frame-w">
+      <iframe src="../samples/salon_luxury_noir__grok/monogram_grid/index.html" loading="lazy" title="salon_luxury_noir__grok/monogram_grid"></iframe>
+    </div>
+    <div class="links">
+      <a href="../samples/salon_luxury_noir__grok/monogram_grid/index.html" target="_blank">index</a>
+      <a href="../samples/salon_luxury_noir__grok/monogram_grid/article.html" target="_blank">article</a>
+      <a href="../samples/salon_luxury_noir__grok/monogram_grid/page.html" target="_blank">page</a>
+    </div>
+  </div>
+
+  <div class="card" data-model="grok-build" data-theme="salon_luxury_noir" data-mood="luxury" data-system="salon_luxury_noir__grok" data-variant="noir_fullbleed">
+    <div class="card-head">
+      <label><input type="checkbox" data-name="salon_luxury_noir__grok/noir_fullbleed"> salon_luxury_noir__grok / <b>noir_fullbleed</b></label>
+      <span class="badges"><span class="b b-model">grok-build</span><span class="b b-theme">luxury_noir</span><span class="b b-none">視覚批評待ち</span></span>
+    </div>
+    <div class="frame frame-w">
+      <iframe src="../samples/salon_luxury_noir__grok/noir_fullbleed/index.html" loading="lazy" title="salon_luxury_noir__grok/noir_fullbleed"></iframe>
+    </div>
+    <div class="links">
+      <a href="../samples/salon_luxury_noir__grok/noir_fullbleed/index.html" target="_blank">index</a>
+      <a href="../samples/salon_luxury_noir__grok/noir_fullbleed/article.html" target="_blank">article</a>
+      <a href="../samples/salon_luxury_noir__grok/noir_fullbleed/page.html" target="_blank">page</a>
+    </div>
+  </div>
+
+  <div class="card" data-model="grok-build" data-theme="salon_luxury_noir" data-mood="luxury" data-system="salon_luxury_noir__grok" data-variant="spa_editorial">
+    <div class="card-head">
+      <label><input type="checkbox" data-name="salon_luxury_noir__grok/spa_editorial"> salon_luxury_noir__grok / <b>spa_editorial</b></label>
+      <span class="badges"><span class="b b-model">grok-build</span><span class="b b-theme">luxury_noir</span><span class="b b-none">視覚批評待ち</span></span>
+    </div>
+    <div class="frame frame-w">
+      <iframe src="../samples/salon_luxury_noir__grok/spa_editorial/index.html" loading="lazy" title="salon_luxury_noir__grok/spa_editorial"></iframe>
+    </div>
+    <div class="links">
+      <a href="../samples/salon_luxury_noir__grok/spa_editorial/index.html" target="_blank">index</a>
+      <a href="../samples/salon_luxury_noir__grok/spa_editorial/article.html" target="_blank">article</a>
+      <a href="../samples/salon_luxury_noir__grok/spa_editorial/page.html" target="_blank">page</a>
+    </div>
+  </div>
+
+  <div class="card" data-model="Kimi-K3" data-theme="salon_luxury_noir" data-mood="luxury" data-system="salon_luxury_noir__kimi-k3" data-variant="monogram_grid">
+    <div class="card-head">
+      <label><input type="checkbox" data-name="salon_luxury_noir__kimi-k3/monogram_grid"> salon_luxury_noir__kimi-k3 / <b>monogram_grid</b></label>
+      <span class="badges"><span class="b b-model">Kimi-K3</span><span class="b b-theme">luxury_noir</span><span class="b b-none">視覚批評待ち</span></span>
+    </div>
+    <div class="frame frame-w">
+      <iframe src="../samples/salon_luxury_noir__kimi-k3/monogram_grid/index.html" loading="lazy" title="salon_luxury_noir__kimi-k3/monogram_grid"></iframe>
+    </div>
+    <div class="links">
+      <a href="../samples/salon_luxury_noir__kimi-k3/monogram_grid/index.html" target="_blank">index</a>
+      <a href="../samples/salon_luxury_noir__kimi-k3/monogram_grid/article.html" target="_blank">article</a>
+      <a href="../samples/salon_luxury_noir__kimi-k3/monogram_grid/page.html" target="_blank">page</a>
+    </div>
+  </div>
+
+  <div class="card" data-model="Kimi-K3" data-theme="salon_luxury_noir" data-mood="luxury" data-system="salon_luxury_noir__kimi-k3" data-variant="noir_fullbleed">
+    <div class="card-head">
+      <label><input type="checkbox" data-name="salon_luxury_noir__kimi-k3/noir_fullbleed"> salon_luxury_noir__kimi-k3 / <b>noir_fullbleed</b></label>
+      <span class="badges"><span class="b b-model">Kimi-K3</span><span class="b b-theme">luxury_noir</span><span class="b b-none">視覚批評待ち</span></span>
+    </div>
+    <div class="frame frame-w">
+      <iframe src="../samples/salon_luxury_noir__kimi-k3/noir_fullbleed/index.html" loading="lazy" title="salon_luxury_noir__kimi-k3/noir_fullbleed"></iframe>
+    </div>
+    <div class="links">
+      <a href="../samples/salon_luxury_noir__kimi-k3/noir_fullbleed/index.html" target="_blank">index</a>
+      <a href="../samples/salon_luxury_noir__kimi-k3/noir_fullbleed/article.html" target="_blank">article</a>
+      <a href="../samples/salon_luxury_noir__kimi-k3/noir_fullbleed/page.html" target="_blank">page</a>
+    </div>
+  </div>
+
+  <div class="card" data-model="Kimi-K3" data-theme="salon_luxury_noir" data-mood="luxury" data-system="salon_luxury_noir__kimi-k3" data-variant="spa_editorial">
+    <div class="card-head">
+      <label><input type="checkbox" data-name="salon_luxury_noir__kimi-k3/spa_editorial"> salon_luxury_noir__kimi-k3 / <b>spa_editorial</b></label>
+      <span class="badges"><span class="b b-model">Kimi-K3</span><span class="b b-theme">luxury_noir</span><span class="b b-none">視覚批評待ち</span></span>
+    </div>
+    <div class="frame frame-w">
+      <iframe src="../samples/salon_luxury_noir__kimi-k3/spa_editorial/index.html" loading="lazy" title="salon_luxury_noir__kimi-k3/spa_editorial"></iframe>
+    </div>
+    <div class="links">
+      <a href="../samples/salon_luxury_noir__kimi-k3/spa_editorial/index.html" target="_blank">index</a>
+      <a href="../samples/salon_luxury_noir__kimi-k3/spa_editorial/article.html" target="_blank">article</a>
+      <a href="../samples/salon_luxury_noir__kimi-k3/spa_editorial/page.html" target="_blank">page</a>
+    </div>
+  </div>
+
+  <div class="card" data-model="claude-fable-5" data-theme="salon_mens_charcoal" data-mood="mens" data-system="salon_mens_charcoal" data-variant="bold_split">
+    <div class="card-head">
+      <label><input type="checkbox" data-name="salon_mens_charcoal/bold_split"> salon_mens_charcoal / <b>bold_split</b></label>
+      <span class="badges"><span class="b b-model">claude-fable-5</span><span class="b b-theme">mens_charcoal</span><span class="b b-none">視覚批評待ち</span></span>
+    </div>
+    <div class="frame frame-w">
+      <iframe src="../samples/salon_mens_charcoal/bold_split/index.html" loading="lazy" title="salon_mens_charcoal/bold_split"></iframe>
+    </div>
+    <div class="links">
+      <a href="../samples/salon_mens_charcoal/bold_split/index.html" target="_blank">index</a>
+      <a href="../samples/salon_mens_charcoal/bold_split/article.html" target="_blank">article</a>
+      <a href="../samples/salon_mens_charcoal/bold_split/page.html" target="_blank">page</a>
+    </div>
+  </div>
+
+  <div class="card" data-model="claude-fable-5" data-theme="salon_mens_charcoal" data-mood="mens" data-system="salon_mens_charcoal" data-variant="craft_grid">
+    <div class="card-head">
+      <label><input type="checkbox" data-name="salon_mens_charcoal/craft_grid"> salon_mens_charcoal / <b>craft_grid</b></label>
+      <span class="badges"><span class="b b-model">claude-fable-5</span><span class="b b-theme">mens_charcoal</span><span class="b b-none">視覚批評待ち</span></span>
+    </div>
+    <div class="frame frame-w">
+      <iframe src="../samples/salon_mens_charcoal/craft_grid/index.html" loading="lazy" title="salon_mens_charcoal/craft_grid"></iframe>
+    </div>
+    <div class="links">
+      <a href="../samples/salon_mens_charcoal/craft_grid/index.html" target="_blank">index</a>
+      <a href="../samples/salon_mens_charcoal/craft_grid/article.html" target="_blank">article</a>
+      <a href="../samples/salon_mens_charcoal/craft_grid/page.html" target="_blank">page</a>
+    </div>
+  </div>
+
+  <div class="card" data-model="claude-fable-5" data-theme="salon_mens_charcoal" data-mood="mens" data-system="salon_mens_charcoal" data-variant="dark_hero_list">
+    <div class="card-head">
+      <label><input type="checkbox" data-name="salon_mens_charcoal/dark_hero_list"> salon_mens_charcoal / <b>dark_hero_list</b></label>
+      <span class="badges"><span class="b b-model">claude-fable-5</span><span class="b b-theme">mens_charcoal</span><span class="b b-none">視覚批評待ち</span></span>
+    </div>
+    <div class="frame frame-w">
+      <iframe src="../samples/salon_mens_charcoal/dark_hero_list/index.html" loading="lazy" title="salon_mens_charcoal/dark_hero_list"></iframe>
+    </div>
+    <div class="links">
+      <a href="../samples/salon_mens_charcoal/dark_hero_list/index.html" target="_blank">index</a>
+      <a href="../samples/salon_mens_charcoal/dark_hero_list/article.html" target="_blank">article</a>
+      <a href="../samples/salon_mens_charcoal/dark_hero_list/page.html" target="_blank">page</a>
+    </div>
+  </div>
+
+  <div class="card" data-model="grok-build" data-theme="salon_mens_charcoal" data-mood="mens" data-system="salon_mens_charcoal__grok" data-variant="bold_split">
+    <div class="card-head">
+      <label><input type="checkbox" data-name="salon_mens_charcoal__grok/bold_split"> salon_mens_charcoal__grok / <b>bold_split</b></label>
+      <span class="badges"><span class="b b-model">grok-build</span><span class="b b-theme">mens_charcoal</span><span class="b b-none">視覚批評待ち</span></span>
+    </div>
+    <div class="frame frame-w">
+      <iframe src="../samples/salon_mens_charcoal__grok/bold_split/index.html" loading="lazy" title="salon_mens_charcoal__grok/bold_split"></iframe>
+    </div>
+    <div class="links">
+      <a href="../samples/salon_mens_charcoal__grok/bold_split/index.html" target="_blank">index</a>
+      <a href="../samples/salon_mens_charcoal__grok/bold_split/article.html" target="_blank">article</a>
+      <a href="../samples/salon_mens_charcoal__grok/bold_split/page.html" target="_blank">page</a>
+    </div>
+  </div>
+
+  <div class="card" data-model="grok-build" data-theme="salon_mens_charcoal" data-mood="mens" data-system="salon_mens_charcoal__grok" data-variant="craft_grid">
+    <div class="card-head">
+      <label><input type="checkbox" data-name="salon_mens_charcoal__grok/craft_grid"> salon_mens_charcoal__grok / <b>craft_grid</b></label>
+      <span class="badges"><span class="b b-model">grok-build</span><span class="b b-theme">mens_charcoal</span><span class="b b-none">視覚批評待ち</span></span>
+    </div>
+    <div class="frame frame-w">
+      <iframe src="../samples/salon_mens_charcoal__grok/craft_grid/index.html" loading="lazy" title="salon_mens_charcoal__grok/craft_grid"></iframe>
+    </div>
+    <div class="links">
+      <a href="../samples/salon_mens_charcoal__grok/craft_grid/index.html" target="_blank">index</a>
+      <a href="../samples/salon_mens_charcoal__grok/craft_grid/article.html" target="_blank">article</a>
+      <a href="../samples/salon_mens_charcoal__grok/craft_grid/page.html" target="_blank">page</a>
+    </div>
+  </div>
+
+  <div class="card" data-model="grok-build" data-theme="salon_mens_charcoal" data-mood="mens" data-system="salon_mens_charcoal__grok" data-variant="dark_hero_list">
+    <div class="card-head">
+      <label><input type="checkbox" data-name="salon_mens_charcoal__grok/dark_hero_list"> salon_mens_charcoal__grok / <b>dark_hero_list</b></label>
+      <span class="badges"><span class="b b-model">grok-build</span><span class="b b-theme">mens_charcoal</span><span class="b b-none">視覚批評待ち</span></span>
+    </div>
+    <div class="frame frame-w">
+      <iframe src="../samples/salon_mens_charcoal__grok/dark_hero_list/index.html" loading="lazy" title="salon_mens_charcoal__grok/dark_hero_list"></iframe>
+    </div>
+    <div class="links">
+      <a href="../samples/salon_mens_charcoal__grok/dark_hero_list/index.html" target="_blank">index</a>
+      <a href="../samples/salon_mens_charcoal__grok/dark_hero_list/article.html" target="_blank">article</a>
+      <a href="../samples/salon_mens_charcoal__grok/dark_hero_list/page.html" target="_blank">page</a>
+    </div>
+  </div>
+
+  <div class="card" data-model="grok-4.5" data-theme="salon_mens_charcoal" data-mood="mens" data-system="salon_mens_charcoal__grok45" data-variant="bold_split">
+    <div class="card-head">
+      <label><input type="checkbox" data-name="salon_mens_charcoal__grok45/bold_split"> salon_mens_charcoal__grok45 / <b>bold_split</b></label>
+      <span class="badges"><span class="b b-model">grok-4.5</span><span class="b b-theme">mens_charcoal</span><span class="b b-none">視覚批評待ち</span></span>
+    </div>
+    <div class="frame frame-w">
+      <iframe src="../samples/salon_mens_charcoal__grok45/bold_split/index.html" loading="lazy" title="salon_mens_charcoal__grok45/bold_split"></iframe>
+    </div>
+    <div class="links">
+      <a href="../samples/salon_mens_charcoal__grok45/bold_split/index.html" target="_blank">index</a>
+      <a href="../samples/salon_mens_charcoal__grok45/bold_split/article.html" target="_blank">article</a>
+      <a href="../samples/salon_mens_charcoal__grok45/bold_split/page.html" target="_blank">page</a>
+    </div>
+  </div>
+
+  <div class="card" data-model="grok-4.5" data-theme="salon_mens_charcoal" data-mood="mens" data-system="salon_mens_charcoal__grok45" data-variant="craft_grid">
+    <div class="card-head">
+      <label><input type="checkbox" data-name="salon_mens_charcoal__grok45/craft_grid"> salon_mens_charcoal__grok45 / <b>craft_grid</b></label>
+      <span class="badges"><span class="b b-model">grok-4.5</span><span class="b b-theme">mens_charcoal</span><span class="b b-none">視覚批評待ち</span></span>
+    </div>
+    <div class="frame frame-w">
+      <iframe src="../samples/salon_mens_charcoal__grok45/craft_grid/index.html" loading="lazy" title="salon_mens_charcoal__grok45/craft_grid"></iframe>
+    </div>
+    <div class="links">
+      <a href="../samples/salon_mens_charcoal__grok45/craft_grid/index.html" target="_blank">index</a>
+      <a href="../samples/salon_mens_charcoal__grok45/craft_grid/article.html" target="_blank">article</a>
+      <a href="../samples/salon_mens_charcoal__grok45/craft_grid/page.html" target="_blank">page</a>
+    </div>
+  </div>
+
+  <div class="card" data-model="grok-4.5" data-theme="salon_mens_charcoal" data-mood="mens" data-system="salon_mens_charcoal__grok45" data-variant="dark_hero_list">
+    <div class="card-head">
+      <label><input type="checkbox" data-name="salon_mens_charcoal__grok45/dark_hero_list"> salon_mens_charcoal__grok45 / <b>dark_hero_list</b></label>
+      <span class="badges"><span class="b b-model">grok-4.5</span><span class="b b-theme">mens_charcoal</span><span class="b b-none">視覚批評待ち</span></span>
+    </div>
+    <div class="frame frame-w">
+      <iframe src="../samples/salon_mens_charcoal__grok45/dark_hero_list/index.html" loading="lazy" title="salon_mens_charcoal__grok45/dark_hero_list"></iframe>
+    </div>
+    <div class="links">
+      <a href="../samples/salon_mens_charcoal__grok45/dark_hero_list/index.html" target="_blank">index</a>
+      <a href="../samples/salon_mens_charcoal__grok45/dark_hero_list/article.html" target="_blank">article</a>
+      <a href="../samples/salon_mens_charcoal__grok45/dark_hero_list/page.html" target="_blank">page</a>
+    </div>
+  </div>
+
+  <div class="card" data-model="Kimi-K3" data-theme="salon_mens_charcoal" data-mood="mens" data-system="salon_mens_charcoal__kimi-k3" data-variant="bold_split">
+    <div class="card-head">
+      <label><input type="checkbox" data-name="salon_mens_charcoal__kimi-k3/bold_split"> salon_mens_charcoal__kimi-k3 / <b>bold_split</b></label>
+      <span class="badges"><span class="b b-model">Kimi-K3</span><span class="b b-theme">mens_charcoal</span><span class="b b-none">視覚批評待ち</span></span>
+    </div>
+    <div class="frame frame-w">
+      <iframe src="../samples/salon_mens_charcoal__kimi-k3/bold_split/index.html" loading="lazy" title="salon_mens_charcoal__kimi-k3/bold_split"></iframe>
+    </div>
+    <div class="links">
+      <a href="../samples/salon_mens_charcoal__kimi-k3/bold_split/index.html" target="_blank">index</a>
+      <a href="../samples/salon_mens_charcoal__kimi-k3/bold_split/article.html" target="_blank">article</a>
+      <a href="../samples/salon_mens_charcoal__kimi-k3/bold_split/page.html" target="_blank">page</a>
+    </div>
+  </div>
+
+  <div class="card" data-model="Kimi-K3" data-theme="salon_mens_charcoal" data-mood="mens" data-system="salon_mens_charcoal__kimi-k3" data-variant="craft_grid">
+    <div class="card-head">
+      <label><input type="checkbox" data-name="salon_mens_charcoal__kimi-k3/craft_grid"> salon_mens_charcoal__kimi-k3 / <b>craft_grid</b></label>
+      <span class="badges"><span class="b b-model">Kimi-K3</span><span class="b b-theme">mens_charcoal</span><span class="b b-none">視覚批評待ち</span></span>
+    </div>
+    <div class="frame frame-w">
+      <iframe src="../samples/salon_mens_charcoal__kimi-k3/craft_grid/index.html" loading="lazy" title="salon_mens_charcoal__kimi-k3/craft_grid"></iframe>
+    </div>
+    <div class="links">
+      <a href="../samples/salon_mens_charcoal__kimi-k3/craft_grid/index.html" target="_blank">index</a>
+      <a href="../samples/salon_mens_charcoal__kimi-k3/craft_grid/article.html" target="_blank">article</a>
+      <a href="../samples/salon_mens_charcoal__kimi-k3/craft_grid/page.html" target="_blank">page</a>
+    </div>
+  </div>
+
+  <div class="card" data-model="Kimi-K3" data-theme="salon_mens_charcoal" data-mood="mens" data-system="salon_mens_charcoal__kimi-k3" data-variant="dark_hero_list">
+    <div class="card-head">
+      <label><input type="checkbox" data-name="salon_mens_charcoal__kimi-k3/dark_hero_list"> salon_mens_charcoal__kimi-k3 / <b>dark_hero_list</b></label>
+      <span class="badges"><span class="b b-model">Kimi-K3</span><span class="b b-theme">mens_charcoal</span><span class="b b-none">視覚批評待ち</span></span>
+    </div>
+    <div class="frame frame-w">
+      <iframe src="../samples/salon_mens_charcoal__kimi-k3/dark_hero_list/index.html" loading="lazy" title="salon_mens_charcoal__kimi-k3/dark_hero_list"></iframe>
+    </div>
+    <div class="links">
+      <a href="../samples/salon_mens_charcoal__kimi-k3/dark_hero_list/index.html" target="_blank">index</a>
+      <a href="../samples/salon_mens_charcoal__kimi-k3/dark_hero_list/article.html" target="_blank">article</a>
+      <a href="../samples/salon_mens_charcoal__kimi-k3/dark_hero_list/page.html" target="_blank">page</a>
+    </div>
+  </div>
+
+  <div class="card" data-model="Kimi-K3" data-theme="salon_natural_sage" data-mood="natural" data-system="salon_natural_sage__kimi-k3" data-variant="botanical_grid">
+    <div class="card-head">
+      <label><input type="checkbox" data-name="salon_natural_sage__kimi-k3/botanical_grid"> salon_natural_sage__kimi-k3 / <b>botanical_grid</b></label>
+      <span class="badges"><span class="b b-model">Kimi-K3</span><span class="b b-theme">natural_sage</span><span class="b b-none">視覚批評待ち</span></span>
+    </div>
+    <div class="frame frame-w">
+      <iframe src="../samples/salon_natural_sage__kimi-k3/botanical_grid/index.html" loading="lazy" title="salon_natural_sage__kimi-k3/botanical_grid"></iframe>
+    </div>
+    <div class="links">
+      <a href="../samples/salon_natural_sage__kimi-k3/botanical_grid/index.html" target="_blank">index</a>
+      <a href="../samples/salon_natural_sage__kimi-k3/botanical_grid/article.html" target="_blank">article</a>
+      <a href="../samples/salon_natural_sage__kimi-k3/botanical_grid/page.html" target="_blank">page</a>
+    </div>
+  </div>
+
+  <div class="card" data-model="Kimi-K3" data-theme="salon_natural_sage" data-mood="natural" data-system="salon_natural_sage__kimi-k3" data-variant="journal_2col">
+    <div class="card-head">
+      <label><input type="checkbox" data-name="salon_natural_sage__kimi-k3/journal_2col"> salon_natural_sage__kimi-k3 / <b>journal_2col</b></label>
+      <span class="badges"><span class="b b-model">Kimi-K3</span><span class="b b-theme">natural_sage</span><span class="b b-none">視覚批評待ち</span></span>
+    </div>
+    <div class="frame frame-w">
+      <iframe src="../samples/salon_natural_sage__kimi-k3/journal_2col/index.html" loading="lazy" title="salon_natural_sage__kimi-k3/journal_2col"></iframe>
+    </div>
+    <div class="links">
+      <a href="../samples/salon_natural_sage__kimi-k3/journal_2col/index.html" target="_blank">index</a>
+      <a href="../samples/salon_natural_sage__kimi-k3/journal_2col/article.html" target="_blank">article</a>
+      <a href="../samples/salon_natural_sage__kimi-k3/journal_2col/page.html" target="_blank">page</a>
+    </div>
+  </div>
+
+  <div class="card" data-model="Kimi-K3" data-theme="salon_natural_sage" data-mood="natural" data-system="salon_natural_sage__kimi-k3" data-variant="story_single">
+    <div class="card-head">
+      <label><input type="checkbox" data-name="salon_natural_sage__kimi-k3/story_single"> salon_natural_sage__kimi-k3 / <b>story_single</b></label>
+      <span class="badges"><span class="b b-model">Kimi-K3</span><span class="b b-theme">natural_sage</span><span class="b b-none">視覚批評待ち</span></span>
+    </div>
+    <div class="frame frame-w">
+      <iframe src="../samples/salon_natural_sage__kimi-k3/story_single/index.html" loading="lazy" title="salon_natural_sage__kimi-k3/story_single"></iframe>
+    </div>
+    <div class="links">
+      <a href="../samples/salon_natural_sage__kimi-k3/story_single/index.html" target="_blank">index</a>
+      <a href="../samples/salon_natural_sage__kimi-k3/story_single/article.html" target="_blank">article</a>
+      <a href="../samples/salon_natural_sage__kimi-k3/story_single/page.html" target="_blank">page</a>
+    </div>
+  </div>
+
+  <div class="card" data-model="Kimi-K3" data-theme="salon_street_asphalt" data-mood="street" data-system="salon_street_asphalt__kimi-k3" data-variant="sticker_grid">
+    <div class="card-head">
+      <label><input type="checkbox" data-name="salon_street_asphalt__kimi-k3/sticker_grid"> salon_street_asphalt__kimi-k3 / <b>sticker_grid</b></label>
+      <span class="badges"><span class="b b-model">Kimi-K3</span><span class="b b-theme">street_asphalt</span><span class="b b-none">視覚批評待ち</span></span>
+    </div>
+    <div class="frame frame-w">
+      <iframe src="../samples/salon_street_asphalt__kimi-k3/sticker_grid/index.html" loading="lazy" title="salon_street_asphalt__kimi-k3/sticker_grid"></iframe>
+    </div>
+    <div class="links">
+      <a href="../samples/salon_street_asphalt__kimi-k3/sticker_grid/index.html" target="_blank">index</a>
+      <a href="../samples/salon_street_asphalt__kimi-k3/sticker_grid/article.html" target="_blank">article</a>
+      <a href="../samples/salon_street_asphalt__kimi-k3/sticker_grid/page.html" target="_blank">page</a>
+    </div>
+  </div>
+
+  <div class="card" data-model="Kimi-K3" data-theme="salon_street_asphalt" data-mood="street" data-system="salon_street_asphalt__kimi-k3" data-variant="tape_hero_list">
+    <div class="card-head">
+      <label><input type="checkbox" data-name="salon_street_asphalt__kimi-k3/tape_hero_list"> salon_street_asphalt__kimi-k3 / <b>tape_hero_list</b></label>
+      <span class="badges"><span class="b b-model">Kimi-K3</span><span class="b b-theme">street_asphalt</span><span class="b b-none">視覚批評待ち</span></span>
+    </div>
+    <div class="frame frame-w">
+      <iframe src="../samples/salon_street_asphalt__kimi-k3/tape_hero_list/index.html" loading="lazy" title="salon_street_asphalt__kimi-k3/tape_hero_list"></iframe>
+    </div>
+    <div class="links">
+      <a href="../samples/salon_street_asphalt__kimi-k3/tape_hero_list/index.html" target="_blank">index</a>
+      <a href="../samples/salon_street_asphalt__kimi-k3/tape_hero_list/article.html" target="_blank">article</a>
+      <a href="../samples/salon_street_asphalt__kimi-k3/tape_hero_list/page.html" target="_blank">page</a>
+    </div>
+  </div>
+
+  <div class="card" data-model="Kimi-K3" data-theme="salon_street_asphalt" data-mood="street" data-system="salon_street_asphalt__kimi-k3" data-variant="zine_split">
+    <div class="card-head">
+      <label><input type="checkbox" data-name="salon_street_asphalt__kimi-k3/zine_split"> salon_street_asphalt__kimi-k3 / <b>zine_split</b></label>
+      <span class="badges"><span class="b b-model">Kimi-K3</span><span class="b b-theme">street_asphalt</span><span class="b b-none">視覚批評待ち</span></span>
+    </div>
+    <div class="frame frame-w">
+      <iframe src="../samples/salon_street_asphalt__kimi-k3/zine_split/index.html" loading="lazy" title="salon_street_asphalt__kimi-k3/zine_split"></iframe>
+    </div>
+    <div class="links">
+      <a href="../samples/salon_street_asphalt__kimi-k3/zine_split/index.html" target="_blank">index</a>
+      <a href="../samples/salon_street_asphalt__kimi-k3/zine_split/article.html" target="_blank">article</a>
+      <a href="../samples/salon_street_asphalt__kimi-k3/zine_split/page.html" target="_blank">page</a>
+    </div>
+  </div>
+</div>
+<div id="empty" class="empty">条件に一致するサンプルがありません。フィルタを緩めてください。</div>
+<pre id="out"></pre>
+<script>
+(function () {
+  const header = document.getElementById('site-header');
+  const panel = document.getElementById('header-panel');
+  const btnMenu = document.getElementById('btn-menu');
+  const grid = document.getElementById('grid');
+  const countEl = document.getElementById('count');
+  const emptyEl = document.getElementById('empty');
+  const cards = [...grid.querySelectorAll('.card')];
+  const total = cards.length;
+
+  let widthClass = '';
+  let cols = 3;
+
+  /** @type {Record<string, Set<string>>} */
+  const active = { model: new Set(), theme: new Set(), mood: new Set() };
+
+  function setMenuOpen(open) {
+    header.classList.toggle('is-open', open);
+    btnMenu.setAttribute('aria-expanded', open ? 'true' : 'false');
+    if (open) panel.removeAttribute('hidden');
+    else panel.setAttribute('hidden', '');
+  }
+
+  btnMenu.addEventListener('click', () => {
+    setMenuOpen(!header.classList.contains('is-open'));
+  });
+
+  // default closed
+  setMenuOpen(false);
+
+  function applyGridClasses() {
+    grid.className = 'grid cols-' + cols + (widthClass ? ' ' + widthClass : '');
+  }
+
+  function applyFilters() {
+    let visible = 0;
+    for (const card of cards) {
+      const okModel = !active.model.size || active.model.has(card.dataset.model);
+      const okTheme = !active.theme.size || active.theme.has(card.dataset.theme);
+      const okMood = !active.mood.size || active.mood.has(card.dataset.mood);
+      const show = okModel && okTheme && okMood;
+      card.classList.toggle('is-hidden', !show);
+      if (show) visible++;
+    }
+    countEl.textContent = visible + ' / ' + total + ' variants';
+    emptyEl.classList.toggle('show', visible === 0);
+    syncUrl();
+  }
+
+  function setGroupAll(kind, isAll) {
+    const row = document.querySelector('[data-filter-group="' + kind + '"]');
+    if (!row) return;
+    const allBtn = row.querySelector('.chip-all');
+    const valueBtns = row.querySelectorAll('.chip:not(.chip-all)');
+    if (isAll) {
+      active[kind].clear();
+      allBtn.classList.add('active');
+      allBtn.setAttribute('aria-pressed', 'true');
+      valueBtns.forEach((b) => {
+        b.classList.remove('active');
+        b.setAttribute('aria-pressed', 'false');
+      });
+    } else {
+      allBtn.classList.remove('active');
+      allBtn.setAttribute('aria-pressed', 'false');
+    }
+  }
+
+  function onChipClick(btn) {
+    const kind = btn.dataset.filter;
+    const value = btn.dataset.value;
+    if (!kind || !(kind in active)) return;
+
+    if (value === '*') {
+      setGroupAll(kind, true);
+      applyFilters();
+      return;
+    }
+
+    if (active[kind].has(value)) {
+      active[kind].delete(value);
+      btn.classList.remove('active');
+      btn.setAttribute('aria-pressed', 'false');
+    } else {
+      active[kind].add(value);
+      btn.classList.add('active');
+      btn.setAttribute('aria-pressed', 'true');
+    }
+
+    if (!active[kind].size) {
+      setGroupAll(kind, true);
+    } else {
+      setGroupAll(kind, false);
+      const row = document.querySelector('[data-filter-group="' + kind + '"]');
+      row.querySelectorAll('.chip:not(.chip-all)').forEach((b) => {
+        const on = active[kind].has(b.dataset.value);
+        b.classList.toggle('active', on);
+        b.setAttribute('aria-pressed', on ? 'true' : 'false');
+      });
+    }
+    applyFilters();
+  }
+
+  document.querySelectorAll('.chip').forEach((btn) => {
+    btn.addEventListener('click', () => onChipClick(btn));
+  });
+
+  document.getElementById('btn-clear-filters').addEventListener('click', () => {
+    for (const kind of Object.keys(active)) setGroupAll(kind, true);
+    applyFilters();
+  });
+
+  document.querySelectorAll('[data-w]').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      widthClass = btn.dataset.w || '';
+      applyGridClasses();
+      document.querySelectorAll('[data-w]').forEach((b) => b.classList.toggle('active-w', b === btn));
+      syncUrl();
+    });
+  });
+
+  document.querySelectorAll('[data-cols]').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      cols = parseInt(btn.dataset.cols, 10) || 3;
+      applyGridClasses();
+      document.querySelectorAll('[data-cols]').forEach((b) => {
+        b.classList.toggle('active-cols', parseInt(b.dataset.cols, 10) === cols);
+      });
+      syncUrl();
+    });
+  });
+
+  document.getElementById('btn-dump').addEventListener('click', () => {
+    const sel = [...document.querySelectorAll('.card:not(.is-hidden) input:checked')].map((c) => c.dataset.name);
+    const o = document.getElementById('out');
+    o.style.display = 'block';
+    o.textContent = sel.length
+      ? '選別: ' + sel.length + '件\n' + sel.join('\n') + '\n\n各サンプルを .design-lab/selected/<name>/ にコピーして下さい。'
+      : '未選択（表示中のカードのみ対象）';
+  });
+
+  function syncUrl() {
+    const params = new URLSearchParams();
+    for (const kind of ['model', 'theme', 'mood']) {
+      if (active[kind].size) params.set(kind, [...active[kind]].join(','));
+    }
+    if (cols !== 3) params.set('cols', String(cols));
+    if (widthClass) params.set('w', widthClass.replace(/^w-/, '') || '1280');
+    const q = params.toString();
+    const url = q ? location.pathname + '?' + q : location.pathname;
+    history.replaceState(null, '', url);
+  }
+
+  function restoreFromUrl() {
+    const params = new URLSearchParams(location.search);
+    let anyFilter = false;
+
+    const colsParam = parseInt(params.get('cols') || '', 10);
+    if (colsParam === 2 || colsParam === 3 || colsParam === 5) {
+      cols = colsParam;
+      document.querySelectorAll('[data-cols]').forEach((b) => {
+        b.classList.toggle('active-cols', parseInt(b.dataset.cols, 10) === cols);
+      });
+    }
+
+    const wParam = params.get('w');
+    if (wParam === '375' || wParam === '768') {
+      widthClass = 'w-' + wParam;
+      document.querySelectorAll('[data-w]').forEach((b) => {
+        b.classList.toggle('active-w', (b.dataset.w || '') === widthClass);
+      });
+    } else if (wParam === '1280') {
+      widthClass = '';
+      document.querySelectorAll('[data-w]').forEach((b) => {
+        b.classList.toggle('active-w', (b.dataset.w || '') === '');
+      });
+    }
+
+    applyGridClasses();
+
+    for (const kind of ['model', 'theme', 'mood']) {
+      const raw = params.get(kind);
+      if (!raw) continue;
+      const values = raw.split(',').map((s) => s.trim()).filter(Boolean);
+      if (!values.length) continue;
+      const row = document.querySelector('[data-filter-group="' + kind + '"]');
+      if (!row) continue;
+      for (const v of values) {
+        const btn = row.querySelector('.chip[data-value="' + CSS.escape(v) + '"]');
+        if (btn && v !== '*') {
+          active[kind].add(v);
+          anyFilter = true;
+        }
+      }
+      if (active[kind].size) {
+        setGroupAll(kind, false);
+        row.querySelectorAll('.chip:not(.chip-all)').forEach((b) => {
+          const on = active[kind].has(b.dataset.value);
+          b.classList.toggle('active', on);
+          b.setAttribute('aria-pressed', on ? 'true' : 'false');
+        });
+      }
+    }
+    if (anyFilter) applyFilters();
+  }
+
+  restoreFromUrl();
+})();
+</script>
+</body></html>
