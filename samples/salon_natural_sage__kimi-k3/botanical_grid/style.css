@@ -4,6 +4,8 @@
    split ヒーロー(写真半分) × ボタニカルカードグリッド
    ============================================================ */
 
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP&family=Klee+One&display=swap");
+
 :root {
   --color-primary: #7d8b6f;
   --color-primary-light: #b5c2a5;

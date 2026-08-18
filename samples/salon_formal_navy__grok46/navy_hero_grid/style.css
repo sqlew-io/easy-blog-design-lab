@@ -1,4 +1,6 @@
 /* salon_formal_navy__grok46 / navy_hero_grid — deep navy + card grid */
+@import url("https://fonts.googleapis.com/css2?family=Noto+Serif+JP&family=Noto+Sans+JP&display=swap");
+
 :root {
   --color-primary: #2c4160;
   --color-primary-light: #6e87a8;

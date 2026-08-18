@@ -4,6 +4,8 @@
    写真ヒーロー+マステ帯タイトル × 日付つきテキストリスト
    ============================================================ */
 
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP&family=Reggae+One&display=swap");
+
 :root {
   --color-primary: #2b2b2e;
   --color-primary-light: #5c5c62;

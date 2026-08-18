@@ -4,6 +4,8 @@
    ヒーロー：フルブリード写真 + マガジンリボン一覧（大1 + 小2）
    ============================================================ */
 
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP&family=Zen+Maru+Gothic&display=swap");
+
 :root {
   --color-primary: #b0788c;
   --color-primary-light: #e3c2ce;

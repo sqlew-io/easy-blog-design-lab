@@ -4,6 +4,8 @@
    左寄せ非対称ヒーロー × マガジン2カラム一覧（大1+小3）
    ============================================================ */
 
+@import url("https://fonts.googleapis.com/css2?family=Shippori+Mincho&family=Noto+Serif+JP&family=Noto+Sans+JP&family=Hina+Mincho&display=swap");
+
 :root {
   --color-primary: #1e1e22;
   --color-primary-light: #4a4a52;

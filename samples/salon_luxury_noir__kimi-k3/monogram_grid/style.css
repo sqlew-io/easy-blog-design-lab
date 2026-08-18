@@ -4,6 +4,8 @@
    非対称エディトリアルグリッド（大小混在） × サイドバー
    ============================================================ */
 
+@import url("https://fonts.googleapis.com/css2?family=Shippori+Mincho&family=Noto+Serif+JP&family=Noto+Sans+JP&family=Hina+Mincho&display=swap");
+
 :root {
   --color-primary: #1e1e22;
   --color-primary-light: #4a4a52;

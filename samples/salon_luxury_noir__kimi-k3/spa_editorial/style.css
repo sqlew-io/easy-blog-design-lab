@@ -4,6 +4,8 @@
    タイポグラフィのみのno-hero × ワイドセリフ1カラム × 引用ブロック
    ============================================================ */
 
+@import url("https://fonts.googleapis.com/css2?family=Shippori+Mincho&family=Noto+Serif+JP&family=Noto+Sans+JP&family=Hina+Mincho&display=swap");
+
 :root {
   --color-primary: #1e1e22;
   --color-primary-light: #4a4a52;

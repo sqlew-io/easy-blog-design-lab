@@ -4,6 +4,8 @@
    ヒーロー：写真右寄せ + 丸みのあるカードグリッド
    ============================================================ */
 
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP&family=Zen+Maru+Gothic&display=swap");
+
 :root {
   --color-primary: #b0788c;
   --color-primary-light: #e3c2ce;

@@ -1,5 +1,7 @@
 /* salon_goth_orchid / gothic_editorial — mincho magazine 1-col */
 
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP&family=Zen+Old+Mincho&display=swap");
+
 :root {
   --color-primary: #6b4a6e;
   --color-primary-light: #a685a9;

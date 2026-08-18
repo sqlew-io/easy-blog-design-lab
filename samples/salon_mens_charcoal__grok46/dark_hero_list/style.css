@@ -1,5 +1,7 @@
 /* salon_mens_charcoal / dark_hero_list — near-black hero + linear list */
 
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP&family=Zen+Kaku+Gothic+New&display=swap");
+
 :root {
   --color-primary: #3e4750;
   --color-primary-light: #6b7681;
